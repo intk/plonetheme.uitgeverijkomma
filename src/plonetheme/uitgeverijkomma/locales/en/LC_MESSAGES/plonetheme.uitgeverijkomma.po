@@ -1,0 +1,286 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: plonetheme.uitgeverijkomma\n"
+"POT-Creation-Date: 2016-09-30 11:25+0000\n"
+"PO-Revision-Date: 2016-09-30 11:25+0000’\n"
+"Last-Translator: uitgeverijkomma <info@uitgeverijkomma.com>\n"
+"Language-Team: English <info@uitgeverijkomma.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Language-Code: nl\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8\n"
+"Domain: plonetheme.uitgeverijkomma\n"
+
+#: ../object.py
+msgid 'identification_identification_objectNumber'
+msgstr 'Object number'
+
+#: ../object.py
+msgid 'identification_objectNumber'
+msgstr 'Object number'
+
+#: ../object.py
+msgid 'titleAuthorImprintCollation_titleAuthor_author'
+msgstr 'Author'
+
+#: ../object.py
+msgid 'titleAuthorImprintCollation_imprint_year'
+msgstr 'Year'
+
+#: ../object.py
+msgid 'identification_objectName_objectname_type'
+msgstr 'Object type'
+
+#: ../object.py
+msgid 'identification_objectName_objectname'
+msgstr 'Object type'
+
+#: ../object.py
+msgid 'physicalCharacteristics_materials'
+msgstr 'Material'
+
+#: ../object.py
+msgid 'identification_identification_collection'
+msgstr 'Collection'
+
+#: ../object.py
+msgid 'physicalCharacteristics_techniques'
+msgstr 'Technique'
+
+#: ../object.py
+msgid 'productionDating_productionDating_maker'
+msgstr 'Maker'
+
+#: ../object.py
+msgid 'identification_taxonomy_commonName'
+msgstr 'Common name'
+
+#: ../object.py
+msgid 'associations_associatedSubjects_subject'
+msgstr 'Keyword'
+
+#: ../object.py
+msgid 'identification_taxonomy_scientificName'
+msgstr 'Scientific name'
+
+
+#: ../object.py
+msgid 'type_to_search'
+msgstr "Type to search"
+
+#: ../object.py
+msgid 'path'
+msgstr "path"
+
+#: ../object.py
+msgid 'object_on_display'
+msgstr "Now on display"
+
+#: ../object.py
+msgid "creator_name"
+msgstr "Artist"
+
+#: ../object.py
+msgid "label_text"
+msgstr "Text"
+
+#: ../object.py
+msgid "object_name"
+msgstr "Object name"
+
+#: ../object.py
+msgid "technique"
+msgstr "Technique"
+
+#: ../object.py
+msgid "association_subject"
+msgstr "Associated subject"
+
+#: ../object.py
+msgid "acquisition_method"
+msgstr "Acquisition method"
+
+#: ../object.py
+msgid "object_acquisition_method"
+msgstr "Acquisition method"
+
+#: ../object.py
+msgid "acquisition_date"
+msgstr "Acquisition date"
+
+#: ../object.py
+msgid "association_person"
+msgstr "Associated person"
+
+#: ../object.py
+msgid "creator_role"
+msgstr "Role"
+
+#: ../object.py
+msgid "documentation_title"
+msgstr "Documentation"
+
+#: ../object.py
+msgid "exhibition_title"
+msgstr "Exhibition"
+
+#: ../object.py
+msgid "inscription_content"
+msgstr "Inscription content"
+
+#: ../object.py
+msgid "inscription_type"
+msgstr "Inscription type"
+
+#: ../object.py
+msgid "inscription_description"
+msgstr "Inscription description"
+
+#: ../object.py
+msgid "object_notes"
+msgstr "Notes"
+
+#: ../object.py
+msgid "physical_description"
+msgstr "Physical description"
+
+#: ../object.py
+msgid "production_date_start"
+msgstr "Production start"
+
+#: ../object.py
+msgid "production_date_end"
+msgstr "Production end"
+
+#: ../object.py
+msgid "sort_on"
+msgstr "Sort on"
+
+#: ../object.py
+msgid "sortable_title"
+msgstr "Title"
+
+#: ../object.py
+msgid "sortable_object_number"
+msgstr "Object number"
+
+#: ../object.py
+msgid "sortable_creator_name"
+msgstr "Creator"
+
+#: ../object.py
+msgid "sortable_production_date"
+msgstr "Production date"
+
+#: ../object.py
+msgid "more_url"
+msgstr "More info"
+
+#: ../object.py
+msgid "DAILY"
+msgstr "Daily"
+
+#: ../object.py
+msgid "MONDAYFRIDAY"
+msgstr "Monday and Friday"
+
+#: ../object.py
+msgid "WEEKDAYS"
+msgstr "Day of the week"
+
+#: ../object.py
+msgid "WEEKLY"
+msgstr "Weekly"
+
+#: ../object.py
+msgid "MONTHLY"
+msgstr "Monthly"
+
+#: ../object.py
+msgid "YEARLY"
+msgstr "Yearly"
+
+#: ../object.py
+msgid "permanent_collection"
+msgstr "Permanent collection"
+
+#: ../object.py
+msgid "label_toggle_search"
+msgstr "Only in the collection"
+
+
+#: ../object.py
+msgid "creator_qualifier"
+msgstr "Qualifier"
+
+#: ../object.py
+msgid "creator_place"
+msgstr "Place"
+
+#: ../object.py
+msgid "content_motifs"
+msgstr "Motive"
+
+#: ../object.py
+msgid "object_collection"
+msgstr "Collection"
+
+#: ../object.py
+msgid "object_technique"
+msgstr "Material / Technique"
+
+#: ../object.py
+msgid "inscriptions_markings"
+msgstr "Inscriptions/markings"
+
+#: ../object.py
+msgid "object_association_subject"
+msgstr "Associated subject"
+
+#: ../object.py
+msgid "object_association_person"
+msgstr "Associated person"
+
+#: ../object.py
+msgid "object_association_period"
+msgstr "Associated period"
+
+#: ../object.py
+msgid "collection"
+msgstr "Collection"
+
+#: ../object.py
+msgid "alternative_title"
+msgstr "Alternative title"
+
+#: ../object.py
+msgid "organisation"
+msgstr "Location"
+
+#: ../object.py
+msgid "designer"
+msgstr "Designer"
+
+#: ../object.py
+msgid "documentation"
+msgstr "Documentation"
+
+#: ../object.py
+msgid "persistent_url"
+msgstr "Persistent url"
+
+#: ../object.py
+msgid "Handle url desc"
+msgstr "To refer to this object please use the following persistent URL"
+
+#: ../object.py
+msgid "related_objects"
+msgstr "Collection in this exhibition"
+
+#: ../object.py
+msgid "privacy_statement"
+msgstr "Privacy statement"
+

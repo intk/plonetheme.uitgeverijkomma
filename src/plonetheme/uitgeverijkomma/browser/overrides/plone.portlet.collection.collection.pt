@@ -1,0 +1,145 @@
+<section class="portlet portletCollection"
+    i18n:domain="plone"
+    tal:define="collection_url view/collection_url;
+                plone_view context/@@plone;
+                toLocalizedTime nocall:plone_view/toLocalizedTime;
+                viewActions python:context.portal_registry.get('plone.types_use_view_action_in_listings', []);
+                img_scale string:preview;
+                img_class python:'thumb-%s pull-right' % img_scale;
+                portal context/@@plone_portal_state/portal;
+                checkPermission nocall: context/portal_membership/checkPermission;
+                show_about python:checkPermission('Portlets: Manage portlets', context);
+                image_scale portal/@@image_scale;
+                show_dates view/data/show_dates;"
+
+    tal:attributes="class string:portlet portletCollection ${view/css_class}"><header class="portletHeader">
+        
+
+        <h2>
+            <span tal:content="view/data/header" />
+        </h2>
+
+        <div class="portlet-description" tal:content="python: view.collection().description" tal:on-error="nothin"></div>
+
+  </header>
+
+  <div class="entries" tal:attributes="class python: 'entries testimonials' if show_dates else 'entries'">
+    
+    <tal:events tal:repeat="item view/results">
+
+      <tal:block tal:define="item_has_image python:item.getIcon;
+                            obj item/getObject;
+                            item_id item/getId;
+                            item_title item/Title;
+                            item_title python:item_title or item_id;
+                            item_description item/Description;
+                            item_wf_state item/review_state;
+                            item_wf_state_class python:'state-' + item_wf_state;
+                            item_url item/getURL;
+                            item_link item_url;
+                            item_type item/PortalType;
+                            item_is_special python: item_type in ['Person', 'Connector', 'Organization', 'Testimonial'];
+                            hide_link_special_types python: True if item_is_special and not show_about else False;">
+
+              <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 entry-item" tal:attributes="class python: 'entry-item' if show_dates else 'col-lg-4 col-md-4 col-sm-6 col-xs-12 entry-item'">
+
+                <article class="entry">
+
+                  <header tal:omit-tag="show_dates">
+
+                    <div class="summary" tal:attributes="title python: item_title if not item_is_special else ''" tal:omit-tag="show_dates">
+                    <div class="image-container">
+                      <div class="image-wrapper">
+                        <a tal:attributes="href item_link;"
+                           tal:condition="python: item_has_image"
+                           tal:omit-tag="hide_link_special_types">
+
+                           <img tal:replace="structure python:image_scale.tag(item, 'image', scale=img_scale, css_class=img_class, direction='down')" />
+
+                           <div class="icon-video" tal:condition="python: item_type in ['WildcardVideo']">
+                              <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="78px" height="78px" viewBox="0 0 78 78" enable-background="new 0 0 78 78" xml:space="preserve"><circle opacity="0.35" cx="39" cy="38.99951" r="39"/><g><path fill="#FFFFFF" d="M28.74316,57c-0.12695,0-0.25293-0.03223-0.36621-0.09668C28.14258,56.77051,28,56.51953,28,56.25v-34.5
+    c0-0.26953,0.14258-0.51953,0.37695-0.65332c0.23242-0.13184,0.51855-0.12891,0.74805,0.01074l28.5127,17.25
+    C57.86328,38.49219,58,38.73633,58,39s-0.13672,0.50879-0.3623,0.64355l-28.5127,17.25C29.00781,56.96484,28.875,57,28.74316,57z
+     M29.4873,23.07422v31.85156L55.80957,39L29.4873,23.07422z"/></g></svg>
+                           </div>
+                        </a>
+
+                        <div class="person-buttons-wrapper" tal:condition="python: item_type in ['Person'] and item_has_image">
+                          <div class="person-buttons" tal:define="phone nocall:obj/phone|nothing;
+                                                                  email nocall:obj/email|nothing;">
+
+                            <a tabindex="0" class="person-button" role="button" data-toggle="popover" data-trigger="focus" data-content="" data-placement="top" tal:attributes="data-content string:<a href='tel:$phone' aria-label='Phone number' class='phone-link'>$phone</a>" aria-label="Phone number" tal:condition="phone" aria-label="Phone number"><button aria-label="Phone number" tal:condition="phone"><i class="fas fa-phone-alt"></i></button>
+
+                            <a href="" tal:attributes="href string:mailto:$email?subject=Contact via uitgeverijkomma website" aria-label="Email address" tal:condition="email"><button aria-label="Email address" tal:condition="email"><i class="fas fa-paper-plane"></i></button></a>
+                            
+                          </div>
+                        </div>
+
+                      </div> 
+                      </div>
+
+                      <div class="title-description-wrapper" tal:omit-tag="not:show_dates">
+
+                        <div class="description-wrapper" tal:condition="show_dates">
+                          <p class="description"
+                              tal:condition="item_description"
+                              tal:content="item_description">
+                            description
+                          </p>
+                        </div>
+                      
+                        <div class="title-wrapper">
+                          <a tal:attributes="href item_link;
+                                             title item_title;
+                                             class string:$item_wf_state_class;"
+                             tal:omit-tag="hide_link_special_types"><span tal:content="item_title" tal:attributes="class python: 'item-title' if hide_link_special_types else ''"></span>
+                          </a>
+                        </div>
+
+                      </div>
+
+                    </div>
+
+                  </header>
+
+                  <div class="description-wrapper" tal:condition="not:show_dates">
+                    <p class="description"
+                        tal:condition="item_description"
+                        tal:content="item_description">
+                      description
+                    </p>
+                  </div>
+
+                </article>
+              </div>
+
+              <tal:clearfix tal:condition="python: number % 3 == 0" tal:define="number repeat/item/number" tal:condition="not:show_dates">
+                <div class="clearfix visible-lg visible-md"></div>
+              </tal:clearfix> 
+
+              <tal:clearfixmd condition="python: number % 2 == 0" tal:define="number repeat/item/number" tal:condition="not:show_dates">
+                <div class="clearfix visible-sm"></div>
+              </tal:clearfixmd>
+
+              
+            </tal:block>
+
+    </tal:events>
+
+    </div>
+
+  <footer class="portletFooter"
+            tal:condition="python:showMore or view.include_empty_footer()"
+            tal:define="showMore view/data/show_more">
+        <span class="portletBottomLeft"></span>
+        <span tal:condition="showMore">
+        <a tal:attributes="href collection_url" class="btn">
+           <span class="hiddenStructure"><span tal:replace="view/data/header" /> - </span>
+           <span i18n:translate="more_url">More&hellip;</span>
+        </a>
+        </span>
+        <span class="portletBottomRight"></span>
+  </footer>
+
+
+</section>

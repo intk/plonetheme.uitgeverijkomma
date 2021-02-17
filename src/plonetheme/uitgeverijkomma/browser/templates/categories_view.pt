@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xml:lang="en"
+      lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      i18n:domain="plone">
+  <body>
+    <tal:defines define="results context;
+                         original_context nocall:options/original_context|context;
+                         toLocalizedTime nocall:original_context/@@plone/toLocalizedTime;
+                         pas_member original_context/@@pas_member;
+                         registry original_context/portal_registry;
+                         view_types python: registry.get('plone.types_use_view_action_in_listings', []);">
+
+      <tal:listing condition="results">
+        <div class="entries">
+          <div class="categories-list">
+          <tal:entry repeat="item results">
+            
+            <tal:block tal:define="
+                            item_id item/getId;
+                            item_title item/Title;
+                            item_title python:item_title or item_id;
+                            item_url python: item.portal_type in view_types and item.getURL() + '/view' or item.getURL();
+                            item_url_in_context python: item_url in original_context.absolute_url()">
+
+              
+                <a tal:attributes="href item_url;
+                                   title item_title;
+                                   class python: 'round-button' if not item_url_in_context else 'round-button active'" 
+                   tal:content="item_title" class="round-button"></a>
+
+            </tal:block>
+          </tal:entry>
+          </div>
+        </div>
+
+      </tal:listing>
+      
+      <p class="discreet"
+         tal:condition="not:results"
+         i18n:translate="">
+        There are currently no items in this folder.
+      </p>
+
+    </tal:defines>
+  </body>
+</html>
+
+

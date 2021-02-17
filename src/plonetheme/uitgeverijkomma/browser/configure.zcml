@@ -1,0 +1,65 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:faceted="http://namespaces.zope.org/faceted"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    xmlns:zcml="http://namespaces.zope.org/zcml"
+    i18n_domain="plonetheme.uitgeverijkomma">
+
+  <!-- Publish static files -->
+  <browser:resourceDirectory
+      name="plonetheme.uitgeverijkomma"
+      directory="static"
+      />
+
+   <configure
+        zcml:condition="installed plone.app.contenttypes"
+        package="plone.app.contenttypes.behaviors">
+      <browser:viewlet
+          name="contentleadimage"
+          for=".leadimage.ILeadImage"
+          class=".viewlets.LeadImageViewlet"
+          manager="plone.app.layout.viewlets.interfaces.IAboveContentBody"
+          template="leadimage.pt"
+          permission="zope2.View"
+          />
+    </configure>
+
+
+    <browser:page
+        zcml:condition="installed plone.app.standardtiles"
+        name="collection_view"
+        for="*"
+        layer="plone.app.standardtiles.contentlisting.IContentListingTileLayer"
+        permission="zope2.View"
+        template="templates/collection_view.pt"
+    />
+
+    <browser:page
+        zcml:condition="installed plone.app.standardtiles"
+        name="categories_view"
+        for="*"
+        layer="plone.app.standardtiles.contentlisting.IContentListingTileLayer"
+        permission="zope2.View"
+        template="templates/categories_view.pt"
+    />
+
+    <browser:page
+        zcml:condition="installed plone.app.standardtiles"
+        name="testimonials_view"
+        for="*"
+        layer="plone.app.standardtiles.contentlisting.IContentListingTileLayer"
+        permission="zope2.View"
+        template="templates/testimonials_view.pt"
+    />
+
+    <browser:page
+        name="context_tools"
+        for="*"
+        class=".views.ContextToolsView"
+        permission="zope2.View"
+    />
+
+    
+
+</configure>

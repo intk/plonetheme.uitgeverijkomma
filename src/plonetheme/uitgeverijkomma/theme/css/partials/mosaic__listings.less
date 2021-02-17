@@ -1,0 +1,44 @@
+
+body.template-edit.mosaic-layout-customized {
+	.listing_structure();
+}
+
+body.template-layout.mosaic-grid,
+body.template-edit.mosaic-layout-customized {
+	div.entries {
+		margin-top: 50px;
+		max-width: 1540px;
+		margin-left: auto;
+		margin-right: auto;
+
+		/* Apply general rules for entries */
+		.entries();
+	}
+
+	&.section-organizations,
+	&.section-organizaciones,
+	&.section-organizzazioni {
+		div.entries {
+			margin-top: 10px;
+		}
+	}
+}
+
+
+/* Extra: needs to be fixed */
+body.section-frontpage #main-container footer.row {
+	display: none;
+}
+
+body.section-frontpage #main-container div.mosaic-grid-cell.mosaic-width-full.mosaic-position-leftmost > div:nth-child(3),
+body.section-frontpage #main-container div.mosaic-grid-cell.mosaic-width-full.mosaic-position-leftmost > div:nth-child(7) {
+	display: none;
+}
+
+body.section-frontpage #main-container div.mosaic-grid-cell.mosaic-width-full.mosaic-position-leftmost > div:nth-child(6) {
+	float: none;
+}
+
+
+
+

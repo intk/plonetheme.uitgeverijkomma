@@ -1,0 +1,45 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    i18n_domain="plonetheme.uitgeverijkomma">
+
+  <i18n:registerTranslations directory="locales" />
+
+  <includeDependencies package="." />
+  <include package=".browser" />
+
+  <include package="z3c.jbot" file="meta.zcml" />
+  <browser:jbot directory="browser/overrides" layer=".interfaces.IPlonethemeModernBaseLayer"/>
+
+  <plone:static
+      directory="theme"
+      type="theme"
+      name="plonetheme.uitgeverijkomma"
+      />
+
+  <genericsetup:registerProfile
+      name="default"
+      title="plonetheme.uitgeverijkomma"
+      directory="profiles/default"
+      description="Installs the plonetheme.uitgeverijkomma add-on."
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      post_handler=".setuphandlers.post_install"
+      />
+
+  <genericsetup:registerProfile
+      name="uninstall"
+      title="plonetheme.uitgeverijkomma (uninstall)"
+      directory="profiles/uninstall"
+      description="Uninstalls the plonetheme.uitgeverijkomma add-on."
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      post_handler=".setuphandlers.uninstall"
+      />
+
+  <utility
+      factory=".setuphandlers.HiddenProfiles"
+      name="plonetheme.uitgeverijkomma-hiddenprofiles" />
+
+</configure>

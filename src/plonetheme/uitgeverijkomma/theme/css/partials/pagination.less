@@ -1,0 +1,45 @@
+
+body.frontend {
+
+	.pagination {
+		width: 100%;
+
+		margin-top: 50px;
+		margin-bottom: 20px;
+
+		ul {
+			margin-left: 0px;
+	    	padding-inline-start: 0px;
+		}
+
+
+
+		li > a, .pagination li > span {
+			background-color: transparent;
+			border: 1px solid transparent !important;
+			color: @theme-description-color !important;
+		}
+
+
+		li > a {
+			&:hover,
+			&:focus {
+				background-color: transparent;
+			    border: 1px solid transparent !important;
+			    -webkit-box-shadow: none;
+			    box-shadow: none;
+			}
+		}
+
+		li.active > span {
+			background-color: transparent;
+	    	border: 1px solid transparent!important;
+	    	color: #6a216c;
+		}
+
+		li.next {
+			float: right;
+		}
+
+	}
+}

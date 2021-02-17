@@ -1,0 +1,143 @@
+/* Nav bar items */
+
+#cd-nav {
+	.main-block, #mainnavigation-wrapper, #mainnavigation, .container {
+		height: 100% !important;
+	}
+}
+
+.plone-navbar-collapse.plone-collapse {
+    display: block!important;
+    height: auto!important;
+    padding-bottom: 0;
+    overflow: visible!important;
+}
+
+.plone-navbar-toggle {
+    display: none;
+}
+
+.plone-navbar-header {
+    float: left;
+}
+
+.plone-navbar {
+	background-color: @theme-main-color;
+	margin-bottom: 0px;
+	height: 100%;
+}
+
+.plone-navbar-nav .current>a, .plone-navbar-nav .selected>a, .plone-navbar-nav .current>a:hover, .plone-navbar-nav .selected>a:hover, .plone-navbar-nav .current>a:focus, .plone-navbar-nav .selected>a:focus {
+	background-color: transparent;
+	color: #747474;
+}
+
+.plone-navbar-collapse.plone-collapse {
+	width: 100%;
+	text-align: center;
+
+	position: relative;
+    top: 50%;
+    height: 60% !important;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+
+    border-top: 0px;
+    box-shadow: none;
+}
+
+.plone-navbar-nav {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+
+    opacity: 0.4;
+    -webkit-transform: translateY(-25%) rotateX(35deg);
+    transform: translateY(-25%) rotateX(35deg);
+    -webkit-transition: -webkit-transform 0.5s, opacity 0.5s;
+    transition: transform 0.5s, opacity 0.5s;
+}
+
+.navigation-is-open .plone-navbar-nav {
+	opacity: 1;
+    -webkit-transform: rotateX(0deg);
+    transform: rotateX(0deg);
+    z-index: 10000;
+}
+
+.plone-navbar-nav > li {
+	min-height: 54px;
+	height: 20%;
+}
+
+.plone-nav li a {
+	.Montserrat();
+	font-size: 24px;
+	font-weight: @theme-font-weight-bold;
+	-webkit-transition: color 0.2s;
+    transition: color 0.2s;
+    text-transform: uppercase;
+}
+
+.plone-nav li a:hover, .plone-nav li a:focus, .plone-nav li a:active {
+	background-color: @theme-main-color;
+	color: #747474;
+}
+
+@media (min-width: 768px) {
+	.plone-navbar-nav > li {
+	    float: none;
+	}
+}
+
+/* Language selector */
+div.language-collapse-menu {
+	position: absolute;
+    left: 20px;
+    top: 42px;
+    height: 50px;
+    z-index: 1000;
+    font-size: @theme-menu-a-font-size;
+
+
+    a {
+    	.Lato();
+	    font-weight: @theme-font-weight-bold;
+	    color: @theme-menu-a-color;
+	    font-size: @theme-menu-a-font-size;
+
+	    &:hover,
+	    &:focus,
+	    &:active,
+	    &:active:focus {
+	    	color: @theme-menu-a-color;
+	    	text-decoration: underline;
+	    }
+    }
+
+    li.currentLanguage {
+        display: none !important;
+    }
+
+    @media(max-width: 991px) {
+    	top: 13px;
+	    left: 0px;
+	    padding-left: 5px;
+    }
+}
+
+body.plone-toolbar-expanded div.language-collapse-menu {
+	margin-left: 120px;
+}
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,56 @@
+
+
+body.template-search {
+	#content {
+		margin-bottom: 0px;
+	}
+
+	#searchResultsSort, dl.actionMenu {
+		display: none;
+	}
+
+	#search-results-bar #results-count {
+		float: none;
+		display: block;
+		padding-bottom: @theme-search-results-count-padding-bottom;
+	}
+
+	#searchform .input-group {
+		max-width: 100%;
+	}
+
+	.pat-autotoc.autotabs, .autotabs {
+		border: 0px;
+		box-shadow: none;
+		border-radius: 0px;
+		padding: 0px;
+	}
+
+	#search-results-wrapper div.autotabs {
+		margin-top: 20px;
+	}
+
+	@media (min-width: 992px) {
+		#search-results-wrapper div.autotabs {
+			margin-left: -20%;
+			margin-right: -20%;
+		}
+	}
+
+	&.userrole-authenticated {
+		@media (min-width: 992px) {
+			#search-results-wrapper div.autotabs {
+				margin-left: -20%;
+				margin-right: -20%;
+			}
+		}
+	}
+
+	@media (max-width: 991px) {
+		div.outer-wrapper #content-core {
+			max-width: 100%;
+		}
+	}
+
+}
+

@@ -1,0 +1,61 @@
+<tal:language tal:condition="view/available">
+<ul id="portal-languageselector" class="list-group"
+    tal:define="showFlags view/showFlags;
+                languages view/languages;
+                portal_url view/portal_url;">
+    <tal:language repeat="lang languages">
+    
+    <li tal:define="code lang/code;
+                    selected lang/selected;
+                    codeclass string:language-${code};
+                    current python: selected and 'currentLanguage ' or '';"
+        tal:attributes="class string:${current}${codeclass} list-group-item">
+        
+        <tal:selectedlanguage tal:condition="selected">
+        <span
+            tal:define="flag lang/flag|nothing;
+                       name lang/native|lang/name;
+                       showflag python:showFlags and flag;
+                       name python: 'España' if name == 'Espana' else name;
+                       name python: 'België' if name == 'Belgie' else name;"
+            ><tal:flag condition="showflag">
+                <img width="14"
+                     height="11"
+                     alt=""
+                     tal:attributes="src string:${portal_url}${flag};
+                                     alt name;
+                                     title name;" />
+            </tal:flag
+            ><tal:nonflag condition="not: showflag"
+                          replace="name">language name</tal:nonflag
+        ></span>
+
+        </tal:selectedlanguage>
+
+        <tal:notselectedlanguage tal:condition="not:selected">
+
+          <a href=""
+           tal:define="flag lang/flag|nothing;
+                       name lang/native|lang/name;
+                       showflag python:showFlags and flag;
+                       name python: 'España' if name == 'Espana' else name;
+                       name python: 'België' if name == 'Belgie' else name;"
+           tal:attributes="href lang/url;
+                           title name"
+            ><tal:flag condition="showflag">
+                <img width="14"
+                     height="11"
+                     alt=""
+                     tal:attributes="src string:${portal_url}${flag};
+                                     alt name;
+                                     title name;" />
+            </tal:flag
+            ><tal:nonflag condition="not: showflag"
+                          replace="name">language name</tal:nonflag
+          ></a>
+
+        </tal:notselectedlanguage>
+    </li>    
+    </tal:language>
+</ul>
+</tal:language>

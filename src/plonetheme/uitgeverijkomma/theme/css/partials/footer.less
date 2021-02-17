@@ -1,0 +1,117 @@
+/* THEME FOOTER */
+
+.footerLinks() {
+    a {
+        color: @theme-footer-a-color;
+        text-decoration: none;
+        line-height: 25px !important;
+
+        &:hover,
+        &:focus {
+            color: @theme-link-hover-color-footer;
+            text-decoration: underline;
+        }
+    }
+}
+
+#portal-footer-wrapper {
+	font-family: @theme-font-family-base;
+    font-size: @theme-font-size-base;
+    font-weight: @theme-font-weight-light;
+    line-height: @theme-line-height-base;
+    padding: @theme-footer-padding;
+    margin-top: @theme-footer-margin-top;
+
+	background-color: @theme-footer-bg;
+	color: @theme-text-color;
+	clear: both;
+
+	.portletWrapper:first-child {
+		border-bottom: 0px;
+	}
+
+	.portletWrapper {
+		width: 100%;
+	}
+
+	/* Typography */
+	.portlet-static-footer {
+		padding-top: 0px;
+		
+		p {
+			font-size: 1.000em;
+			line-height: @theme-line-height-text;
+		}
+
+		p.address {
+			color: @theme-footer-p-color;
+		}
+
+		p.right-footer-title {
+			.Montserrat();
+			font-size: @theme-font-size-h5-footer;
+			color: @theme-font-size-h5-footer-color;
+			font-weight: @theme-font-weight-bold;
+			text-transform: uppercase;
+			margin-bottom: 10px;
+			margin-top: 10px;
+			line-height: 1.1;
+		}
+
+		p.left-footer-title {
+			font-size: @theme-font-size-p-footer;
+			color: @theme-footer-p-color;
+			font-weight: @theme-font-weight-bold;
+			margin-bottom: 10px;
+			margin-top: 10px;
+			line-height: 1.1;
+		}
+	}
+
+	.portletCollection {
+		.links();
+	}
+
+	.col-lg-2 {
+		text-align: right;
+	}
+
+	#portal-footer {
+		width: 100%;
+		max-width: 1570px;
+	}
+
+	.portlet-static-footer {
+		/* Links */
+		.footerLinks();
+	}
+
+
+	/* Media queries */
+
+	@media(max-width: 768px) {
+		.col-lg-2 {
+			text-align: left;
+			margin-top: @theme-footer-section-margin-top;
+		}
+
+		#portal-footer {
+			max-width: @theme-footer-max-width;
+			margin: 0 auto;
+			padding-left: @theme-footer-margin-left-sm;
+			padding-right: @theme-footer-margin-right-sm;
+		}
+	}
+
+
+	@media(min-width: 769px) {
+		padding-left: @theme-footer-margin-left-sm;
+		padding-right: @theme-footer-margin-right-sm;
+	}
+
+	@media(min-width: 1200px) {
+		padding-left: @theme-footer-margin-left-lg;
+		padding-right: @theme-footer-margin-right-lg;
+	}
+
+}
