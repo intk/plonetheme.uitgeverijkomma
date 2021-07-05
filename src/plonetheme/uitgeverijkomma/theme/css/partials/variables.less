@@ -1,61 +1,48 @@
 /* FONTS */
 
-.Libre() {
-	font-family: 'Libre Franklin', "Helvetica Neue", Helvetica, Arial, sans-serif;
+.Lato() {
+	font-family: 'PlantinMTProRg', "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-.LibreMedium() {
-	font-family: 'Libre Franklin Medium', "Helvetica Neue", Helvetica, Arial, sans-serif;
+.Montserrat() {
+	font-family: 'FuturaBold', "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-.LibreSemiBold() {
-	font-family: 'Libre Franklin Semi Bold', "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
-
-.LibreBold() {
-	font-family: 'Libre Franklin Bold', "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
-
-.LibreExtraBold() {
-	font-family: 'Libre Franklin Extra Bold', "Helvetica Neue", Helvetica, Arial, sans-serif;
+.PlatinMTProBold {
+	font-family: 'PlantinMTProBold', "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 /* SCAFFOLDING */
-@theme-body-bg:            				     #ffffff;
+@theme-body-bg:            				     #EEEDE6;
 @theme-main-color:           				 #000000;
 @theme-text-color:							 #000000;
 @theme-description-color:					 #000000;
 
 /* COLORS */
 @theme-color-light-grey:					 #EEEDE6;
-@theme-color-dark-green:					 #277130;
-@theme-color-dark-blue:					 	 #103867;
-@theme-color-orange:					 	 #FCE602;
-@theme-color-yellow:					 	 #FFE600;
-@theme-color-dark-yellow:					 #FFE600;
-@theme-color-dark-red:					 	 #9A161E;
-@theme-color-red:					 	     #D2232A;
-@theme-color-light-purple:					 #9789A5;
-@theme-color-purple:						 #92278F;
-@theme-color-green:							 #2DA55D;
+@theme-color-dark-green:					 #ffffff;
+@theme-color-dark-blue:					 	 #ffffff;
+@theme-color-orange:					 	 #ffffff;
+@theme-color-dark-red:					 	 #ffffff;
+@theme-color-light-purple:					 #ffffff;
 
 /* TYPOGRAPHY */
-@theme-font-family-base:					 "Libre Franklin", "Helvetica Neue", Helvetica, Arial, sans-serif;
+@theme-font-family-base:					 "PlantinMTProRg", "Helvetica Neue", Helvetica, Arial, sans-serif;
 @theme-font-size-base:						 16px;
 @theme-font-weight-light: 					 300;
 @theme-font-weight-regular: 				 400;
 @theme-font-weight-bold: 				 	 700;
 @theme-line-height-base:					 1.428571429;
-@theme-line-height-text:					 1.714;
+@theme-line-height-text:					 1.65;
 
-@theme-headings-font-family:				 "Libre Franklin Extra Bold", "Helvetica Neue", Helvetica, Arial, sans-serif;
+@theme-headings-font-family:				 "FuturaBold", "Helvetica Neue", Helvetica, Arial, sans-serif;
 @theme-headings-font-weight:				 @theme-font-weight-regular;
-@theme-headings-line-height:				 1.1;
+@theme-headings-line-height:				 36px;
 @theme-headings-color:						 #000000;
 @theme-headings-letter-spacing:				 0.00em;
 @theme-headings-text-transform:				 none;
-@theme-headings-margin-bottom:				 45px;
-@theme-headings-margin-top:					 100px;
+@theme-headings-margin-bottom:				 22px;
+@theme-headings-margin-top:					 22px;
 
 @theme-line-height-computed:                 floor((@theme-font-size-base * @theme-line-height-base));
 @theme-line-height-text:					 34px;
@@ -63,7 +50,7 @@
 
 @theme-font-size-h1:            			 50px;
 @theme-font-size-h2:            			 34px;
-@theme-font-size-h3:            			 24px;
+@theme-font-size-h3:            			 23px;
 @theme-font-size-h4:            			 16px;
 @theme-font-size-h5:            			 13px;
 @theme-font-size-h6:            			 10px;
@@ -87,14 +74,14 @@
 @theme-padding-top-header:					 0px;
 @theme-padding-top-header-sm:				 0px;
 @theme-padding-bottom-header:                0px;
-@theme-bg-header:							 @theme-color-dark-yellow;
+@theme-bg-header:							 #EEEDE6;
 
 /* Footer */
-@theme-footer-bg:							 #003F5D;
+@theme-footer-bg:							 #000000;
 @theme-footer-a-color:						 #ffffff;
 @theme-footer-p-color:						 #ffffff;
 @theme-gray-lighter:						 #000000;
-@theme-footer-padding:						 70px 0 30px 0;
+@theme-footer-padding:						 70px 0 100px 0;
 @theme-footer-margin-top:					 40px;
 @theme-footer-margin-left-lg:				 40px;
 @theme-footer-margin-right-lg:				 40px;
@@ -108,13 +95,13 @@
 @theme-footer-text-color:					 #ffffff;
 
 /* Menu */
-@theme-menu-a-color:						 #000000;
+@theme-menu-a-color:						 #ffffff;
 @theme-menu-a-font-size:					 25px;
-@theme-menu-a-color-not-currentlanguage:	 #7f7f7f;
-@theme-language-selector-a-color:			 #000000;
+@theme-menu-a-color-not-currentlanguage:	 #ffffff;
+@theme-language-selector-a-color:			 #ffffff;
 @theme-menu-a-color-hover:					 #ffffff;
-@theme-menu-main-color:						 @theme-color-green;
-@theme-menu-trigger-color:					 #000000;
+@theme-menu-main-color:						 #000000;
+@theme-menu-trigger-color:					 #ffffff;
 
 
 /* Listings */
@@ -124,16 +111,16 @@
 
 @theme-listing-entry-margin-bottom:			 35px;
 
-@theme-listing-title-color:					 #000000;
-@theme-listing-title-font-size:			     24px;
-@theme-listing-title-line-height:			 1.5;
-@theme-listing-title-margin-top:			 10px;
+@theme-listing-title-color:					 #ffffff;
+@theme-listing-title-font-size:			     1.250em;
+@theme-listing-title-line-height:			 26px;
+@theme-listing-title-margin-top:			 15px;
 @theme-listing-title-margin-bottom:			 5px;
 @theme-listing-title-border-bottom:			 0px;
 @theme-listing-title-text-decoration:		 none;
 @theme-listing-title-text-decoration-hover:  underline;
 
-@theme-listing-description-color:			 #000000; /* #717171 for ideal color contrast */
+@theme-listing-description-color:			 #ffffff; /* #717171 for ideal color contrast */
 @theme-listing-description-font-size:	     1.125em;
 @theme-listing-description-line-height:		 26px;
 @theme-listing-description-margin-top:		 2px;
@@ -148,25 +135,25 @@
 
 /* Buttons / Inputs */
 @theme-button-height:						 53px;
-@theme-button-background-color: 			 @theme-color-yellow;
+@theme-button-background-color: 			 #000000;
 @theme-ghost-button-background-color:		 transparent;
-@theme-button-border-color: 				 @theme-color-yellow;
+@theme-button-border-color: 				 #000000;
 @theme-ghost-button-border-color:			 #000000;
-@theme-button-color: 						 #000000;
+@theme-button-color: 						 #ffffff;
 @theme-ghost-button-color:					 #000000;
 @theme-button-text-transform: 				 none;
-@theme-button-hover-background-color: 		 #000000;
-@theme-button-hover-border-color: 			 #000000;
-@theme-button-hover-color: 					 #ffffff;
-@theme-ghost-button-hover-color:			 @theme-color-yellow;
+@theme-button-hover-background-color: 		 #ffffff;
+@theme-button-hover-border-color: 			 #ffffff;
+@theme-button-hover-color: 					 #000000;
+@theme-ghost-button-hover-color:			 #000000;
 @theme-button-font-weight: 					 400;
 @theme-button-border-radius: 				 0px;
 @theme-button-box-shadow: 					 none;
 @theme-button-text-shadow: 					 none;
 @theme-button-line-height:					 1.7;
-@theme-button-font-size:					 22px;
+@theme-button-font-size:					 25px;
 @theme-button-border-width:					 2px;
-@theme-button-padding:						 7px 17px;
+@theme-button-padding:						 6px 15px;
 
 @theme-input-height:						 53px;
 @theme-input-background-color:				 transparent;

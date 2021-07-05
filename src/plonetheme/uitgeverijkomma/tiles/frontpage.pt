@@ -32,17 +32,6 @@
 
           <div class="frontpage-tile-content">
             <div class="fontpage-tile-content-wrapper" tal:attributes="class python: 'fontpage-tile-content-wrapper' if not show_icon else 'fontpage-tile-content-wrapper show-icon'">
-
-              <div id="event-label" tal:define="event_state python:view.get_event_state(context)" tal:condition="item_is_event">
-                <span tal:attributes="class event_state"
-                      tal:define="event_text python:'';
-                                  event_text python:'Nu te zien' if event_state == 'current' else event_text;
-                                  event_text python:'Terugblik' if event_state == 'past' else event_text;
-                                  event_text python:'Verwacht' if event_state == 'future' else event_text;"
-                      tal:content="event_text">
-                </span>
-              </div>
-
               <h2 tal:define="title context/Title|nothing"
                   tal:condition="show_title"
                   ><span tal:content="title">Title or id</span></h2>

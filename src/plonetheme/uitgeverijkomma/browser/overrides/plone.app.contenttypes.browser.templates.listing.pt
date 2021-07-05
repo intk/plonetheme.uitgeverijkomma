@@ -24,13 +24,15 @@
                          thumb_scale_list view/get_thumb_scale_list;
                          thumb_scale_table view/get_thumb_scale_table;
                          thumb_scale_summary view/get_thumb_scale_summary;
-                         img_class python:'thumb-%s pull-right' % thumb_scale_list;
+                         img_class python:'thumb-%s' % thumb_scale_list;
                          showicons view/show_icons;
-                         showabout view/show_about;">
+                         showabout view/show_about;
+                         context_tools python: context.restrictedTraverse('@@context_tools');">
 
       <tal:listing condition="batch">
         <div class="entries" metal:define-slot="entries"
             tal:define="portal context/@@plone_portal_state/portal;
+                        isanon context/@@plone_portal_state/anonymous;
                         image_scale portal/@@image_scale">
 
           <tal:repeat repeat="item batch" metal:define-macro="entries">
@@ -39,7 +41,7 @@
                 item_id item/getId;
                 item_title item/Title;
                 item_title python:item_title or item_id;
-                item_description item/Description;
+                item_description python:context_tools.trimText(item.Description(), 160);
                 item_type item/PortalType;
                 item_modified item/ModificationDate;
                 item_created item/CreationDate;
@@ -52,51 +54,36 @@
                 item_type_class python:('contenttype-' + view.normalizeString(item_type)) if showicons else '' ;
                 item_is_special python: item_type in ['Person', 'Connector', 'Organization', 'Testimonial'];
                 hide_link_special_types python: True if item_is_special and not showabout else False;
-                ">
+                show_block python: False if not item_has_image and isanon else True;
+                " tal:condition="show_block">
               
               <metal:block define-slot="entry">
-                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 entry-item">
+                <div class="entry-item">
                   <article class="entry">
                     
                     <header metal:define-macro="listitem" tal:attributes="class python:'vevent' if item_is_event else None">
                       
-                      <div class="summary" tal:attributes="title python: item_title if not item_is_special else ''">
-                        
-                        <a tal:condition="python:item_type == 'File' and showicons"
-                           tal:attributes="href item_link;
-                                           class string:$item_type_class $item_wf_state_class url;
-                                           title item_title">
-                           <img class="mime-icon"
-                                  tal:attributes="src item/MimeTypeIcon">
-                        </a>
-
-                        <div class="image-wrapper"
-                          tal:define="thumb_scale_list python: 'video' if item_type in ['WildcardVideo'] else thumb_scale_list">
-                          <a tal:attributes="href item_link;"
-                             tal:condition="python: item_has_image and thumb_scale_list"
-                             tal:omit-tag="hide_link_special_types">
-
-                             <img tal:replace="structure python:image_scale.tag(item, 'image', scale=thumb_scale_list, css_class=img_class, direction='down')" />
-
-                             
-                          </a>
-
-                          
-                        </div>
-
-                        <div class="title-wrapper">
-                          <a tal:attributes="href item_link;
-                                                class string:$item_type_class $item_wf_state_class url;
-                                                title item_title"
-                             tal:omit-tag="hide_link_special_types"><span tal:content="item_title" tal:attributes="class python: 'item-title' if hide_link_special_types else ''"></span>
-                          </a>
-                        </div>
-                      </div>
                       
-                    </header>
+                        <a tal:attributes="href item_link;
+                                           class string:$item_type_class $item_wf_state_class url;
+                                           title item_title;">
+                        
 
-                    <div class="description-wrapper">
-                      <p class="description"
+                          <div class="image-wrapper"
+                            tal:define="thumb_scale_list python: 'video' if item_type in ['WildcardVideo'] else thumb_scale_list">
+                               <img tal:replace="structure python:image_scale.tag(item, 'image', scale=thumb_scale_list, css_class=img_class)" />
+                          </div>
+
+
+                          <div class="summary" tal:attributes="title python: item_title if not item_is_special else ''">
+
+                            <div class="title-wrapper">
+                              <span tal:content="item_title" tal:attributes="class python: 'item-title' if hide_link_special_types else ''"></span>
+                            </div>
+
+                            <div class="description-wrapper">
+                              
+                              <p class="description"
                                   tal:condition="item_description"
                                   tal:content="item_description"
                                   omit-tag="item_is_event" tal:condition="not:item_is_event">
@@ -108,20 +95,14 @@
                                   omit-tag="not:item_is_event" tal:condition="item_is_event">
                                 <tal:date tal:replace="structure python:view.formatted_date(obj)"/>
                               </p>
-                    </div>
+                            </div>
 
-                    
 
+                        </div>
+                      </a>
+                    </header>
                   </article>
                 </div>
-
-                <tal:clearfix tal:condition="python: number % 3 == 0" tal:define="number repeat/item/number">
-                  <div class="clearfix visible-lg visible-md"></div>
-                </tal:clearfix> 
-
-                <tal:clearfixmd condition="python: number % 2 == 0" tal:define="number repeat/item/number">
-                  <div class="clearfix visible-sm"></div>
-                </tal:clearfixmd>
 
               </metal:block>
             </tal:block>

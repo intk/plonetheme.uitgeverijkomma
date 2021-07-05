@@ -11,12 +11,8 @@
 		}
 
 		.search-result-wrapper {
-			padding-top: 0px;
+			padding-top: 10px;
 			padding-bottom: 10px;
-
-			@media(max-width: 991px) {
-				padding-top: 10px;
-			}
 		}
 	}
 
@@ -29,17 +25,13 @@
 	}
 	
 	.search-result-title {
-		.LibreExtraBold();
-		font-size: 25px;
-		line-height: 1.5;
+		.Montserrat();
+		font-size: 1.375em;
+		line-height: 36px;
 		color: #000000;
+		font-weight: 400s;
 		border-bottom: 0px;
 		text-decoration: none;
-
-		@media(max-width: 991px) {
-			font-size: 22px;
-			line-height: 1.636;
-		}
 
 		&:hover,
 		&:focus,
@@ -51,7 +43,7 @@
 	}
 
 	.search-item-title {
-		.LibreBold();
+		.Montserrat();
 		font-size: 1.375em;
 		color: #000000;
 		font-weight: 400s;
@@ -60,19 +52,14 @@
 	}
 
 	.search-result-description {
-		.LibreMedium();
+		.Lato();
 		color: #000000;
 		font-size: 21px;
-		line-height: 1.714;
+		line-height: 34px;
 		margin-top: 0px;
 		margin-bottom: @theme-listing-description-margin-bottom;
 
 		opacity: 1;
-
-		@media(max-width: 991px) {
-			font-size: 19px;
-			line-height: 1.684;
-		}
 	}
 }
 
@@ -81,9 +68,9 @@ body.template-search #main-container #content-core {
 }
 
 nav.pagination ul {
-	.LibreBold();
+	.Montserrat();
 
 	a {
-		.LibreBold();
+		.Montserrat();
 	}
 }

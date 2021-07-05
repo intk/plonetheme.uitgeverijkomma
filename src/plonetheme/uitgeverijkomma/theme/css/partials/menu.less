@@ -7,28 +7,18 @@
 	text-align: left;
 
 	a {
-		font-size: 24px;
+		font-size: 37px;
 		line-height: 1.2;
 		font-weight: 400;
 		text-transform: none;
 		color: @theme-menu-a-color;
-		padding: 11px 15px;
-
-
-		@media(max-width: 991px) {
-			font-size: 28px;
-			line-height: 1.14;
-		}
+		padding: 12px 15px;
 
 		&:hover,
 		&:focus,
 		&:active {
 			background-color: transparent;
-	    	color: #000000;
-
-	    	span {
-	    		border-bottom: 3px solid #000000;
-	    	}
+	    	color: @theme-menu-a-color-hover;
 		}
 	}
 
@@ -46,17 +36,11 @@
 		padding-left: 0px;
 
 		li a {
-			.LibreMedium();
 			background-color: transparent;
 			text-transform: none;
 
-			font-size: 22px;
-			line-height: 1.2;
-
-			@media(max-width: 991px) {
-				font-size: 20px;
-				line-height: 1.1;
-			}
+			font-size: 20px;
+			line-height: 1.4;
 		}
   	}
 }
@@ -75,7 +59,7 @@
 	.current > a:focus, 
 	.selected > a:focus {
 		background-color: transparent;
-		color: #000000;
+		color: @theme-menu-a-color-hover;
 	}
 }
 
@@ -84,8 +68,8 @@
 	width: 100%;
 
 	@media (min-width: 991px) {
-		padding-left: 45px;
-		padding-right: 45px;
+		padding-left: 40px;
+		padding-right: 40px;
 	}
 }
 
@@ -102,11 +86,7 @@
 
 #portal-globalnav > li > a {
 	margin-top: 25px;
-	margin-bottom: 35px;
-
-	@media(max-width: 991px) {
-		margin-bottom: 0px;
-	}
+	margin-bottom: 25px;
 }
 
 @media (min-width: 768px) {
@@ -132,7 +112,7 @@
 #cd-nav {
 	div.tickets-button-wrapper {
 		position: absolute;
-	    right: 112px;
+	    right: 105px;
 	    top: 45px;
 	    z-index: 1;
 
@@ -143,7 +123,7 @@
 
 	    @media(max-width: 991px) {
 	    	right: 60px;
-	    	top: 20px;
+	    	top: 11px;
 	    }
 	}
 
@@ -156,11 +136,11 @@
 		position: absolute;
 		
 		top: 47px;
-		right: 240px;
+		right: 235px;
 
 		@media(max-width: 991px) {
 			top: 110px;
-			left: 65px;
+			left: 80px;
 			right: auto;
 		}
 
@@ -168,7 +148,7 @@
 			height: 50px;
 			font-size: 20px;
 			display: inline-block;
-			.LibreBold();
+			.Montserrat();
 			font-weight: 400;
 			border: none;
 			outline: none;

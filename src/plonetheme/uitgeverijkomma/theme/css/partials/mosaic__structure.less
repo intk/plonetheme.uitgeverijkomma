@@ -32,7 +32,7 @@ body.template-edit.mosaic-layout-customized {
 		}
 
 		.documentDescription {
-			.Libre();
+			.Lato();
 			font-size: 1.875em;
 			line-height: 45px;
 			padding-top: 50px;
@@ -83,54 +83,17 @@ body.template-edit.mosaic-layout-customized {
 
 	.mosaic-tile-content {
 		.tileHeader {
-			.LibreExtraBold();
-			font-weight: 400;
-			font-size: 50px;
-			line-height: 1;
+			.Montserrat();
+			font-weight: 700;
+			font-size: 1.250em;
+			line-height: 35px;
 			margin-bottom: 0px;
 			padding-left: 15px;
 			padding-right: 15px;
-			margin-top: 10px;
-
-			@media(max-width: 991px) {
-				font-size: 28px;
-				line-height: 1.143;
-			}
-		}
-
-		div.show_more_link {
-			margin-top: 20px;
-
-			@media(max-width: 991px) {
-				margin-top: 10px;
-			}
-
-			text-align: right;
-
-			a {
-				.LibreMedium();
-				font-size: 21px;
-				color: #000000 !important;
-				line-height: 1.714;
-				border-bottom: 2px solid #000000;
-
-				&:hover,
-				&:focus,
-				&:active:focus {
-					text-decoration: none !important;
-					color: #000000 !important;
-					border-bottom: 0px solid #000000;
-				}
-
-				@media(max-width: 991px) {
-					font-size: 19px;
-					line-height: 1.895;
-				}
-			}
 		}
 
 		div.documentDescription {
-			.Libre();
+			.Lato();
 			font-weight: @theme-font-weight-light;
 			font-size: 1.250em;
 			color: @theme-description-color;
@@ -140,7 +103,7 @@ body.template-edit.mosaic-layout-customized {
 
 		@media(min-width: 992px) {
 			.tileHeader {
-				text-align: left;
+				text-align: center;
 			}
 		}
 	}
@@ -170,7 +133,7 @@ body.template-edit.mosaic-layout-customized {
 	}
 
 	div.website-wrapper {
-		background: #ffffff;
+		background: @theme-bg-header;
 	}
 }
 
@@ -204,7 +167,7 @@ body.section-verhalen.template-edit.mosaic-layout-customized {
                         margin-top: -15px;
 
                         li {
-                                .Libre();
+                                .Lato();
                                 font-size: 1.250em;
                                 color: #999999;
                         }

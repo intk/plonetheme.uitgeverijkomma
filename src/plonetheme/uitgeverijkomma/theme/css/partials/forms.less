@@ -1,44 +1,41 @@
 body.frontend.portaltype-easyform {
-
-	input:-internal-autofill-selected {
-	    background-color: transparent !important;
-	}
-
-	background-color: @theme-color-red;
+	background-color: @theme-color-dark-red;
 
 	.website-wrapper {
-		background: @theme-color-red;
+		background: @theme-color-dark-red;
 	}
 
 	.logo-separator {
 		display: none;
 	}
-
-	div.outer-wrapper #top-header-wrapper {
-		background: #ffffff;
-	}
-
 	/* Structure */
 	div.main-container-wrapper {
 		width: 100%;
 
+		h1.documentFirstHeading {
+			padding-left: 0px;
+			padding-right: 0px;
+			text-align: left;
+			padding-top: 60px;
+			font-size: 34px;
+			line-height: 42px;
+			max-width: 744px;
+			margin-top: 0px;
+
+			@media(max-width: 991px) {
+				padding-left: 25px;
+				padding-right: 25px;
+			}
+		}
+
 		#content-core {
 			max-width: 100%;
 			width: 100%;
-			margin-top: 0px;
-			padding-top: 10px;
+			margin-top: 40px;
 
 			@media(max-width: 991px) {
 				padding-left: 0px;
 				padding-right: 0px;
-			}
-
-			h3 {
-				margin-top: 40px;
-
-				@media(max-width: 991px) {
-					margin-top: 10px;
-				}
 			}
 		}
 
@@ -65,7 +62,7 @@ body.frontend.portaltype-easyform {
 		}
 
 		div.form {
-			background-color: @theme-color-red;
+			background-color: @theme-color-dark-red;
 			margin-top: 0px;
 		}
 
@@ -77,8 +74,6 @@ body.frontend.portaltype-easyform {
 		}
 
 		div.formControls {
-			padding-top: 25px;
-
 			@media(max-width: 991px) {
 				padding-left: 25px;
 				padding-right: 25px;

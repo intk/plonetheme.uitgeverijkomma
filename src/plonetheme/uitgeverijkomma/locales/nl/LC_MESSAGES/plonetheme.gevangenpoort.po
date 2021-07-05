@@ -1,0 +1,394 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: plonetheme.uitgeverijkomma\n"
+"POT-Creation-Date: 2016-09-30 11:25+0000\n"
+"PO-Revision-Date: 2016-09-30 11:25+0000’\n"
+"Last-Translator: Uitgeverijkomma <info@intk.com>\n"
+"Language-Team: Dutch <info@intk.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Language-Code: nl\n"
+"Language-Name: Dutch\n"
+"Preferred-Encodings: utf-8\n"
+"Domain: plonetheme.uitgeverijkomma\n"
+
+#: ../object.py
+msgid 'identification_identification_objectNumber'
+msgstr 'Objectnummer'
+
+#: ../object.py
+msgid 'identification_objectNumber'
+msgstr 'Objectnummer'
+
+#: ../object.py
+msgid 'titleAuthorImprintCollation_titleAuthor_author'
+msgstr 'Auteur'
+
+#: ../object.py
+msgid 'titleAuthorImprintCollation_imprint_year'
+msgstr 'Jaar'
+
+#: ../object.py
+msgid 'identification_objectName_objectname_type'
+msgstr 'Objectnaam'
+
+#: ../object.py
+msgid 'identification_objectName_objectname'
+msgstr 'Objectnaam'
+
+#: ../object.py
+msgid 'physicalCharacteristics_materials'
+msgstr 'Materiaal'
+
+#: ../object.py
+msgid 'identification_identification_collection'
+msgstr 'Collectie'
+
+#: ../object.py
+msgid 'physicalCharacteristics_techniques'
+msgstr 'Techniek'
+
+#: ../object.py
+msgid 'productionDating_productionDating_maker'
+msgstr 'Vervaardiger'
+
+#: ../object.py
+msgid 'identification_taxonomy_commonName'
+msgstr "Populaire naam"
+
+#: ../object.py
+msgid 'associations_associatedSubjects_subject'
+msgstr 'Trefwoord'
+
+#: ../object.py
+msgid 'identification_taxonomy_scientificName'
+msgstr 'Wetenschappelijke naam'
+
+#: ../object.py
+msgid 'Title'
+msgstr "Titel"
+
+#: ../object.py
+msgid 'type_to_search'
+msgstr "Type om te zoeken"
+
+#: ../object.py
+msgid 'path'
+msgstr "pad"
+
+#: ../object.py
+msgid "Body"
+msgstr "Tekst"
+
+#: ../object.py
+msgid "Description"
+msgstr "Beschrijving"
+
+#: ../object.py
+msgid "Creator"
+msgstr "Auteur"
+
+#: ../object.py
+msgid "location_currentlocation"
+msgstr "Standplaats"
+
+#: ../object.py
+msgid 'object_on_display'
+msgstr "Nu te zien"
+
+#: ../object.py
+msgid "creator_name"
+msgstr "Vervaardiger"
+
+#: ../object.py
+msgid "label_text"
+msgstr "Beschrijving"
+
+#: ../object.py
+msgid "object_name"
+msgstr "Objectnaam"
+
+#: ../object.py
+msgid "objectname"
+msgstr "Objectnaam"
+
+#: ../object.py
+msgid "technique"
+msgstr "Materiaal/Techniek"
+
+#: ../object.py
+msgid "association_subject"
+msgstr "Geassocieerd onderwerp"
+
+#: ../object.py
+msgid "object_association_subject"
+msgstr "Geassocieerd onderwerp"
+
+#: ../object.py
+msgid "object_association_period"
+msgstr "Geassocieerde periode"
+
+#: ../object.py
+msgid "object_association_person"
+msgstr "Geassocieerd persoon"
+
+#: ../object.py
+msgid "acquisition_method"
+msgstr "Verwervingsmethode"
+
+#: ../object.py
+msgid "object_acquisition_method"
+msgstr "Verwervingsmethode"
+
+#: ../object.py
+msgid "acquisition_date"
+msgstr "Verwervingswijze datum"
+
+#: ../object.py
+msgid "association_person"
+msgstr "Geassocieerde persoon"
+
+#: ../object.py
+msgid "creator_role"
+msgstr "Rol"
+
+#: ../object.py
+msgid "documentation_title"
+msgstr "Documentatie"
+
+#: ../object.py
+msgid "exhibition_title"
+msgstr "Tentoonstellingen"
+
+
+#: ../object.py
+msgid "inscription_content"
+msgstr "Opschriften inhoud"
+
+#: ../object.py
+msgid "inscription_type"
+msgstr "Opschriften soort"
+
+#: ../object.py
+msgid "inscription_description"
+msgstr "Opschriften beschrijving"
+
+#: ../object.py
+msgid "object_notes"
+msgstr "Opmerkingen"
+
+#: ../object.py
+msgid "physical_description"
+msgstr "Fysieke beschrijving"
+
+#: ../object.py
+msgid "production_date_start"
+msgstr "Vervaardiging begindatum"
+
+#: ../object.py
+msgid "production_date_end"
+msgstr "Vervaardiging einddatum"
+
+#: ../object.py
+msgid "inscriptions_markings"
+msgstr "Opschriften/merken"
+
+#: ../object.py
+msgid "object_work"
+msgstr "werk"
+
+#: ../object.py
+msgid "object_works"
+msgstr "werken"
+
+#: ../object.py
+msgid "sort_on"
+msgstr "Sorteer op"
+
+#: ../object.py
+msgid "sortable_title"
+msgstr "Titel"
+
+#: ../object.py
+msgid "sortable_object_number"
+msgstr "Objectnummer"
+
+#: ../object.py
+msgid "sortable_creator_name"
+msgstr "Vervaardiger"
+
+#: ../object.py
+msgid "sortable_production_date"
+msgstr "Datering"
+
+#: ../object.py
+msgid "object_technique"
+msgstr "Materiaal/Techniek"
+
+#: ../object.py
+msgid "creator_qualifier"
+msgstr "Kwalificatie"
+
+#: ../object.py
+msgid "creator_place"
+msgstr "Land/plaats"
+
+#: ../object.py
+msgid "collection"
+msgstr "Collectie"
+
+#: ../object.py
+msgid "content_motifs"
+msgstr "Motief"
+
+#: ../object.py
+msgid "object_collection"
+msgstr "Collectie"
+
+#: ../object.py
+msgid "explore_the_house"
+msgstr "Ontdek het huis"
+
+#: ../object.py
+msgid "buy_tickets"
+msgstr "Tickets"
+
+#: ../object.py
+msgid "more_url"
+msgstr "Meer info"
+
+#: ../object.py
+msgid "DAILY"
+msgstr "Dagelijks"
+
+#: ../object.py
+msgid "MONDAYFRIDAY"
+msgstr "Maandag en vrijdag"
+
+#: ../object.py
+msgid "WEEKDAYS"
+msgstr "Dag van de week"
+
+#: ../object.py
+msgid "WEEKLY"
+msgstr "Wekelijks"
+
+#: ../object.py
+msgid "MONTHLY"
+msgstr "Maandelijks"
+
+#: ../object.py
+msgid "YEARLY"
+msgstr "Jaarlijks"
+
+#: ../object.py
+msgid "slide_images"
+msgstr "Preview"
+
+#: ../object.py
+msgid "slide_images_see"
+msgstr "Bekijk"
+
+#: ../object.py
+msgid "slide_buy"
+msgstr "Tickets"
+
+#: ../object.py
+msgid "slide_information"
+msgstr "Praktisch"
+
+#: ../object.py
+msgid "slide_photos"
+msgstr "Foto's"
+
+#: ../object.py
+msgid "permanent_collection"
+msgstr "Vaste collectie"
+
+#: ../object.py
+msgid "label_toggle_search"
+msgstr "Alleen in de collectie"
+
+#: ../object.py
+msgid "advanced_search"
+msgstr "Geavanceerd zoeken"
+
+#: ../object.py
+msgid "search_nu_te_zien"
+msgstr "Nu te zien"
+
+#: ../object.py
+msgid "search_only_images"
+msgstr "Alleen met beeld"
+
+#: ../object.py
+msgid "only_in_the_website"
+msgstr "Alleen in de website"
+
+#: ../object.py
+msgid "like_exhibition"
+msgstr "Zin in deze tentoonstelling?"
+
+#: ../object.py
+msgid "share_with_friend"
+msgstr "Nodig een vriend uit"
+
+#: ../object.py
+msgid "practical_info"
+msgstr "Praktische informatie"
+
+#: ../object.py
+msgid "alternative_title"
+msgstr "Alternatieve titel"
+
+#: ../object.py
+msgid "organisation"
+msgstr "Locatie"
+
+#: ../object.py
+msgid "designer"
+msgstr "Vormgever"
+
+#: ../object.py
+msgid "documentation"
+msgstr "Documentatie"
+
+#: ../object.py
+msgid "persistent_url"
+msgstr "Duurzame url"
+
+#: ../object.py
+msgid "Handle url desc"
+msgstr "Als u naar dit object wilt verwijzen gebruik dan de duurzame URL"
+
+#: ../object.py
+msgid "related_objects"
+msgstr "Collectie in deze tentoonstelling"
+
+#: ../object.py
+msgid "event_past_text"
+msgstr "Tentoonstelling is afgelopen"
+
+#: ../object.py
+msgid "privacy_statement"
+msgstr "Privacyreglement"
+
+#: ../object.py
+msgid "Pagina"
+msgstr "Paginas"
+
+#: ../object.py
+msgid "Agenda-item"
+msgstr "Evenementen"
+
+#: ../object.py
+msgid "Document"
+msgstr "Pagina's"
+
+#: ../object.py
+msgid "Event"
+msgstr "Evenementen"
+
+

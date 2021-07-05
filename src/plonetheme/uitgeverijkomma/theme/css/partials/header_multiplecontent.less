@@ -2,55 +2,28 @@
 body.frontend.portaltype-folder:not(.template-index-html),
 body.frontend.portaltype-collection:not(.template-index-html),
 body.frontend.template-listing_view:not(.template-index-html) {
-	background-color: #ffffff;
+	background-color: @theme-color-dark-green;
 
 	div.website-wrapper {
-		background: #ffffff;
+		background: @theme-color-dark-green;
 
 		&.no-image {
-
-			background: @theme-color-purple;
-
 			#header-wrapper {
 				h1.documentFirstHeading {
 					margin-top: 260px !important;
 
 					@media(max-width: 991px) {
-						margin-top: 150px !important;
-						padding-left: 30px;
-						text-align: left;
+						margin-top: 110px !important;
 					} 
 				}
 			}
-
-			div.outer-wrapper #content-core .entries .title-wrapper a {
-				color: #ffffff !important;
-				&:hover,
-				&:focus,
-				&:active:focus {
-					color: #ffffff !important;
-				}
-			}
-
-			div.outer-wrapper #content-core .entries .description-wrapper p {
-				color: #ffffff !important;
-			}
 		}
-	}
-
-	div.website-wrapper.no-image {
-		div.outer-wrapper {
-
-			#top-header-wrapper {
-				background: @theme-color-purple;
-			}
-		}	
 	}
 
 	div.outer-wrapper {
 
 		#top-header-wrapper {
-			background: #ffffff;
+			background: @theme-text-color;
 
 			.newsImageContainer {
 				min-height: 400px;
@@ -99,9 +72,6 @@ body.frontend.template-listing_view:not(.template-index-html) {
 
 		.entries {
 			margin-top: 100px;
-			@media(max-width: 991px) {
-				margin-top: 30px;
-			}
 		}
 
 

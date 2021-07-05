@@ -67,7 +67,7 @@
 
                             <a tabindex="0" class="person-button" role="button" data-toggle="popover" data-trigger="focus" data-content="" data-placement="top" tal:attributes="data-content string:<a href='tel:$phone' aria-label='Phone number' class='phone-link'>$phone</a>" aria-label="Phone number" tal:condition="phone" aria-label="Phone number"><button aria-label="Phone number" tal:condition="phone"><i class="fas fa-phone-alt"></i></button>
 
-                            <a href="" tal:attributes="href string:mailto:$email?subject=Contact via uitgeverijkomma website" aria-label="Email address" tal:condition="email"><button aria-label="Email address" tal:condition="email"><i class="fas fa-paper-plane"></i></button></a>
+                            <a href="" tal:attributes="href string:mailto:$email?subject=Contact via Uitgeverijkomma website" aria-label="Email address" tal:condition="email"><button aria-label="Email address" tal:condition="email"><i class="fas fa-paper-plane"></i></button></a>
                             
                           </div>
                         </div>

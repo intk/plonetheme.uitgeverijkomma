@@ -47,22 +47,13 @@
 
   <!-- header wrapper -->
 
-  <!-- Dates labels -->
-  <replace css:theme-children="#event-label" css:content-children="p#event-label" method="raw" css:if-content="body.portaltype-event" />
-  <drop css:content="p#event-label"/>
-  <drop css:theme="#event-label" css:if-not-content="body.portaltype-event"/>
-
   <!-- Above content title -->
   <replace css:theme="#header-wrapper .container.main #viewlet-above-content-title" css:content="#content > header #viewlet-above-content-title" method="raw" />
   <replace css:theme="#header-wrapper .container.main #viewlet-above-content-title" css:content="#viewlet-above-content-title" method="raw" css:if-content="body.portaltype-easyform" />
   <drop css:content="#viewlet-above-content-title" css:if-content="body.portaltype-easyform" />
 
-
-
   <!-- Title -->
-  <replace css:theme="#header-wrapper .container.main h1.documentFirstHeading" css:content="#content > header h1.documentFirstHeading" method="raw" css:if-content="#content > header h1.documentFirstHeading"/>
-  
-
+  <replace css:theme="#header-wrapper .container.main h1.documentFirstHeading" css:content="#content > header h1.documentFirstHeading" method="raw" />
   <!-- Event summary -->
   <replace css:theme-children="#header-wrapper .container.main .event-summary" css:content="#content-core ul.event.summary" method="raw" />
   <!-- Description -->
@@ -73,19 +64,18 @@
   <!-- header wrapper for search -->
   <replace css:theme-children="#header-wrapper .container" css:content="h1.documentFirstHeading" method="raw" css:if-content="body.template-search"/>
   <drop css:content="h1.documentFirstHeading" css:if-content="body.template-search"/>
-
   <drop css:content="ul.event.summary"/>
   <drop css:theme="#header-wrapper .container.main .event-summary" css:if-not-content="body.portaltype-event"/>
 
+  <!-- header mosaic layout -->
+  <!--<replace css:theme="#header-wrapper .container.layout .title" css:content="h1.documentFirstHeading" method="raw" css:if-content="body.template-layout"/>
+  <replace css:theme="#header-wrapper .container.layout .description" css:content="div.mosaic-IDublinCore-description-tile .documentDescription" method="raw" css:if-content="body.template-layout"/>-->
+  
+  <!--<drop css:content="h1.documentFirstHeading" css:if-content="body.template-layout"/>
+  <drop css:content="div.mosaic-IDublinCore-description-tile .documentDescription" css:if-content="body.template-layout"/>-->
   <drop css:theme="#header-wrapper .container.main" css:if-content="body.template-layout"/>
   <drop css:theme="#header-wrapper .container.layout" css:if-content="body.template-search"/>
 
-  
-  <!-- Forms -->
-  <replace css:theme-children="#header-wrapper .container.main h1.documentFirstHeading" css:content="h1.documentFirstHeading" method="raw" css:if-content="body.portaltype-easyform"/>
-  <drop css:content="h1.documentFirstHeading" css:if-content="body.portaltype-easyform"/>
-
-  <drop css:theme=".container.layout" css:if-not-content="body.template-layout"/>
 
   <!-- Central column -->
   <replace css:theme="#content-container" method="raw">

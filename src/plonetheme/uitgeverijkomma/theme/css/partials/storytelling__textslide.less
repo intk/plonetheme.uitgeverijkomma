@@ -5,24 +5,25 @@ body.frontend div.outer-wrapper .text-slide,
 body.template-edit.mosaic-layout-customized div.outer-wrapper .text-slide  {
     margin-left: 0px;
     margin-right: 0px;
-    background-color: @theme-color-purple;
+    background-color: @theme-color-dark-red;
 
     .text-slide-body {
         max-width: 90%;
         margin: 0 auto;
 
         p {
-            .LibreMedium();
+            .Lato();
             color: #ffffff;
         }
 
 
         h3 {
-            .LibreExtraBold();
+            .PlatinMTProBold();
 
-            font-size: 28px;
-            line-height: 1.5;
+            font-size: 1.300em;
+            line-height: 36px;
             text-transform: none;
+            font-weight: 400;
 
             margin-top: 25px;
             margin-bottom: 25px;
@@ -32,15 +33,15 @@ body.template-edit.mosaic-layout-customized div.outer-wrapper .text-slide  {
             color: #ffffff;
 
             @media (min-width: 991px) {
-                font-size: 3vw;
-                line-height: 1.5;
+                font-size: 2.5vw;
+                line-height: 4vw;
                 margin-top: 20px;
 
                 max-width: 744px;
             }
 
             &:before  {
-                /*content: "";
+                content: "";
                 display: block;
                 width: 60px;
                 height: 60px;
@@ -53,7 +54,7 @@ body.template-edit.mosaic-layout-customized div.outer-wrapper .text-slide  {
                 @media(max-width: 991px) {
                     width: 50px;
                     height: 50px;
-                }*/
+                }
             }
         }
     }
