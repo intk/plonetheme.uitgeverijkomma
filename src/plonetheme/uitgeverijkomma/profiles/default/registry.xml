@@ -24,5 +24,79 @@
       <value key="enabled">True</value>
       <value key="compile">True</value>
     </records>
+
+
+    <!-- Tiles -->
+    <record name="plone.app.tiles">
+      <value purge="false">
+        <element>plonetheme.uitgeverijkomma.tiles.frontpage</element>
+        <element>plonetheme.uitgeverijkomma.tiles.frontpage_sidetext</element>
+      </value>
+    </record>
+
+    <record name="plonetheme.uitgeverijkomma.tiles.frontpage_views">
+      <field type="plone.registry.field.Dict">
+        <title>Frontpage Views</title>
+        <required>False</required>
+        <key_type type="plone.registry.field.TextLine" />
+        <value_type type="plone.registry.field.TextLine" />
+      </field>
+    </record>
+
+    <records prefix="plone.app.mosaic.app_tiles.plonetheme_gevangenpoort_tiles_frontpage"
+           interface="plone.app.mosaic.interfaces.ITile">
+      <value key="name">plonetheme.uitgeverijkomma.tiles.frontpage</value>
+      <value key="label">Frontpage tile (fullscreen)</value>
+      <value key="category">advanced</value>
+      <value key="tile_type">app</value>
+      <value key="default_value"></value>
+      <value key="read_only">false</value>
+      <value key="settings">true</value>
+      <value key="favorite">false</value>
+      <value key="rich_text">false</value>
+      <value key="weight">20</value>
+    </records>
+
+    <records prefix="plone.app.mosaic.app_tiles.plonetheme.uitgeverijkomma_tiles_frontpage_sidetext"
+           interface="plone.app.mosaic.interfaces.ITile">
+      <value key="name">plonetheme.uitgeverijkomma.tiles.frontpage_sidetext</value>
+      <value key="label">Frontpage tile (side text)</value>
+      <value key="category">advanced</value>
+      <value key="tile_type">app</value>
+      <value key="default_value"></value>
+      <value key="read_only">false</value>
+      <value key="settings">true</value>
+      <value key="favorite">false</value>
+      <value key="rich_text">false</value>
+      <value key="weight">21</value>
+    </records>
+
+    <records prefix="plone.app.mosaic.app_tiles.plonetheme.uitgeverijkomma_tiles_frontpage_sidetext_box"
+           interface="plone.app.mosaic.interfaces.ITile">
+      <value key="name">plonetheme.uitgeverijkomma.tiles.frontpage_sidetext_box</value>
+      <value key="label">Frontpage tile (side text box)</value>
+      <value key="category">advanced</value>
+      <value key="tile_type">app</value>
+      <value key="default_value"></value>
+      <value key="read_only">false</value>
+      <value key="settings">true</value>
+      <value key="favorite">false</value>
+      <value key="rich_text">false</value>
+      <value key="weight">22</value>
+    </records>
     
+    <records prefix="plone.app.mosaic.app_tiles.plonetheme.uitgeverijkomma_tiles_multipleitems"
+           interface="plone.app.mosaic.interfaces.ITile">
+      <value key="name">plonetheme.uitgeverijkomma.tiles.multipleitems</value>
+      <value key="label">Frontpage multiple items</value>
+      <value key="category">advanced</value>
+      <value key="tile_type">app</value>
+      <value key="default_value"></value>
+      <value key="read_only">false</value>
+      <value key="settings">true</value>
+      <value key="favorite">false</value>
+      <value key="rich_text">false</value>
+      <value key="weight">23</value>
+    </records>
+
 </registry>

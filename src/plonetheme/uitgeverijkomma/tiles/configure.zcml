@@ -1,0 +1,77 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:faceted="http://namespaces.zope.org/faceted"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    xmlns:zcml="http://namespaces.zope.org/zcml"
+    i18n_domain="plonetheme.uitgeverijkomma">
+
+    <include package="plone.tiles" />
+    <include package="plone.app.tiles" />
+
+    <plone:tile
+        name="plonetheme.uitgeverijkomma.tiles.frontpage"
+        title="Frontpage item (fullscreen)"
+        description="A tile which displays a content object"
+        add_permission="cmf.ModifyPortalContent"
+        class=".frontpage.FrontpageTile"
+        for="*"
+        permission="zope.Public"
+        schema=".frontpage.IFrontpageTile"
+        template="frontpage.pt"
+        />
+
+    <plone:tile
+        name="plonetheme.uitgeverijkomma.tiles.frontpage_sidetext"
+        title="Frontpage item (side text)"
+        description="A tile which displays a content object with text on the side"
+        add_permission="cmf.ModifyPortalContent"
+        class=".frontpage.FrontpageSideTextTile"
+        for="*"
+        permission="zope.Public"
+        schema=".frontpage.IFrontpageSideTextTile"
+        template="frontpage_sidetext.pt"
+        />
+
+    <plone:tile
+        name="plonetheme.uitgeverijkomma.tiles.frontpage_sidetext_box"
+        title="Frontpage item (side text box)"
+        description="A tile which displays a content object with text on the side"
+        add_permission="cmf.ModifyPortalContent"
+        class=".frontpage.FrontpageSideTextBoxTile"
+        for="*"
+        permission="zope.Public"
+        schema=".frontpage.IFrontpageSideTextBoxTile"
+        template="frontpage_sidetext_box.pt"
+        />
+
+    <plone:tile
+        name="plonetheme.uitgeverijkomma.tiles.multipleitems"
+        title="Frontpage multiple items"
+        description='Display the results of a saved search of the site content'
+        permission="zope2.View"
+        add_permission="cmf.ModifyPortalContent"
+        class=".multipleitems.MultipleitemsTile"
+        schema=".multipleitems.IMultipleitemsTile"
+        for="*"
+        />
+
+    <utility
+        component="plonetheme.uitgeverijkomma.tiles.multipleitems.availableListingViewsVocabulary"
+        name="Available Multiple items Views"
+        />
+
+    <browser:page
+        name="multipleitems_view"
+        for="*"
+        layer="plone.app.standardtiles.contentlisting.IContentListingTileLayer"
+        permission="zope2.View"
+        template="multipleitems_view.pt"
+        />
+
+    <utility
+        component="plonetheme.uitgeverijkomma.tiles.frontpage.availableFrontpageViewsVocabulary"
+        name="Available Frontpage Views"
+        />
+
+</configure>

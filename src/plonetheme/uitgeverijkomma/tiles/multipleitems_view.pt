@@ -1,0 +1,111 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xml:lang="en"
+      lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      i18n:domain="plone">
+  <body>
+    <tal:defines define="results context;
+                         original_context nocall:options/original_context|context;
+                         data nocall:options/data|nothing;
+                         show_description python: data.get('show_description', False);
+                         img_format python: data.get('image_format', 'Square');
+                         toLocalizedTime nocall:original_context/@@plone/toLocalizedTime;
+                         pas_member original_context/@@pas_member;
+                         registry original_context/portal_registry;
+                         view_types python: registry.get('plone.types_use_view_action_in_listings', []);
+                         img_scale python:'preview' if img_format in ['Square'] else 'video';
+                         img_class python:'thumb-%s pull-right' % img_scale;
+                         portal original_context/@@plone_portal_state/portal;
+                         image_scale portal/@@image_scale;
+                         checkPermission nocall: original_context/portal_membership/checkPermission;
+                         show_about python:checkPermission('Portlets: Manage portlets', original_context);">
+ 
+      <tal:listing condition="results">
+        
+        <div class="entries">
+
+          <tal:entry repeat="item results">
+            
+            <tal:block tal:define="item_has_image python:item.getIcon;
+                            obj item/getObject;
+                            item_id item/getId;
+                            item_title item/Title;
+                            item_title python:item_title or item_id;
+                            item_description item/Description;
+                            item_wf_state item/review_state;
+                            item_wf_state_class python:'state-' + item_wf_state;
+                            item_url python: item.portal_type in view_types and item.getURL() + '/view' or item.getURL();
+                            item_link item_url;
+                            item_type item/PortalType;
+                            item_is_special python: item_type in ['Person', 'Connector', 'Organization', 'Testimonial'];
+                            hide_link_special_types python: True if item_is_special and not show_about else False;">
+
+              <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 entry-item">
+
+                <article class="entry">
+
+                  <header>
+
+                    <div class="summary" tal:attributes="title python: item_title if not item_is_special else ''">
+
+                      <div class="image-wrapper"
+                      tal:define="img_scale python: 'video' if item_type in ['WildcardVideo'] else img_scale">
+                        <a tal:attributes="href item_link;"
+                           tal:condition="python: item_has_image"
+                           tal:omit-tag="hide_link_special_types">
+
+                           <img tal:replace="structure python:image_scale.tag(item, 'image', scale=img_scale, css_class=img_class, direction='down')" />
+                        </a>
+                      </div> 
+                    
+                      <div class="title-wrapper">
+                        <a tal:attributes="href item_link;
+                                           title item_title;
+                                           class string:$item_wf_state_class;"
+                           tal:omit-tag="hide_link_special_types"><span tal:content="item_title" tal:attributes="class python: 'item-title' if hide_link_special_types else ''"></span>
+                        </a>
+                      </div>
+                    </div>
+
+                  </header>
+
+                  <!-- Description -->
+                  <div class="description-wrapper" tal:condition="show_description">
+                    <p class="description"
+                        tal:condition="item_description"
+                        tal:content="item_description">
+                      description
+                    </p>
+                  </div>
+
+                </article>
+              </div>
+
+              <tal:clearfix tal:condition="python: number % 3 == 0" tal:define="number repeat/item/number">
+                <div class="clearfix visible-lg visible-md"></div>
+              </tal:clearfix> 
+
+              <tal:clearfixmd condition="python: number % 2 == 0" tal:define="number repeat/item/number">
+                <div class="clearfix visible-sm"></div>
+              </tal:clearfixmd>
+
+              
+            </tal:block>
+          </tal:entry>
+        </div>
+
+      </tal:listing>
+      
+      <p class="discreet"
+         tal:condition="not:results"
+         i18n:translate="">
+        There are currently no items in this folder.
+      </p>
+
+    </tal:defines>
+  </body>
+</html>
+
+

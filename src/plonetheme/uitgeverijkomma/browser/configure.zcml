@@ -25,7 +25,6 @@
           />
     </configure>
 
-
     <browser:page
         zcml:condition="installed plone.app.standardtiles"
         name="collection_view"

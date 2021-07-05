@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xml:lang="en"
+      lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal">
+  <tal:block condition="nocall:view/content_context">
+  
+  <tal:block condition="nocall:view/item_macros">
+    <body tal:define="context nocall:view/content_context;
+                      item_macro nocall:view/item_macros/content-core|nothing;
+                      data view/data;
+                      show_title python: data.get('show_title', True);
+                      show_description python: data.get('show_description', True);
+                      show_text python: data.get('show_text', True);
+                      show_image python: data.get('show_image', False);
+                      alignment python: data.get('image_alignment', 'Right');
+                      show_comments python: data.get('show_comments', False);
+                      description_alternative python: data.get('description_alternative', False);
+                      portal_type context/portal_type|nothing;
+                      item_is_event python:portal_type in ['Event'];">
+
+    
+          <div class="frontpage side-text-slide row align-${alignment}">
+
+            <div class="side-text-slide-wrapper col-xs-12"> 
+                
+                <div class="side-text-image col-xs-12 col-sm-12 col-md-7 col-lg-7">
+                    <tal:image condition="show_image">
+                      <div class="content-image"
+                           tal:define="image_tag view/image_tag">
+
+                        <a href="" tal:attributes="href context/absolute_url|nothing">
+                          <figure><img tal:replace="structure image_tag" /></figure>
+                        </a>
+                      </div>
+                    </tal:image>
+                </div>
+                
+                <div class="side-text-body col-xs-12 col-sm-12 col-md-5 col-lg-5">
+                    <div class="table-cell-wrapper">
+                        <div class="body-table-cell">
+                            <div id="event-label" tal:define="event_state python:view.get_event_state(context)" tal:condition="item_is_event">
+                              <span tal:attributes="class event_state"
+                                    tal:define="event_text python:'';
+                                                event_text python:'Nu te zien' if event_state == 'current' else event_text;
+                                                event_text python:'Terugblik' if event_state == 'past' else event_text;
+                                                event_text python:'Verwacht' if event_state == 'future' else event_text;"
+                                    tal:content="event_text">
+                              </span>
+                            </div>
+
+                            <a href="" tal:attributes="href context/absolute_url|nothing"><h4 class="side-text-title" tal:define="title context/Title|nothing" tal:condition="show_title">
+                                <span tal:content="title"></span>
+                            </h4></a>
+
+                            <tal:notevent tal:condition="python: not item_is_event">
+                              <p class="description"
+                                   tal:define="context_description context/Description|nothing;
+                                               description python: description_alternative if description_alternative else context_description"
+                                   tal:content="description"
+                                   tal:condition="show_description">
+                                  Description
+                              </p>
+                            </tal:notevent>
+
+                            <tal:event tal:condition="python:item_is_event">
+                              <p class="description"
+                                   tal:define="context_description context/Description|nothing;
+                                               description python: description_alternative if description_alternative else context_description"
+                                   tal:condition="show_description">
+                                  <tal:date tal:replace="structure python:view.formatted_date(context)"/>
+                              </p>
+                            </tal:event>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+    </body>
+  </tal:block>
+  
+  <tal:block condition="not:nocall:view/item_macros">
+    <tal:panels define="panels view/item_panels">
+      <div tal:condition="panels"
+           tal:repeat="panel view/item_panels" tal:replace="structure panel">
+          content
+      </div>
+      <p tal:condition="not:panels">Selected view is not available for the content.</p>
+    </tal:panels>
+  </tal:block>
+  </tal:block>
+  <body tal:condition="not:nocall:view/content_context"></body>
+
+</html>

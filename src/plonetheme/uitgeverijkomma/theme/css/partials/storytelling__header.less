@@ -1,0 +1,50 @@
+
+
+body.frontend.template-layout:not(.section-frontpage) {
+	div.outer-wrapper {
+		#main-container {
+			
+			.mosaic-IDublinCore-title-tile {
+				position: absolute;
+				bottom: 66px;
+				left: 30px;
+				width: auto;
+
+				h1 {
+					color: #ffffff;
+					margin-top: 15px;
+				}
+
+				@media(max-width: 991px) {
+					left: 0px;
+					bottom: 36px;
+				}
+			}
+
+			.mosaic-ILeadImageBehavior-image_caption-tile {
+				position: absolute;
+				bottom: 0px;
+				right: 0px;
+				color: #ffffff;
+				opacity: 0.8;
+				padding-right: 15px;
+				padding-left: 15px;
+				padding-bottom: 8px;
+				padding-top: 10px;
+				font-size: 15px;
+
+				@media(min-width: 992px) {
+					text-align: right;
+				}
+			}
+		}
+
+		@media(min-width: 992px) {
+			.mosaic-ILeadImageBehavior-image-tile {
+				max-height: 800px;
+				height: 80vh;
+			}
+		}
+	}
+}
+

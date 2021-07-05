@@ -11,7 +11,7 @@
     display: block;
 
     &.has_subtree a {
-      padding-right: 2.5em;
+      padding-right: 0.5em;
     }
 
     label {
@@ -213,6 +213,11 @@
   &:extend(.clearfix all);
   -webkit-overflow-scrolling: touch;
 
+  @media(max-width: 991px) {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+
   display: none;
 
   &.in {
@@ -368,7 +373,7 @@
       &:hover,
       &:focus {
         color: white;
-        background-color: @plone-sitenav-link-hover-bg;
+        background-color: transparent;
       }
     }
 

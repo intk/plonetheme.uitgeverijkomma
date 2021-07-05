@@ -22,40 +22,30 @@
 }
 
 .plone-navbar {
-	background-color: @theme-main-color;
+	background-color: @theme-menu-main-color;
 	margin-bottom: 0px;
 	height: 100%;
-}
-
-.plone-navbar-nav .current>a, .plone-navbar-nav .selected>a, .plone-navbar-nav .current>a:hover, .plone-navbar-nav .selected>a:hover, .plone-navbar-nav .current>a:focus, .plone-navbar-nav .selected>a:focus {
-	background-color: transparent;
-	color: #747474;
 }
 
 .plone-navbar-collapse.plone-collapse {
 	width: 100%;
 	text-align: center;
-
 	position: relative;
-    top: 50%;
-    height: 60% !important;
-    -webkit-transform: translateY(-50%);
-    transform: translateY(-50%);
-
     border-top: 0px;
     box-shadow: none;
+
+    padding-top: 170px;
+
+    @media (min-width: 992px) {
+    	padding-top: 197px;
+    }
 }
 
 .plone-navbar-nav {
 	width: 100%;
 	height: 100%;
 	margin: 0;
-
-    opacity: 0.4;
-    -webkit-transform: translateY(-25%) rotateX(35deg);
-    transform: translateY(-25%) rotateX(35deg);
-    -webkit-transition: -webkit-transform 0.5s, opacity 0.5s;
-    transition: transform 0.5s, opacity 0.5s;
+    opacity: 1;
 }
 
 .navigation-is-open .plone-navbar-nav {
@@ -66,12 +56,11 @@
 }
 
 .plone-navbar-nav > li {
-	min-height: 54px;
-	height: 20%;
+	height: auto;
 }
 
 .plone-nav li a {
-	.Montserrat();
+	.LibreExtraBold();
 	font-size: 24px;
 	font-weight: @theme-font-weight-bold;
 	-webkit-transition: color 0.2s;
@@ -84,9 +73,9 @@
 	color: #747474;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 992px) {
 	.plone-navbar-nav > li {
-	    float: none;
+	    float: left;
 	}
 }
 
@@ -94,15 +83,15 @@
 div.language-collapse-menu {
 	position: absolute;
     left: 20px;
-    top: 42px;
+    top: 48px;
     height: 50px;
     z-index: 1000;
     font-size: @theme-menu-a-font-size;
 
 
     a {
-    	.Lato();
-	    font-weight: @theme-font-weight-bold;
+    	.LibreBold();
+	    font-weight: @theme-font-weight-regular;
 	    color: @theme-menu-a-color;
 	    font-size: @theme-menu-a-font-size;
 
@@ -124,20 +113,14 @@ div.language-collapse-menu {
 	    left: 0px;
 	    padding-left: 5px;
     }
+
+    @media(min-width: 992px) {
+   		margin-left: 35px;
+    }
 }
 
 body.plone-toolbar-expanded div.language-collapse-menu {
-	margin-left: 120px;
+	margin-left: 165px;
 }
-
-
-
-
-
-
-
-
-
-
 
 

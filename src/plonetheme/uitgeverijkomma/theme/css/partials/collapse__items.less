@@ -10,14 +10,23 @@ div.language-collapse-menu {
   }
 
   .panel-heading  a span:after {
-   font-family: "Font Awesome 5 Free";
-   content: "\f107";
-   transition: all 0.2s;
-   font-size: 14px;
+    /*font-family: "Font Awesome 5 Free";
+    content: "\f107";
+    transition: all 0.2s;
+    font-size: 25px;
+    */
+
+    content: "";
+
+    background: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDIwIDIwIiBzdHlsZT0iYmFja2dyb3VuZDp0cmFuc3BhcmVudCI+CiAgPGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4KICAgIDxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0idHJhbnNwYXJlbnQiLz4KICAgIDxwYXRoIGZpbGw9IiMwMDAiIGZpbGwtcnVsZT0ibm9uemVybyIgZD0iTTYuNzMwOTY1MzksNi4xMzU3NDgwMyBDNS45NzkyMDAyLDUuMjI3MDQ1NTUgNy4yMjYwNTk5NCwzLjk3ODQ5MzIyIDguMTMzNTMwNTQsNC43MzEyNzg5MiBMOC4yMjAyMTIzLDQuODEwNDU1NDEgTDEzLjIwNTk0MzYsOS44MDI5NTQ3NiBDMTMuNDc5MDU5NywxMC4wNzY0NDE2IDEzLjU0OTMyODgsMTAuNDM0MzM0MiAxMy40Njg0OTY4LDEwLjc1MTUzNzQgTDEzLjQzOTc2NTksMTAuODQ1MzUyNiBMMTMuNDAyMjc5NCwxMC45MzU5NzU5IEMxMy4zNjUxNTg3LDExLjAxNDg4ODggMTMuMzE4MDI5LDExLjA4OTEyOTIgMTMuMjYxODcxNSwxMS4xNTYzMjQ4IEwxMy4xNjQ5NTQxLDExLjI1NTg3ODcgTDguMjIwMjEyMywxNi4yMDc1NDYyIEM3Ljg2MDc1NzA3LDE2LjU2NzQ4OTMgNy4yOTUxNDQ3NSwxNi41OTUxNzczIDYuOTAzOTczMDQsMTYuMjkwNjEgTDYuODEwMDM0NTQsMTYuMjA3NTQ2MiBDNi40NTA1NzkzMSwxNS44NDc2MDMgNi40MjI5Mjg5MSwxNS4yODEyMjI4IDYuNzI3MDgzMzMsMTQuODg5NTIwMSBMNi44MTAwMzQ1NCwxNC43OTU0NTQxIEwxMS4wOTk2MTczLDEwLjUgTDYuODEwMDM0NTQsNi4yMjI1NDc0NyBMNi43MzA5NjUzOSw2LjEzNTc0ODAzIFoiIHRyYW5zZm9ybT0icm90YXRlKDkwIDEwIDEwLjUpIi8+CiAgPC9nPgo8L3N2Zz4K) center center no-repeat;
+    background-size: contain;
+
+    width: 20px;
+    height: 20px;
     position: relative;
     display: inline-block;
     top: 0px;
-    left: 8px;
+    left: 1px;
   }
 
   .panel-heading a:not(.collapsed) span:after {
@@ -27,7 +36,7 @@ div.language-collapse-menu {
   } 
 
   .panel-default>.panel-heading {
-      color: #fff;
+      color: @theme-language-selector-a-color;
       background-color: transparent;
       border-color: transparent;
   }
@@ -53,7 +62,7 @@ div.language-collapse-menu {
   .list-group-item {
       position: relative;
       display: block;
-      padding: 5px 15px;
+      padding: 0px 15px;
       margin-bottom: -1px;
       background-color: transparent;
       border: 0px;

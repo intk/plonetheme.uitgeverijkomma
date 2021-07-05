@@ -1,6 +1,16 @@
 
 
 body.template-search {
+	background-color: #ffffff;
+
+	div.website-wrapper {
+		background: #ffffff;
+	}
+
+	#search-results {
+		background: #ffffff;
+	}
+
 	#content {
 		margin-bottom: 0px;
 	}
@@ -19,11 +29,19 @@ body.template-search {
 		max-width: 100%;
 	}
 
+	#searchform .input-group-btn {
+		padding-left: 20px;
+	}
+
 	.pat-autotoc.autotabs, .autotabs {
 		border: 0px;
 		box-shadow: none;
 		border-radius: 0px;
 		padding: 0px;
+
+		.autotoc-nav {
+			background: @theme-color-light-purple;
+		}
 	}
 
 	#search-results-wrapper div.autotabs {
@@ -32,16 +50,16 @@ body.template-search {
 
 	@media (min-width: 992px) {
 		#search-results-wrapper div.autotabs {
-			margin-left: -20%;
-			margin-right: -20%;
+			margin-left: 0;
+			margin-right: 0;
 		}
 	}
 
 	&.userrole-authenticated {
 		@media (min-width: 992px) {
 			#search-results-wrapper div.autotabs {
-				margin-left: -20%;
-				margin-right: -20%;
+				margin-left: 0;
+				margin-right: 0;
 			}
 		}
 	}

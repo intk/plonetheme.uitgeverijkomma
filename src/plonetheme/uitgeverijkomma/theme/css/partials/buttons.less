@@ -2,18 +2,24 @@
 .buttons() {
 	/* Buttons */
 	.standalone, .context, .destructive, [type="submit"], button:not(.slick-next):not(.slick-prev), .btn, .text-button a {
-		.Montserrat();
+		.LibreSemiBold();
 		font-weight: @theme-button-font-weight;
 		border-radius: @theme-button-border-radius;
+		border-width: @theme-button-border-width;
 		box-shadow: @theme-button-box-shadow;
 		text-shadow: @theme-button-text-shadow;
 		height: @theme-button-height;
+		line-height: @theme-button-line-height;
+		font-size: @theme-button-font-size;
+		padding: @theme-button-padding;
 	}
 
 	.standalone, [type="submit"], button:not(.slick-next):not(.slick-prev), .btn, .text-button a {
 		background-color: @theme-button-background-color;
 		border-color: @theme-button-border-color;
+		border-width: @theme-button-border-width;
 		color: @theme-button-color;
+		line-height: @theme-button-line-height;
 		text-transform: @theme-button-text-transform;
 		
 		&:hover,
@@ -23,6 +29,22 @@
 			background-color: @theme-button-hover-background-color;
 			border-color: @theme-button-hover-border-color;
 			color: @theme-button-hover-color;
+		}
+	}
+
+	.btn.ghost {
+		background-color: @theme-ghost-button-background-color;
+		border-width: @theme-button-border-width;
+		border-color: @theme-ghost-button-border-color;
+		color: @theme-ghost-button-color;
+
+		&:hover,
+		&:focus,
+		&:active,
+		&:active:focus {
+			background-color: @theme-button-hover-background-color;
+			border-color: @theme-button-hover-border-color;
+			color: @theme-ghost-button-hover-color;
 		}
 	}
 
@@ -37,8 +59,24 @@
 		height: @theme-input-height;
 		background-color: @theme-input-background-color;
 		border: @theme-input-border;
+		border-bottom: @theme-input-border-bottom;
 		color: @theme-input-color;
 		font-size: @theme-input-font-size;
+		line-height: @theme-input-line-height;
+		padding-left: @theme-input-padding-left;
+
+		&::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+		  color: #000000;
+		  opacity: 1; /* Firefox */
+		}
+
+		&:-ms-input-placeholder { /* Internet Explorer 10-11 */
+		  color: #000000;
+		}
+
+		&::-ms-input-placeholder { /* Microsoft Edge */
+		  color: #000000;
+		}
 	}
 }
 
@@ -82,7 +120,7 @@ body.template-edit.mosaic-layout-customized {
 	.mosaic-grid-row {
 		/* Buttons */
 		a.btn {
-			.Montserrat();
+			.Libre();
 			font-weight: @theme-button-font-weight;
 			border-radius: @theme-button-border-radius;
 			box-shadow: @theme-button-box-shadow;
@@ -151,7 +189,7 @@ body.template-edit.mosaic-layout-customized {
 	&:active:focus {
 		color: @theme-button-hover-color !important;
 		text-decoration: none !important;
-		border: 1px solid #6a216c !important;
+		border: 1px solid #000000 !important;
 	}
 
 	@media(max-width: 991px) {

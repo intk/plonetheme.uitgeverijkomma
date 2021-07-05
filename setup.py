@@ -36,7 +36,7 @@ setup(
     keywords='Python Plone',
     author='Andre Goncalves',
     author_email='andre@intk.com',
-    url='https://github.com/uitgeverijkomma/plonetheme.uitgeverijkomma',
+    url='https://github.com/intk/plonetheme.uitgeverijkomma',
     license='GPL version 2',
     packages=find_packages('src', exclude=['ez_setup']),
     namespace_packages=['plonetheme'],

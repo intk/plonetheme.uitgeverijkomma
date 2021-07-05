@@ -10,6 +10,7 @@
 
   <includeDependencies package="." />
   <include package=".browser" />
+  <include package=".tiles" />  
 
   <include package="z3c.jbot" file="meta.zcml" />
   <browser:jbot directory="browser/overrides" layer=".interfaces.IPlonethemeModernBaseLayer"/>

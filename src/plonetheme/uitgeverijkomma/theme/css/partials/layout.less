@@ -2,12 +2,12 @@
 
 .links() {
     a {
-        color: @theme-text-color;
+        color: @theme-color-dark-green;
         text-decoration: none;
 
         &:hover,
         &:focus {
-            color: @theme-link-hover-color;
+            color: @theme-color-dark-green;
             text-decoration: underline;
         }
     }
@@ -15,18 +15,56 @@
 
 .layout() {
 
+    .visible-xs, .visible-sm, .visible-md, .visible-lg {
+        display: none !important;
+    }
+
+    @media (min-width: 768px) and (max-width: 991px) {
+        .visible-sm {
+            display: block !important;
+        }
+    }
+
+    @media (min-width: 992px) and (max-width: 1199px) {
+        .visible-md {
+            display: block !important;
+        }
+    }
+
+    @media (min-width: 1200px) {
+        .visible-lg {
+            display: block !important;
+        }
+    }
+
+    .clearfix:before,
+    .clearfix:after {
+        display: table;
+        content: " ";
+    }
+
+    .clearfix:after {
+        clear:both;
+    }
     /* Body text */
     p {
-        .Lato();
-        font-size: 1.250em;
+        .LibreMedium();
+        font-size: 21px;
         line-height: @theme-line-height-text;
         color: @theme-description-color;
         margin: 0 0 @theme-text-margin;
+
+        @media(max-width: 991px) {
+            font-size: 19px;
+            line-height: 1.68;
+        }
     }
 
     .discreet {
-        font-size: 0.750em;
+        font-size: 14px;
         color: @theme-text-color;
+        opacity: 0.4;
+        line-height: 18px;
     }
 
     /* Headings */
@@ -36,20 +74,25 @@
         line-height: @theme-headings-line-height;
         color: @theme-headings-color;
         letter-spacing: @theme-headings-letter-spacing;
-        text-transform: uppercase;
+        text-transform: @theme-headings-text-transform;
     }
 
     h1, h2, h3 {
-        margin-top: @theme-line-height-computed;
-        margin-bottom: (@theme-line-height-computed / 2);
+        margin-top: @theme-headings-margin-top;
+        margin-bottom: @theme-headings-margin-bottom;
         a:hover, a:focus {
             text-decoration: none;
+        }
+
+        @media(max-width: 991px) {
+            margin-top: 55px;
+            margin-bottom: 15px;
         }
     }
 
     h4, h5, h6 {
-        margin-top: (@theme-line-height-computed / 2);
-        margin-bottom: (@theme-line-height-computed / 2);
+        margin-top: @theme-headings-margin-top;
+        margin-bottom: @theme-headings-margin-bottom;
     }
 
     h1 { font-size: @theme-font-size-h1; };
@@ -58,6 +101,13 @@
     h4 { font-size: @theme-font-size-h4; };
     h5 { font-size: @theme-font-size-h5; };
     h6 { font-size: @theme-font-size-h6; };
+
+    @media(max-width: 991px) {
+        h3 {
+            font-size: 22px;
+            line-height: 1.636;
+        }
+    }
 
     /* Listings */
     #content-core ul, ol {
@@ -75,33 +125,52 @@
 
     /* Blockquote */
     blockquote {
-        .Lato();
-        color: #666666;
+        .LibreSemiBold();
+        color: @theme-color-dark-green;
 
         margin: 0 auto;
-        font-weight: @theme-font-weight-light;
+        font-weight: @theme-font-weight-regular;
         
-        font-size: 1.875em;
+        font-size: 32px;
+        font-style: italic;
         width: auto;
         float: left;
         background: none;
         
-        line-height: 45px;
+        line-height: 43px;
         
-        border-left: 2px solid #cccccc;
-        padding-left: 20px;
-        padding-right: 20px;
-        padding-top: 0px;
+        border-left: 0px;
+        padding-left: 15px;
+        padding-right: 15px;
+        padding-top: 35px;
         padding-bottom: 5px;
-        margin-bottom: 28px;
+        margin-bottom: 35px;
 
+        text-align: center;
         float: none;
-        letter-spacing: 0.05em;
+        letter-spacing: 0.00em;
+
+        @media(max-width: 991px) {
+            font-size: 24px;
+            text-align: left;
+            padding-left: 0px;
+            line-height: 1.417;
+        }
+
+        
+        p {
+            color: inherit;
+            font-size: inherit;
+            line-height: inherit;
+            font-family: inherit;
+        }
     }
 
     /* Tables */
     table {
-        border: @theme-border-table;
+        background-color: transparent;
+        color: #000000;
+        border: 0px;
         margin-top: @theme-margin-bottom-table;
         margin-bottom: @theme-margin-bottom-table;
         font-size: @theme-font-size-table;
@@ -109,6 +178,9 @@
 
     table th {
         background-color: @theme-th-color-table;
+        color: #000000;
+        font-weight: 400;
+        .LibreMedium();
     }
 
     table > thead > tr > th,
@@ -118,9 +190,21 @@
     table > tbody > tr > td,
     table > tfoot > tr > td {
         border: @theme-border-table;
-        padding: .75rem;
+        padding: 0px;
         font-family: inherit;
         font-size: inherit;
+        line-height: 34px;
+        border-top: 0px;
+        border-left: 0px;
+        border-right: 0px;
+        padding-top: 25px;
+        padding-bottom: 20px;
+    }
+
+    table > thead > tr > th,
+    table > tbody > tr > th,
+    table > tfoot > tr > th {
+        .LibreMedium();
     }
     
     table > thead > tr > th,
@@ -144,11 +228,14 @@
 
 
     #content-core {
-        max-width: 640px;
+        max-width: 744px;
         margin: 0 auto;
-        margin-top: 30px;
-    }
+        margin-top: 100px;
 
+        @media(max-width: 991px) {
+            margin-top: 65px;
+        }
+    }
 }
 
 #portal-logo {
@@ -193,6 +280,10 @@ body#tinymce {
     /* Apply layout to tinymce - text editor */
     .layout();
     .links();
+
+    p img {
+        max-width: 90%;
+    }
 }
 
 .mosaic-rich-text {
@@ -205,6 +296,43 @@ body#tinymce {
     .layout();
     .links();
 }
+
+body.template-login {
+    div.main-container-wrapper {
+        margin-top: 100px;
+    }
+
+    .formControls {
+        box-shadow: none;
+        border-top: 0px;
+        padding-left: 0px;
+    }
+}
+
+body.frontend.portaltype-event:not(.template-layout),
+body.frontend.portaltype-document:not(.template-layout) {
+    @media(min-width: 992px) {
+        div.outer-wrapper {
+            div.main-container-wrapper {
+                padding-left: 10vw;
+                margin-left: 40px;
+
+                #content-core {
+                    margin-left: 0;
+                }
+
+            }
+
+            .documentDescription {
+                margin-left: 10vw;
+                max-width: 800px;
+                padding-right: 0px;
+            }
+        }
+    }
+}
+
+
 
 
 

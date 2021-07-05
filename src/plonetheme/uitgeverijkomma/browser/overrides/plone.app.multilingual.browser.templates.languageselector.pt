@@ -16,8 +16,8 @@
             tal:define="flag lang/flag|nothing;
                        name lang/native|lang/name;
                        showflag python:showFlags and flag;
-                       name python: 'España' if name == 'Espana' else name;
-                       name python: 'België' if name == 'Belgie' else name;"
+                       name python: 'NL' if name == 'Nederlands' else name;
+                       name python: 'EN' if name == 'English' else name;"
             ><tal:flag condition="showflag">
                 <img width="14"
                      height="11"
@@ -38,8 +38,8 @@
            tal:define="flag lang/flag|nothing;
                        name lang/native|lang/name;
                        showflag python:showFlags and flag;
-                       name python: 'España' if name == 'Espana' else name;
-                       name python: 'België' if name == 'Belgie' else name;"
+                       name python: 'NL' if name == 'Nederlands' else name;
+                       name python: 'EN' if name == 'English' else name;"
            tal:attributes="href lang/url;
                            title name"
             ><tal:flag condition="showflag">
