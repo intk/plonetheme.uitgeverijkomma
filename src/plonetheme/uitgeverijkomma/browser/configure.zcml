@@ -6,6 +6,9 @@
     xmlns:zcml="http://namespaces.zope.org/zcml"
     i18n_domain="plonetheme.uitgeverijkomma">
 
+
+  <include package="plone.behavior"/>
+
   <!-- Publish static files -->
   <browser:resourceDirectory
       name="plonetheme.uitgeverijkomma"
@@ -24,7 +27,6 @@
           permission="zope2.View"
           />
     </configure>
-
 
     <browser:page
         zcml:condition="installed plone.app.standardtiles"
@@ -45,6 +47,15 @@
     />
 
     <browser:page
+      name="product_view"
+      for="*"
+      template="templates/product_view.pt"
+      permission="zope2.View"
+      menu="plone_displayviews"
+      title="View Product"
+      />
+
+    <browser:page
         zcml:condition="installed plone.app.standardtiles"
         name="testimonials_view"
         for="*"
@@ -60,6 +71,11 @@
         permission="zope2.View"
     />
 
-    
+    <plone:behavior
+      description="Adds fields for Books"
+      provides=".views.IBook"
+      for="plone.dexterity.interfaces.IDexterityContent"
+      title="Extra fields for Books"
+      />
 
 </configure>

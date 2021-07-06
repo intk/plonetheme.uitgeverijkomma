@@ -1,0 +1,32 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+    xmlns:tal="http://xml.zope.org/namespaces/tal"
+    xmlns:metal="http://xml.zope.org/namespaces/metal"
+    xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+    lang="en"
+    metal:use-macro="context/main_template/macros/master"
+    i18n:domain="plone">
+<body>
+
+<metal:content-core fill-slot="content-core">
+<metal:content-core define-macro="content-core"
+                    tal:define="toc context/table_of_contents|nothing;">
+  <div id="parent-fieldname-text"
+      tal:condition="context/text"
+      tal:content="structure python:context.text.output_relative_to(view.context)"
+      tal:attributes="class python: toc and 'pat-autotoc' or ''" />
+
+  <div id="product-specs">
+    <div tal:replace="structure python:context.specs.output_relative_to(view.context)"></div>
+  </div>
+
+  <div id="product-share">
+    <a target="_blank" class="share-popup"
+       tal:attributes="href python: 'http://www.twitter.com/intent/tweet?url=%s&text=%s' %(context.absolute_url(), context.Title())">Twitter</a>
+    <a target="_blank" class="share-popup"
+       tal:attributes="href python: 'https://www.facebook.com/sharer/sharer.php?u=%s&t=%s' %(context.absolute_url(), context.Title())">Facebook</a>
+  </div>
+</metal:content-core>
+</metal:content-core>
+
+</body>
+</html>

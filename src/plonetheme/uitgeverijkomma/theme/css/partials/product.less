@@ -1,0 +1,188 @@
+body.frontend.template-document_view {
+    #main-container .content-wrapper {
+        margin-top: 45px;
+
+        @media (min-width: 1200px) {
+            border-right: 1px solid #CCCDCF;
+        }
+    }
+}
+
+body:not(.template-product_view) {
+    .product-details {
+        display: none !important;
+    }
+}
+
+/* Product view */
+body.frontend.template-product_view {
+    #main-container .content-wrapper {
+        margin-top: 45px;
+
+        @media (min-width: 1200px) {
+            border-right: 1px solid #CCCDCF;
+        }
+    }
+
+    #main-container .row {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display:         flex;
+        flex-wrap: wrap;
+
+      .specs, .prices {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+
+    #main-container .product-details {
+        margin-top: 45px;
+        h3 {
+            line-height: 1.2;
+            font-size: 23px;
+            margin-top: 0px;
+            padding-bottom: 35px;
+            border-bottom: 1px solid #CCCDCF;
+        }
+
+        p {
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        a {
+            font-size: 14px;
+            text-decoration: none;
+            display: block;
+
+            &:hover,
+            &:focus,
+            &:active:focus {
+                text-decoration: underline;
+            }
+        }
+    }
+
+    #main-container .content-wrapper {
+        order: 1;
+    }
+
+    #main-container .specs {
+        @media (min-width: 1200px) {
+            border-right: 1px solid #CCCDCF;
+        }
+
+        order: 3;
+    }
+
+     #main-container .prices {
+        @media (min-width: 1200px) {
+            border-right: 1px solid #CCCDCF;
+        }
+
+        order: 2;
+
+        h3 {
+            margin-bottom: 0px;
+            border-bottom: 0px !important;
+        }
+
+        button {
+            padding-top: 7px !important;
+            padding-left: 10px !important;
+        }
+     }
+
+     &.is-mobile {
+        #main-container .prices {
+            button {
+                padding-top: 8px !important;
+            }
+        }
+     }
+
+     #main-container .share {
+        order: 4;
+     }
+
+     @media(max-width: 1199px) {
+        #main-container .prices {
+            order: 1;
+         }
+
+        #main-container .content-wrapper {
+            order: 2;
+        }
+
+        #main-container .specs {
+            order: 3;
+        }
+
+        #main-container .share {
+            order: 4;
+        }
+
+        #main-container .product-details:not(.prices) {
+            margin-top: 20px;
+
+            h3 {
+                padding-bottom: 10px;
+                padding-top: 15px;
+                border-top: 2px solid #000000;
+                border-bottom: 2px solid #000000;
+                margin-left: -15px;
+                margin-right: -15px;
+                padding-left: 15px;
+            }
+        }
+
+        #main-container .prices {
+            margin-top: 20px;
+
+            h3 {
+                margin-bottom: 0px;
+                border-bottom: 0px !important;
+                padding-bottom: 10px;
+            }
+         }
+     }
+
+     #main-container .prices {
+        button {
+            position: relative;
+            padding-right: 55px;
+            text-align: left;
+        }
+        .btn-label {
+            position: absolute;
+            right: 0;
+            top: 0;
+            display: inline-block;
+            padding: 5px 18px;
+            background: transparent;
+            border-radius: 0px;
+            padding-top: 0px;
+            padding-bottom: 0px;
+            line-height: 36px;
+            margin-top: 0px;
+            margin-bottom: 0px;
+            border-left: 1px solid #cccdcf;
+
+            i {
+                vertical-align: middle;
+            }
+        }
+    }   
+}
+
+
+body:not(.template-document_view):not(.template-product_view) {
+    #main-container .content-wrapper {
+        width: 100% !important;
+    }
+}
+
+
+
