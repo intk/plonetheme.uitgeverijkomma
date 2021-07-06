@@ -22,7 +22,7 @@ html {
 div.website-wrapper {
   position: relative;
   z-index: 2;
-  background: @theme-color-light-grey;
+  background: @theme-body-bg;
   height: 100%;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
@@ -37,4 +37,23 @@ div.website-wrapper {
 
 body:not(.frontend) div.website-wrapper {
   background: #ffffff;
+}
+
+body {
+  .main-container-wrapper, .plone-toolbar-left-expanded .main-container-wrapper {
+    width: 100%;
+    padding-left: 45px;
+    padding-right: 45px;
+
+    @media(max-width: 991px) {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+  }
+}
+
+body.template-edit {
+  #main-container .content-wrapper {
+    width: 100% !important;
+  }
 }

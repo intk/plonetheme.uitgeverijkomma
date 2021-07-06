@@ -52,20 +52,15 @@
   <replace css:theme="#header-wrapper .container.main #viewlet-above-content-title" css:content="#viewlet-above-content-title" method="raw" css:if-content="body.portaltype-easyform" />
   <drop css:content="#viewlet-above-content-title" css:if-content="body.portaltype-easyform" />
 
-  <!-- Title -->
-  <replace css:theme="#header-wrapper .container.main h1.documentFirstHeading" css:content="#content > header h1.documentFirstHeading" method="raw" />
-  <!-- Event summary -->
-  <replace css:theme-children="#header-wrapper .container.main .event-summary" css:content="#content-core ul.event.summary" method="raw" />
-  <!-- Description -->
-  <replace css:theme="#header-wrapper .container.main .documentDescription" css:content="#content > header .documentDescription" method="raw" />
-  <!-- Below content title -->
-  <replace css:theme="#header-wrapper .container.main #viewlet-below-content-title" css:content="#content > header #viewlet-below-content-title" method="raw" />
-
   <!-- header wrapper for search -->
   <replace css:theme-children="#header-wrapper .container" css:content="h1.documentFirstHeading" method="raw" css:if-content="body.template-search"/>
+  
   <drop css:content="h1.documentFirstHeading" css:if-content="body.template-search"/>
   <drop css:content="ul.event.summary"/>
+
   <drop css:theme="#header-wrapper .container.main .event-summary" css:if-not-content="body.portaltype-event"/>
+
+   <drop css:content="#content > h1.documentFirstHeading" css:if-content="body.template-edit"/>
 
   <!-- header mosaic layout -->
   <!--<replace css:theme="#header-wrapper .container.layout .title" css:content="h1.documentFirstHeading" method="raw" css:if-content="body.template-layout"/>
@@ -75,7 +70,6 @@
   <drop css:content="div.mosaic-IDublinCore-description-tile .documentDescription" css:if-content="body.template-layout"/>-->
   <drop css:theme="#header-wrapper .container.main" css:if-content="body.template-layout"/>
   <drop css:theme="#header-wrapper .container.layout" css:if-content="body.template-search"/>
-
 
   <!-- Central column -->
   <replace css:theme="#content-container" method="raw">
@@ -89,15 +83,15 @@
 
     <div class="{$central}">
       <div class="row">
-        <div class="col-xs-12 col-sm-12">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 content-wrapper">
+          <xsl:copy-of css:select="h1.documentFirstHeading"/>
+          <xsl:copy-of css:select="#viewlet-below-content-title"/>
+          <xsl:copy-of css:select="#content > header .documentDescription"/>
           <xsl:apply-templates css:select="#content" />
         </div>
+        <div class="prices"></div>
+        <div class="specs"></div>
       </div>
-      <footer class="row">
-        <div class="col-xs-12 col-sm-12">
-          <xsl:copy-of css:select="#viewlet-below-content" />
-        </div>
-      </footer>
     </div>
   </replace>
 
@@ -113,7 +107,7 @@
   <replace css:theme-children="#global_statusmessage" css:content-children="#global_statusmessage" />
 
   <!-- Left column -->
-  <rules css:if-content="#portal-column-one">
+  <!--<rules css:if-content="#portal-column-one">
     <replace css:theme="#column1-container">
       <xsl:variable name="columnone">
         <xsl:if test="//aside[@id='portal-column-two']">col-xs-12 col-sm-6 col-md-3 col-md-pull-6</xsl:if>
@@ -125,10 +119,10 @@
         </aside>
       </div>
     </replace>
-  </rules>
+  </rules>-->
 
   <!-- Right column -->
-  <rules css:if-content="#portal-column-two">
+  <!--<rules css:if-content="#portal-column-two">
     <replace css:theme="#column2-container">
       <xsl:variable name="columntwo">
         <xsl:if test="//aside[@id='portal-column-one']">col-xs-12 col-sm-6 col-md-3</xsl:if>
@@ -140,7 +134,7 @@
         </aside>
       </div>
     </replace>
-  </rules>
+  </rules>-->
 
   <!-- Move language selector to menu -->
   <replace css:theme-children="#menu-language-selector" css:content="#portal-languageselector" method="raw" />
