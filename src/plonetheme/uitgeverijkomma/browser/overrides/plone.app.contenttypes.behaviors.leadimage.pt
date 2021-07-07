@@ -1,17 +1,52 @@
-<div class="leadImage"
-     tal:condition="view/available"
-     tal:define="scale_func context/@@images;
-                 scaled_image python: getattr(context.aq_explicit, 'image', False) and scale_func.scale('image', scale='large')">
+<tal:leadheader
+  tal:define="context_tools python: context.restrictedTraverse('@@context_tools');
+              slideshow_images python: context_tools.get_slideshow_images(context);
+              portal context/@@plone_portal_state/portal;
+              image_scale portal/@@image_scale;">
 
-  <figure class="newsImageContainer" tal:condition="python: scaled_image">
-    <div class="lead-image-container">
-      <img tal:replace="structure python: scaled_image.tag(css_class='newsImage')" />
-      
+
+  <tal:noslideshow tal:condition="not:slideshow_images">
+    <div class="leadImage contains-image"
+         tal:condition="view/available"
+         tal:define="scale_func context/@@images;
+                     scaled_image python: getattr(context.aq_explicit, 'image', False) and scale_func.scale('image', scale='large')">
+
+      <figure class="newsImageContainer" tal:condition="python: scaled_image">
+        <div class="lead-image-container">
+          <img tal:replace="structure python: scaled_image.tag(css_class='newsImage')" />
+          
+        </div>
+      </figure>
+
+      <figcaption tal:condition="context/image_caption|nothing"
+              tal:content="context/image_caption">
+      </figcaption>
     </div>
-  </figure>
+  </tal:noslideshow>
 
-  <figcaption tal:condition="context/image_caption|nothing"
-          tal:content="context/image_caption">
-  </figcaption>
+  <tal:withslideshow tal:condition="slideshow_images">
 
-</div>
+    <div id="header-carousel" class="leadImage contains-image">
+      <tal:leadimage tal:condition="view/available"
+          tal:define="scale_func context/@@images;
+                      scaled_image python: getattr(context.aq_explicit, 'image', False) and scale_func.scale('image', scale='large')">
+
+          <div class="carousel-slide">
+            <div class="carousel-image-container">
+              <img tal:replace="structure python: scaled_image.tag(css_class='newsImage')" />
+            </div>
+          </div>
+
+      </tal:leadimage>
+
+      <tal:repeat repeat="image_item slideshow_images">
+        <div class="carousel-slide">
+          <div class="carousel-image-container">
+            <img tal:replace="structure python:image_scale.tag(image_item, 'image', scale='large', css_class='newsImage')" />
+          </div>
+        </div>
+      </tal:repeat>
+    </div>
+
+  </tal:withslideshow>
+</tal:leadheader>

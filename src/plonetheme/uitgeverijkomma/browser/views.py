@@ -13,6 +13,29 @@ from zope import schema
 from collective import dexteritytextindexer
 
 class ContextToolsView(BrowserView):
+
+    def get_images_from_folder(self, folder):
+        images = [brain for brain in folder.getFolderContents() if getattr(brain, 'portal_type', None) == "Image"]
+        return images
+
+    def get_slideshow_folder(self, item):
+        for brain in item.getFolderContents():
+            if brain.id == "slideshow":
+                return brain.getObject()
+        
+        return None
+
+    def get_slideshow_images(self, item):
+
+        slideshow = self.get_slideshow_folder(item)
+
+        if slideshow:
+            images = self.get_images_from_folder(slideshow)
+            return images
+        else:
+            return []
+
+
     def trimText(self, text, limit):
         try:
             if text != None:
@@ -27,8 +50,6 @@ class ContextToolsView(BrowserView):
                 return ""
         except:
             return text
-
-
 
 @provider(IFormFieldProvider)
 class IBook(model.Schema):

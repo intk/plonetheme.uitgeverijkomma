@@ -1,0 +1,64 @@
+
+#header-carousel {
+	position: relative;
+
+	.carousel-slide {
+		pointer-events: none;
+		overflow: hidden;
+		position: relative;
+	}
+
+	.slick-list, .slick-track {
+		height: 100%;
+	}
+
+	.slick-next {
+		right: 25px;
+		z-index: 4;
+	}
+
+	.slick-prev {
+		left: 25px;
+		z-index: 4;
+	}
+
+	.slick-prev:before, .slick-next:before {
+		font-family: 'Glyphicons Halflings';
+		color: #ffffff;
+		
+	}
+
+	.slick-prev:before {
+		content: '\e079'
+	}
+
+	.slick-next:before {
+		content: '\e080'
+	}
+
+	.slick-prev, .slick-next {
+		&:hover,
+		&:active,
+		&:active:focus {
+			outline: none;
+			box-shadow: none;
+		}
+	}
+
+	.carousel-image-container {
+		height: 100%;
+	    width: 100%;
+	    background-position: center center;
+	    background-size: cover;
+	    background-repeat: no-repeat;
+
+	    img {
+	        width: 100%;
+	        height: 100%;
+	        object-fit: cover;
+	    }
+	}
+
+
+
+}

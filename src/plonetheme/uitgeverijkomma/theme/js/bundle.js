@@ -96,6 +96,16 @@ function load_share_buttons() {
 	}
 };
 
+function load_carousel() {
+	if ($(".contains-image").length > 0) {
+		require(['jquery', 'collective-slick-js'], function($) {	
+			if (typeof($("#header-carousel").slick) !== "undefined") {
+				$("#header-carousel").slick();
+			}
+		});
+	}
+}
+
 jQuery(document).ready(function () {
 	/* Menu */
 	load_menu();
@@ -111,4 +121,7 @@ jQuery(document).ready(function () {
 
   	/* Load share links via popup */
   	load_share_buttons();
+
+  	/* Load carousel */
+  	load_carousel();
 });
