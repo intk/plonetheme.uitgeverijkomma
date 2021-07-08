@@ -3,13 +3,12 @@
 .footerLinks() {
     p > a {
 
-    	.PlatinMTProBold();
         color: @theme-footer-a-color;
         text-decoration: none;
 
         &:hover,
         &:focus {
-            color: @theme-color-orange;
+            color: @theme-footer-a-color;
             text-decoration: underline;
         }
     }
@@ -54,46 +53,78 @@
 	.portlet-static-footer {
 		/* Links */
 		.footerLinks();
+
+
+		.right-part > div:not(.clearfix) {
+			border-left: 1px solid #000000;
+
+			margin-bottom: 25px;
+
+			&:last-child {
+				@media(max-width: 991px) {
+					display: none;
+				}
+			}
+		}
+
+		.right-part {
+			display: -webkit-box;
+		    display: -webkit-flex;
+		    display: -ms-flexbox;
+		    display: flex;
+		    flex-wrap: wrap;
+		}
 		
 		div.footer-wrapper > div:not(.clearfix) {
 			margin-bottom: 40px;
 		}
 
 		img {
-			width: 250px;
+			width: 110px;
 			max-width: 90%;
 			margin-top: 17px;
 			height: auto;
+			margin-left: -8px;
+			margin-bottom: -40px;
 		}
 
 		p, h1, h2, h3, h4, h5 {
 			color: inherit;
 		}
 
-		h3 {
-			font-size: 21px;
-			margin-bottom: 0px;
-		}
-
-		p {
-			font-size: 18px;
-			line-height: 1.7;
-			margin-bottom: 0px;
-		}
-
 		span.text-button a {
-			background-color: #000000;
-			color: #ffffff;
-			border: 2px solid #ffffff !important;
-
-			&:hover,
-			&:focus,
-			&:hover:focus {
-				background-color: #ffffff;
-				color: #000000 !important;
-				border: 2px solid #ffffff;
-			}
+			max-width: 100%;
+    		min-width: 50px;
+    		border-top: 1px solid #000000 !important;
+    		border-bottom: 1px solid #000000 !important;
+    		font-size: 15px;
 		}
+
+		h3 {
+            line-height: 1.2;
+            font-size: 23px;
+            margin-top: 0px;
+            padding-bottom: 35px;
+            border-bottom: 1px solid #000000;
+        }
+
+        p {
+            font-size: 14px;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        a {
+            font-size: 14px;
+            text-decoration: none;
+            display: block;
+
+            &:hover,
+            &:focus,
+            &:active:focus {
+                text-decoration: underline;
+            }
+        }
 
 		ul.social-media {
 			list-style-type: none;

@@ -16,7 +16,7 @@
       tal:attributes="class python: toc and 'pat-autotoc' or ''" />
 
   <div id="product-specs">
-    <div tal:replace="structure python:context.specs.output_relative_to(view.context)"></div>
+    <div tal:replace="structure python:context.specs.output_relative_to(view.context)" tal:on-error="nothing"></div>
   </div>
 
   <div id="product-share">
@@ -25,6 +25,14 @@
     <a target="_blank" class="share-popup"
        tal:attributes="href python: 'https://www.facebook.com/sharer/sharer.php?u=%s&t=%s' %(context.absolute_url(), context.Title())">Facebook</a>
   </div>
+
+  <div id="buy-button">
+    <button class="btn btn-default btn-labeled btn-buy"><span tal:content="python: 'Bestel' if getattr(context, 'language', 'nl') == 'nl' else 'Buy'">Bestel</span><span class="btn-label"><i class="glyphicon glyphicon-shopping-cart"></i></span></button>
+  </div>
+
+  <h3 id="product-price" tal:on-error="nothing">
+  € <span tal:replace="python: context.price"></span>
+  </h3>
 </metal:content-core>
 </metal:content-core>
 

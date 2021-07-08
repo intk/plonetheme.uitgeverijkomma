@@ -90,8 +90,8 @@
           <xsl:apply-templates css:select="#content" />
         </div>
         <div class="product-details prices col-xs-12 col-sm-12 col-md-12 col-lg-2">
-          <h3>€ 99</h3>
-          <button class="btn btn-default btn-labeled">Bestel<span class="btn-label"><i class="glyphicon glyphicon-shopping-cart"></i></span></button>
+          <xsl:copy-of css:select="#product-price"/>
+          <xsl:copy-of css:select="#buy-button .btn-buy"/>
         </div>
         <div class="product-details specs col-xs-12 col-sm-12 col-md-12 col-lg-2">
           <xsl:copy-of css:select="#product-specs"/>
@@ -106,6 +106,8 @@
 
   <drop css:content="#product-specs"/>
   <drop css:content="#product-share"/>
+  <drop css:content="#product-price"/>
+  <drop css:content="#buy-button"/>
   <drop css:content=".product-details" css:if-not-content="body.template-product_view"/>
 
   <replace css:theme="#header-image #content" css:content="#viewlet-above-content-body" method="raw" css:if-not-content="body.portaltype-wildcardvideo"/>

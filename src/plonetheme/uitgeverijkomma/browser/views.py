@@ -70,3 +70,19 @@ class IBook(model.Schema):
     form.widget('specs', RichTextFieldWidget)
     dexteritytextindexer.searchable('notes')
 
+
+    model.fieldset(
+        'shop',
+        label=_(u'Shop', default=u'Shop'),
+        fields=['price'],
+    )
+
+    price = schema.TextLine(
+        title=_(u"Price"),
+        description=_(
+            u"Enter the full price"
+        ),
+        default=u"",
+        required=False
+    )
+
