@@ -1,238 +1,83 @@
 /* THEME: MENU */
 
-/* Menu items */
-.plone-nav li {
-	display: block;
-	clear: both;
-	text-align: left;
-
-	a {
-		font-size: 37px;
-		line-height: 1.2;
-		font-weight: 400;
-		text-transform: none;
-		color: @theme-menu-a-color;
-		padding: 12px 15px;
-
-		&:hover,
-		&:focus,
-		&:active {
-			background-color: transparent;
-	    	color: @theme-menu-a-color-hover;
-		}
-	}
-
-	label {
-		display: none;
-	}
-
-	ul {
-		position: relative;
-		opacity: 1;
-		visibility: visible;
-		display: block;
-		max-width: 100%;
-		height: auto;
-		padding-left: 0px;
-
-		li a {
-			background-color: transparent;
-			text-transform: none;
-
-			font-size: 20px;
-			line-height: 1.4;
-		}
-  	}
-}
-
-.plone-nav ul {
-	li {
-		display: block;
-	}
-}
-
-.plone-navbar-nav {
-	.current > a, 
-	.selected > a, 
-	.current > a:hover, 
-	.selected > a:hover, 
-	.current > a:focus, 
-	.selected > a:focus {
-		background-color: transparent;
-		color: @theme-menu-a-color-hover;
-	}
-}
-
-/* Container */
-.plone-navbar > .container {
-	width: 100%;
-
-	@media (min-width: 991px) {
-		padding-left: 40px;
-		padding-right: 40px;
-	}
-}
-
-/* Container: when menu expanded */;
-.plone-toolbar-left-expanded .plone-navbar > .container {
+#mainnavigation-wrapper {
+	position: fixed;
+    right: 0;
     width: 100%;
-    padding-left: 170px;
-}
+    z-index: 1030;
 
-/* Global nav: flex */
-#portal-globalnav {
-	padding-bottom: 50px;
-}
-
-#portal-globalnav > li > a {
-	margin-top: 25px;
-	margin-bottom: 25px;
-}
-
-@media (min-width: 768px) {
-	#portal-globalnav {
-	    display: -webkit-box;
-	    display: -ms-flexbox;
-	    display: flex;
-	    -ms-flex-wrap: wrap;
-	    flex-wrap: wrap;
+	.plone-navbar {
+		background-color: #313132;
+		margin-bottom: 0px;
 	}
 
-	#portal-globalnav > li {
-		-ms-flex-preferred-size: 0;
-	    flex-basis: 0;
-	    -webkit-box-flex: 1;
-	    -ms-flex-positive: 1;
-	    flex-grow: 1;
-	    max-width: 100%;
-	}
-}
-
-/* Tickets button */
-#cd-nav {
-	div.tickets-button-wrapper {
-		position: absolute;
-	    right: 105px;
-	    top: 45px;
-	    z-index: 1;
-
-	    -webkit-transition: 0.25s ease-in-out;
-	    -moz-transition: 0.25s ease-in-out;
-	    -o-transition: 0.25s ease-in-out;
-	    transition: 0.25s ease-in-out;
-
-	    @media(max-width: 991px) {
-	    	right: 60px;
-	    	top: 11px;
-	    }
-	}
-
-	div.search-bar-wrapper {
-		margin: 0px;
-		display: inline-block;
-		height: 60px;
+	.plone-navbar-nav {
 		float: left;
-		padding: 0;
-		position: absolute;
-		
-		top: 47px;
-		right: 235px;
 
-		@media(max-width: 991px) {
-			top: 110px;
-			left: 80px;
-			right: auto;
+		@media(max-width: 767px) {
+			margin-top: 20px;
+			margin-bottom: 20px;
 		}
 
-		input[type="text"] {
-			height: 50px;
-			font-size: 20px;
-			display: inline-block;
-			.Montserrat();
-			font-weight: 400;
-			border: none;
-			outline: none;
-			color: #000000;
-			padding: 3px;
-			padding-right: 60px;
-			width: 0px;
-			position: absolute;
-			top: 0;
-			right: 0;
-			background: none;
-			z-index: 3;
-			transition: width .4s cubic-bezier(0.000, 0.795, 0.000, 1.000);
-			cursor: pointer;
-
-			
-
-			&::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-			  color: #000000;
-			  opacity: 1; /* Firefox */
-			}
-
-			&:-ms-input-placeholder { /* Internet Explorer 10-11 */
-			  color: #000000;
-			}
-
-			&::-ms-input-placeholder { /* Microsoft Edge */
-			  color: #000000;
-			}
-
-			@media(max-width: 991px) {
-				right: auto;
-				left: 0;
-				border-bottom: 2px solid #000000;
-				width: 60vw;
-				z-index: 1;
-				border-bottom: 2px solid #000000;
-				cursor: text;
-			}
-		}
-
-		input[type="text"]:focus:hover {
-			border-bottom: 2px solid #000000;
-		}
-
-		input[type="text"]:focus {
-			width: 300px;
-			z-index: 1;
-			border-bottom: 2px solid #000000;
-			cursor: text;
-
-			@media(max-width: 991px) {
-				width: 60vw;
-			}
-		}
-
-		input[type="submit"] {
-			height: 50px;
-			width: 50px;
-			display: inline-block;
-			color: #000000;
+		@media(min-width: 768px) {
 			float: right;
-			background: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MCIgaGVpZ2h0PSI1MCIgdmlld0JveD0iMCAwIDUwIDUwIj4KICA8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0yMi45NDg5MTA1LDEyIEMyOC45OTI1MjUsMTIgMzMuODk3ODIxMSwxNi45MDUyOTYxIDMzLjg5NzgyMTEsMjIuOTQ4OTEwNSBDMzMuODk3ODIxMSwyNS4yNTE2Nzk5IDMzLjE4NTY2OTIsMjcuMzg5MTg4IDMxLjk2OTc0NDYsMjkuMTUzMDU1NyBMMzgsMzUuMTg0NzA5NSBMMzUuMTg0NzA5NSwzOCBMMjkuMTUzMDU1NywzMS45Njk3NDQ2IEMyNy4zODkxODgsMzMuMTg1NjY5MiAyNS4yNTE2Nzk5LDMzLjg5NzgyMTEgMjIuOTQ4OTEwNSwzMy44OTc4MjExIEMxNi45MDUyOTYxLDMzLjg5NzgyMTEgMTIsMjguOTkyNTI1IDEyLDIyLjk0ODkxMDUgQzEyLDE2LjkwNTI5NjEgMTYuOTA1Mjk2MSwxMiAyMi45NDg5MTA1LDEyIFogTTIyLjk0ODkxMDUsMTUuOTg2MDY2NSBDMTkuMTA2NzM3NiwxNS45ODYwNjY1IDE1Ljk4NjA2NjUsMTkuMTA2NzM3NiAxNS45ODYwNjY1LDIyLjk0ODkxMDUgQzE1Ljk4NjA2NjUsMjYuNzkxMDgzNCAxOS4xMDY3Mzc2LDI5LjkxMTc1NDUgMjIuOTQ4OTEwNSwyOS45MTE3NTQ1IEMyNi43OTEwODM0LDI5LjkxMTc1NDUgMjkuOTExNzU0NSwyNi43OTEwODM0IDI5LjkxMTc1NDUsMjIuOTQ4OTEwNSBDMjkuOTExNzU0NSwxOS4xMDY3Mzc2IDI2Ljc5MTA4MzQsMTUuOTg2MDY2NSAyMi45NDg5MTA1LDE1Ljk4NjA2NjUgWiIvPgo8L3N2Zz4K) center center no-repeat;
-			background-size: contain;
-			text-indent: -10000px;
-			border: none;
-			position: absolute;
-			top: 0;
-			right: 0;
-			z-index: 2;
-			cursor: pointer;
-			opacity: 1;
-			cursor: pointer;
-			transition: opacity .4s ease;
-			outline: none !important;
-		}
-
-		input[type="submit"]:hover {
-			opacity: 1;
 		}
 	}
+
+	.plone-nav li a:hover, .plone-nav li a:focus {
+		background-color: transparent;
+		text-decoration: underline;
+	}
+
+
+	.plone-nav li a {
+		.HelveticaRoman();
+		font-size: 23px;
+		line-height: 1;
+	}
+
+	button.plone-navbar-toggle {
+		border-top: 0px;
+		border-bottom: 0px;
+	}
+
+
+	@media(min-width: 768px) {
+		.plone-navbar-nav > li > a {
+			padding-top: 50px;
+			padding-bottom: 40px;
+		}
+	}
+
+	-webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    will-change: transform;
+    -webkit-transition: -webkit-transform 0.5s;
+    transition: -webkit-transform 0.5s;
+    transition: transform .5s;
+    transition: transform 0.5s, -webkit-transform 0.5s;
+
+    &.is-hidden {
+    	-webkit-transform: translateY(-100%);
+	    -ms-transform: translateY(-100%);
+	    transform: translateY(-100%);
+    }
 }
 
 
+body.is-mobile #mainnavigation-wrapper {
+	button.plone-navbar-toggle {
+		media(max-width: 767px) {
+			padding-top: 8px !important;
+		}
+	}	
+}
 
+body.plone-toolbar-left-expanded #mainnavigation-wrapper {
+	left: 120px;
+}
 
+body.plone-toolbar-left-default #mainnavigation-wrapper {
+	left: 60px;
+}
 

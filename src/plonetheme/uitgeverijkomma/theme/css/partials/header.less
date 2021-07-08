@@ -16,6 +16,7 @@
 
     #portal-header {
         margin-top: 0px;
+        margin-bottom: 0px;
     }
 
     #top-header-wrapper {
@@ -29,13 +30,15 @@
 
     #top-header-wrapper #content-header {
         position: absolute;
-        top: 45px;
+        top: 50%;
         left: 25px;
+        transform: translateY(-50%);
         z-index: 2;
 
-        @media(max-width: 991px) {
-            top: 22px;
-            left: 4px;
+        @media(max-width: 767px) {
+            top: 12px;
+            transform: none;
+            left: 10px;
         }
 
         &> .container {
@@ -77,6 +80,14 @@
 
         @media (max-width: 991px) {
 
+        }
+    }
+
+    #viewlet-above-content-title {
+        margin-top: 0px;
+
+        @media(min-width: 768px) {
+            margin-top: 0px;
         }
     }
 
@@ -439,7 +450,8 @@
 
     @media screen and (max-width: 768px) {
       .newsImageContainer, .mosaic-ILeadImageBehavior-image-tile, #header-carousel {
-        height: 90vh;
+        height: 70vh;
+        max-height: 500px;
       }
     }
 
