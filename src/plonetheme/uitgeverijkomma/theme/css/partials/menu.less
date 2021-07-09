@@ -7,7 +7,7 @@
     z-index: 1030;
 
 	.plone-navbar {
-		background-color: #313132;
+		background-color: transparent;
 		margin-bottom: 0px;
 	}
 
@@ -34,6 +34,7 @@
 		.HelveticaRoman();
 		font-size: 23px;
 		line-height: 1;
+		text-shadow:0 0 5px #000;
 	}
 
 	button.plone-navbar-toggle {
@@ -47,6 +48,10 @@
 			padding-top: 50px;
 			padding-bottom: 40px;
 		}
+	}
+
+	.plone-navbar-nav .current > a, .plone-navbar-nav .selected > a, .plone-navbar-nav .current > a:hover, .plone-navbar-nav .selected > a:hover, .plone-navbar-nav .current > a:focus, .plone-navbar-nav .selected > a:focus {
+		background: transparent;
 	}
 
 	-webkit-transform: translateZ(0);

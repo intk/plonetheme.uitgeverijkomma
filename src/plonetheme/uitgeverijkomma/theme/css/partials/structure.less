@@ -25,11 +25,26 @@ body {
       padding-left: 15px;
       padding-right: 15px;
     }
+
+    @media(min-width: 1850px) {
+      padding-left: 65px;
+      padding-right: 65px;
+    }
   }
 }
 
 body.template-edit {
   #main-container .content-wrapper {
     width: 100% !important;
+  }
+}
+
+body:not(.frontend) {
+  header#content-header {
+    display: none;
+  }
+
+  div.content-wrapper {
+    margin-top: 140px;
   }
 }

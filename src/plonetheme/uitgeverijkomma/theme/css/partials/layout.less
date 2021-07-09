@@ -46,6 +46,7 @@
     .clearfix:after {
         clear:both;
     }
+
     /* Body text */
     p {
         .Lato();
@@ -53,6 +54,11 @@
         line-height: @theme-line-height-text;
         color: @theme-description-color;
         margin: 0 0 @theme-text-margin;
+
+        @media(min-width: 1850px) {
+            font-size: 40px;
+            margin-bottom: 50px;
+        }
     }
 
     .discreet {
@@ -60,6 +66,10 @@
         color: @theme-text-color;
         opacity: 0.4;
         line-height: 18px;
+
+        @media(min-width: 1850px) {
+            font-size: 40px;
+        }
     }
 
     /* Headings */
@@ -98,6 +108,10 @@
         line-height: @theme-line-height-text;
         color: @theme-description-color;
         margin-bottom: @theme-text-margin;
+
+        @media(min-width: 1850px) {
+            font-size: 40px;
+        }
     }
 
     #content-core ul, ol { 
@@ -132,6 +146,9 @@
         float: none;
         letter-spacing: 0.00em;
 
+        @media(min-width: 1850px) {
+            font-size: 40px;
+        }
         
         p {
             color: inherit;
@@ -149,6 +166,10 @@
         margin-top: @theme-margin-bottom-table;
         margin-bottom: @theme-margin-bottom-table;
         font-size: @theme-font-size-table;
+
+        @media(min-width: 1850px) {
+            font-size: 35px;
+        }
     }
 
     table th {
