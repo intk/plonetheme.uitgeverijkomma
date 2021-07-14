@@ -23,6 +23,10 @@
 	color: @theme-footer-text-color;
 	clear: both;
 
+	@media(min-width: 1850px) {
+		padding: 65px 0 20px 0;
+	}
+
 	.portletWrapper:first-child {
 		border-bottom: 0px;
 	}
@@ -54,6 +58,17 @@
 		/* Links */
 		.footerLinks();
 
+		.right-part {
+			padding-left: 0px;
+			padding-right: 0px;
+		}
+
+		.left-part {
+			@media(min-width: 1850px) {
+				padding-left: 20px;
+				padding-right: 20px;
+			}
+		}
 
 		.right-part > div:not(.clearfix) {
 			border-left: 1px solid #000000;
@@ -64,6 +79,11 @@
 				@media(max-width: 991px) {
 					display: none;
 				}
+			}
+
+			@media(min-width: 1850px) {
+				padding-left: 20px;
+				padding-right: 20px;
 			}
 		}
 
@@ -86,6 +106,14 @@
 			height: auto;
 			margin-left: -8px;
 			margin-bottom: -40px;
+
+			@media(min-width: 1850px) {
+				width: 200px;
+				margin-left: -21px;
+				margin-top: 0px;
+				margin-bottom: -68px;
+
+			}
 		}
 
 		p, h1, h2, h3, h4, h5 {
@@ -98,6 +126,11 @@
     		border-top: 1px solid #000000 !important;
     		border-bottom: 1px solid #000000 !important;
     		font-size: 15px;
+
+			@media(min-width: 1850px) {
+				font-size: 24px;
+			}
+
 		}
 
 		h3 {
@@ -106,18 +139,34 @@
             margin-top: 0px;
             padding-bottom: 35px;
             border-bottom: 1px solid #000000;
+
+
+			@media(min-width: 1850px) {
+				font-size: 40px;
+    			padding-bottom: 60px;
+				margin-bottom: 20px;
+			}
         }
 
         p {
             font-size: 14px;
             line-height: 1.2;
             margin-bottom: 20px;
+
+			@media(min-width: 1850px) {
+				font-size: 24px;
+    			margin-bottom: 30px;
+			}
         }
 
         a {
             font-size: 14px;
             text-decoration: none;
             display: block;
+
+			@media(min-width: 1850px) {
+				font-size: 24px;
+			}
 
             &:hover,
             &:focus,
@@ -238,6 +287,11 @@
 	@media(min-width: 1200px) {
 		padding-left: @theme-footer-margin-left-lg;
 		padding-right: @theme-footer-margin-right-lg;
+	}
+
+	@media(min-width: 1850px) {
+		padding-left: 35px;
+		padding-right: 35px;
 	}
 
 
