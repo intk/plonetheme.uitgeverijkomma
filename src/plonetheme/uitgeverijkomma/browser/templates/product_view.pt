@@ -26,13 +26,24 @@
        tal:attributes="href python: 'https://www.facebook.com/sharer/sharer.php?u=%s&t=%s' %(context.absolute_url(), context.Title())">Facebook</a>
   </div>
 
-  <div id="buy-button">
-    <button class="btn btn-default btn-labeled btn-buy"><span tal:content="python: 'Bestel' if getattr(context, 'language', 'nl') == 'nl' else 'Buy'">Bestel</span><span class="btn-label"><i class="glyphicon glyphicon-shopping-cart"></i></span></button>
-  </div>
+  <div id="product-price"
+    tal:define="soldout python: getattr(context, 'soldout', False);">
 
-  <h3 id="product-price" tal:on-error="nothing">
-  € <span tal:replace="python: context.price"></span>
-  </h3>
+    <h3>Bestel</h3>
+
+    <div class="product-price" tal:on-error="nothing" tal:condition="not:soldout">
+      <span>€ <span tal:replace="python: context.price"></span></span>
+    </div>
+
+    <div class="product-buy-btn" tal:condition="not:soldout">
+      <span class="btn-label-cart"></span>
+    </div>
+
+    <div class="product-buy-btn soldout" tal:condition="soldout">
+      <span>Uitverkocht</span>
+    </div>
+
+  </div>
 </metal:content-core>
 </metal:content-core>
 

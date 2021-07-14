@@ -74,7 +74,7 @@ class IBook(model.Schema):
     model.fieldset(
         'shop',
         label=_(u'Shop', default=u'Shop'),
-        fields=['price'],
+        fields=['price', 'soldout'],
     )
 
     price = schema.TextLine(
@@ -86,3 +86,8 @@ class IBook(model.Schema):
         required=False
     )
 
+    soldout = schema.Bool(
+        title=_(u"Item is sold out"),
+        default=False,
+        required=False,
+    )

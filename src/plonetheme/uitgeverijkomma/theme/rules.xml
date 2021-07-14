@@ -91,7 +91,6 @@
         </div>
         <div class="product-details prices col-xs-12 col-sm-12 col-md-12 col-lg-2">
           <xsl:copy-of css:select="#product-price"/>
-          <xsl:copy-of css:select="#buy-button .btn-buy"/>
         </div>
         <div class="product-details specs col-xs-12 col-sm-12 col-md-12 col-lg-2">
           <xsl:copy-of css:select="#product-specs"/>
