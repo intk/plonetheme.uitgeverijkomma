@@ -187,9 +187,6 @@
                     items matching your search terms.
                 </span>
               </div>
-
-
-
               <metal:searchresults define-macro="search_results">
                 <div class="autotabs">
                   <nav class="autotoc-nav" id="searchResultsSort">

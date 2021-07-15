@@ -12,7 +12,7 @@
 .headerText() {
 	div.header-text-wrapper {
 		position: absolute;
-		bottom: 0px;
+		bottom: 10px;
 		left: 20px;
 
 		p, h3 {
@@ -45,17 +45,29 @@
 
 		p {
 			line-height: 1.1;
+			margin-bottom: 0px;
+			padding-bottom: 0px;
+			font-size: 25px;
+
+			@media(min-width: 1850px) {
+				font-size: 50px;
+			}
 		}
 
 		@media(min-height: 400px) {
 			p {
-				padding-bottom: 15px;
+				padding-bottom: 0px;
 			}
-			bottom: 17px;
+			bottom: 10px;
 		}
 
 		@media(min-width: 992px) {
+			left: 45px;
+		}
+
+		@media(min-width: 1850px) {
 			left: 75px;
+			bottom: 10px;
 		}
 	}
 }
@@ -91,6 +103,8 @@
 			}
 		}
 	}
+
+	
 }
 
 body.frontend.section-frontpage div.outer-wrapper {
@@ -98,6 +112,12 @@ body.frontend.section-frontpage div.outer-wrapper {
 	#main-container {
 		.headerText();
 	}
+
+	@media (min-width: 1850px) {
+		#main-container .content-wrapper {
+		  padding-right: 0px;
+		}
+	  }
 
 	#extra-logo {
 		display: block;
@@ -131,44 +151,111 @@ body.frontend.section-frontpage div.outer-wrapper {
         }
 
         .mosaic-ILeadImageBehavior-image-tile {
-        	height: 90vh;
-        	max-height: 700px;
+        	height: 95vh;
+        	max-height: 90vh;
         }
     }
 
 	@media(min-width: 992px) {
 		.mosaic-ILeadImageBehavior-image-tile {
-    		max-height: 800px;
-		}
-
-		#extra-logo {
-			left: 75px;
+    		max-height: 90vh;
 		}
 	}
 
 	@media(min-width: 992px) and (min-height: 700px) {
 		.mosaic-ILeadImageBehavior-image-tile {
-			height: 90vh;
+			height: 95vh;
 		}
 	}
 
 	@media(min-width: 992px) and (min-height: 900px) {
 		.mosaic-ILeadImageBehavior-image-tile {
-			height: 70vh;
+			height: 95vh;
 		}
 	}
 
+	@media screen and (max-width: 768px) {
+		.mosaic-ILeadImageBehavior-image-tile {
+		  height: 70vh;
+		  max-height: 500px;
+		}
+	  }
 
-	@media(min-width: 1180px) {
-		#extra-logo {
-			top: 40px;
-			left: 664px;
+	@media(min-width: 1850px) and (max-height: 1255px) {
+		.mosaic-ILeadImageBehavior-image-tile {
+			height: 95vh;
 		}
 	}
 
+	@media(min-width: 1850px) and (max-height: 900px) {
+		.mosaic-ILeadImageBehavior-image-tile {
+			min-height: 900px;
+		}
+	}
 
+	.main-container-wrapper {
+		position: relative;
+	}
 
+	#content-header {
+		position: absolute;
+		top: 45px;
+		left: 45px;
+		width: 50%;
+		z-index: 3;
+
+		&> .container {
+			width: 100% !important;
+			padding: 0px !important;
+		}
+
+		#portal-header {
+			width: 100%;
+			transform: none;
+			margin-left: 0;
+		}
+
+		#portal-logo {
+			width: 100%;
+			max-width: 300px;
+
+			@media(min-width: 992px) {
+				max-width: 560px;
+			}
+
+			@media(min-width: 1850px) {
+				max-width: 800px;
+			}
+
+			img {
+				width: 100%;
+
+				@media(min-width: 992px) and (max-height: 900px) {
+					max-height: 60vh;
+					width: auto;
+				}
+
+				@media(min-width: 1850px) and (max-height: 1255px) {
+					max-width: 500px;
+				}
+
+				
+			}
+
+		}
+
+		@media(max-width: 991px) {
+			left: 20px;
+			top: 20px;
+		}
+
+		@media(min-width: 1850px) {
+			left: 75px;
+			top: 75px;
+		}
+	}
 }
+
 
 body:not(.section-frontpage) {
 	#main-container {
@@ -181,6 +268,10 @@ body:not(.section-frontpage) {
 body:not(.frontend).section-frontpage.template-edit.mosaic-layout-customized {
 	#main-container {
 		.headerTextBackend();
+	}
+
+	.mosaic-ILeadImageBehavior-image-tile {
+		height: 60vh !important;
 	}
 
 	div.mce-tinymce-inline.mce-container.mce-panel {
