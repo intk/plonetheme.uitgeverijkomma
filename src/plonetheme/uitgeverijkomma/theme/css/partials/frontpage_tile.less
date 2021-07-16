@@ -1,11 +1,56 @@
 
+
+body.section-frontpage {
+
+	@media(max-width: 992px) {
+		article#content > div.mosaic-grid-row:not(:nth-child(1)):not(:last-child) {
+			padding-bottom: 2px;
+
+			.mosaic-position-leftmost {
+				padding-bottom: 2px;
+			}
+		}
+
+		article#content > div.mosaic-grid-row:last-child {
+			.mosaic-position-leftmost {
+				padding-bottom: 2px;
+			}
+		}
+
+		article#content > div.mosaic-grid-row:nth-child(1) {
+			padding-bottom: 2px;
+		}
+	}
+	@media(min-width: 992px) {
+		article#content > div.mosaic-grid-row:not(:nth-child(1)):not(:last-child) {
+			padding-bottom: 2px;
+
+			.mosaic-position-leftmost {
+				padding-right: 1px;
+			}
+
+			.mosaic-position-half {
+				padding-left: 1px;
+			}
+		}
+
+		article#content > div.mosaic-grid-row:last-child {
+			.mosaic-position-leftmost {
+				padding-right: 1px;
+			}
+
+			.mosaic-position-half {
+				padding-left: 1px;
+			}
+		}
+	}
+}
+
 body {
 	section.landscape-item {
 
 		width: 100%;
-    	height: 80vh;
-    	max-height: 800px;
-    	min-height: 500px;
+    	padding-top: 62.6%;
 
     	position: relative;
     	overflow: hidden;
@@ -21,11 +66,6 @@ body {
     		background-size: cover;
     		background-repeat: no-repeat;
 
-    		&:hover {
-    			img {
-    				transform: scale(1.02);
-    			}
-    		}
 		}
 
 		div.content-image {
@@ -67,9 +107,6 @@ body {
 		    flex-wrap: wrap;
 		    flex-direction: column;
 		    justify-content: flex-end;
-		    
-		    background-image: linear-gradient(to right, rgba(0,0,0,0.8) 0%, rgba(0, 0, 0, 0) 50%);
-		    background-repeat: repeat-x;
 
 		    color: #fff;
 
@@ -156,11 +193,6 @@ body {
 
 			@media(max-width: 991px) {
 				width: 100% !important;
-
-				section.landscape-item {
-					min-height: 550px;
-					height: 50vh;
-				}
 			}
 		}
 	}

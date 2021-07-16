@@ -16,7 +16,6 @@
                       show_image python: data.get('show_image', False);
                       show_comments python: data.get('show_comments', False);
                       description_alternative python: data.get('description_alternative', False);
-                      show_icon python: data.get('show_icon', False);
                       portal_type context/portal_type|nothing;
                       item_is_event python:portal_type in ['Event'];">
 
@@ -31,7 +30,7 @@
           </tal:image>
 
           <div class="frontpage-tile-content">
-            <div class="fontpage-tile-content-wrapper" tal:attributes="class python: 'fontpage-tile-content-wrapper' if not show_icon else 'fontpage-tile-content-wrapper show-icon'">
+            <div class="fontpage-tile-content-wrapper">
               <h2 tal:define="title context/Title|nothing"
                   tal:condition="show_title"
                   ><span tal:content="title">Title or id</span></h2>

@@ -24,12 +24,6 @@ class IFrontpageTile(IExistingContentTile):
         required=False,
     )
 
-    show_icon = schema.Bool(
-        title=_(u"Show De Uitgeverijkomma icon (small version)"),
-        default=True,
-        required=False,
-    )
-
     show_image = schema.Bool(
         title=_(u"Show content image (if available)"),
         default=True,
