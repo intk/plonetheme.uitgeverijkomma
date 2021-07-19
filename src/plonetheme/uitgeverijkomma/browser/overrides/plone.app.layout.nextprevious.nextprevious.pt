@@ -1,0 +1,50 @@
+<div xmlns="http://www.w3.org/1999/xhtml"
+     xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+     xmlns:tal="http://xml.zope.org/namespaces/tal"
+     tal:define="enabled view/enabled|nothing;
+                 isViewTemplate view/isViewTemplate|nothing"
+     tal:condition="python:enabled and isViewTemplate"
+     tal:omit-tag=""
+     i18n:domain="plone">
+
+  <tal:block define="portal_url view/site_url;">
+
+    <nav class="pagination"
+         tal:define="next view/next;
+                     previous view/previous"
+         tal:condition="python:previous is not None or next is not None">
+
+      <ul>
+
+        <li class="previous" tal:condition="previous">
+          <a title="Go to previous item"
+              i18n:attributes="title title_previous_item"
+              tal:attributes="href previous/url">
+
+            <span class="arrow"></span>
+            <span i18n:domain="plonetheme.uitgeverijkomma" i18n:translate="label_prev_book" class="label">
+              Previous book
+            </span>
+          </a>
+        </li>
+
+        <li class="next" tal:condition="next">
+          <a title="Go to next item"
+              i18n:attributes="title title_next_item"
+              tal:attributes="href next/url">
+            <span i18n:domain="plonetheme.uitgeverijkomma" i18n:translate="label_next_book" class="label">
+              Next book
+            </span>
+            <span class="arrow"></span>
+          </a>
+        </li>
+
+        &nbsp;
+
+      </ul>
+
+    </nav>
+
+  </tal:block>
+
+</div>

@@ -99,6 +99,7 @@
         <div class="product-details share col-xs-12 col-sm-12 col-md-12 col-lg-2">
           <h3>Share</h3>
           <xsl:copy-of css:select="#product-share"/>
+          <xsl:copy-of css:select="#viewlet-below-content" />
         </div>
       </div>
     </div>

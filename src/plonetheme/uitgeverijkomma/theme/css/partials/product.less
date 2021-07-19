@@ -24,6 +24,12 @@ body.frontend.template-product_view {
         }
     }
 
+    #main-container article#content {
+        @media(min-width: 992px) {
+            margin-bottom: 0px;
+        }
+    }
+
     #main-container .row {
         display: -webkit-box;
         display: -webkit-flex;
@@ -31,9 +37,15 @@ body.frontend.template-product_view {
         display:         flex;
         flex-wrap: wrap;
 
-      .specs, .prices {
+      .specs, .prices, .share {
         display: flex;
         flex-direction: column;
+      }
+
+      .share {
+          #viewlet-below-content {
+              margin-top: auto;
+          }
       }
     }
 
@@ -132,6 +144,46 @@ body.frontend.template-product_view {
 
      #main-container .share {
         order: 4;
+
+
+        #viewlet-below-content {
+            nav.pagination {
+                margin-bottom: 0px;
+
+                
+
+                li > a,
+                li > span {
+                    padding: 0px;
+                }
+                
+                @media(min-width: 992px) {
+                    li.next {
+                        float: left;
+                    }
+
+                    .arrow {
+                        display: none;
+                    }
+                }
+            }
+        }
+     }
+
+
+     #main-container #parent-fieldname-text:after {
+        content: "";
+        display: block;
+        width: 53px;
+        height: 37px;
+        background-image: url("/nl/intk/komma_logo-pos.svg");
+        background-size: contain;
+        background-repeat: no-repeat;
+        margin-left: -10px;
+
+        @media(min-width: 992px) {
+            margin-top: 80px;    
+        }
      }
 
      @media(max-width: 1199px) {
@@ -201,12 +253,12 @@ body.frontend.template-product_view {
                 width: 100%;
                 height: 100%;
                 color: #ffffff;
-                line-height: 32px;
+                line-height: 30px;
                 text-align: left;
                 padding: 5px;
                 padding-left: 8px;
                 padding-right: 8px;
-                font-size: 24px;
+                font-size: 20px;
             }
 
             @media(max-width: 1350px) {
@@ -290,4 +342,29 @@ body:not(.template-document_view):not(.template-product_view) {
 }
 
 
+body.frontend.portaltype-product {
+    
+    #top-header-wrapper {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 0;
+        left: 0;
+        height: auto;
+        z-index: 1;
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+    }
 
+    .main-container-wrapper {
+        position: relative;
+        z-index: 2;
+        background-color: #ffffff;
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+        min-height: 95vh;
+    }
+
+    #portal-footer-wrapper {
+        display: none !important;
+    }
+}

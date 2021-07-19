@@ -391,4 +391,10 @@ msgstr "Pagina's"
 msgid "Event"
 msgstr "Evenementen"
 
+#: ../object.py
+msgid "label_next_book"
+msgstr "Volgende boek"
 
+#: ../object.py
+msgid "label_prev_book"
+msgstr "Vorige boek"
