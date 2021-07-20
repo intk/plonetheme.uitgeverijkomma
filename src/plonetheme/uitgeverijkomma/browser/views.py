@@ -11,11 +11,29 @@ from plone.app.z3cform.widget import RichTextFieldWidget
 from plone.supermodel import model
 from zope import schema
 from collective import dexteritytextindexer
+from urllib.parse import urlparse
 
 class ContextToolsView(BrowserView):
 
-    def get_images_from_folder(self, folder):
-        images = [brain for brain in folder.getFolderContents() if getattr(brain, 'portal_type', None) == "Image"]
+    def get_vimeo_id(self, video_url):
+        if video_url:
+            try:
+                video_id = urlparse(video_url).path.lstrip("/")
+                return video_id
+            except:
+                return None
+        else:
+            return None
+
+    def get_folder_contents(self, folder):
+        return folder.getFolderContents()
+
+    def get_videos_from_folder(self, contents):
+        videos = [brain for brain in contents if getattr(brain, 'portal_type', None) in ["WildcardVideo"]]
+        return videos
+
+    def get_images_from_folder(self, contents):
+        images = [brain for brain in contents if getattr(brain, 'portal_type', None) in ["Image"]]
         return images
 
     def get_slideshow_folder(self, item):
@@ -25,15 +43,22 @@ class ContextToolsView(BrowserView):
         
         return None
 
-    def get_slideshow_images(self, item):
+    def get_slideshow_items(self, item):
 
         slideshow = self.get_slideshow_folder(item)
 
         if slideshow:
-            images = self.get_images_from_folder(slideshow)
-            return images
+
+            results = {}
+            contents = self.get_folder_contents(slideshow)
+            images = self.get_images_from_folder(contents)
+            videos = self.get_videos_from_folder(contents)
+
+            results['videos'] = videos
+            results['images'] = images
+            return results
         else:
-            return []
+            return {"videos": [], "images": []}
 
 
     def trimText(self, text, limit):

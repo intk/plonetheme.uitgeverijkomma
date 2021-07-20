@@ -1,13 +1,17 @@
 <tal:leadheader
   tal:define="context_tools python: context.restrictedTraverse('@@context_tools');
-              slideshow_images python: context_tools.get_slideshow_images(context);
+              slideshow_items python: context_tools.get_slideshow_items(context);
+              slideshow_videos python: slideshow_items.get('videos', None);
+              slideshow_images python: slideshow_items.get('images', None);
+              contains_slideshow python: True if slideshow_videos or slideshow_images else False;
+              contains_leadimage view/available;
               portal context/@@plone_portal_state/portal;
               image_scale portal/@@image_scale;">
 
 
-  <tal:noslideshow tal:condition="not:slideshow_images">
+  <tal:noslideshow tal:condition="not:contains_slideshow">
     <div class="leadImage contains-image"
-         tal:condition="view/available"
+         tal:condition="contains_leadimage"
          tal:define="scale_func context/@@images;
                      scaled_image python: getattr(context.aq_explicit, 'image', False) and scale_func.scale('image', scale='large')">
 
@@ -24,25 +28,46 @@
     </div>
   </tal:noslideshow>
 
-  <tal:withslideshow tal:condition="slideshow_images">
+  <tal:withslideshow tal:condition="contains_slideshow">
 
     <div id="header-carousel" class="leadImage contains-image">
-      <tal:leadimage tal:condition="view/available"
+      
+      <tal:repeat repeat="slideshow_video slideshow_videos">
+        <div class="carousel-slide video-slide"
+          tal:define="first repeat/slideshow_video/start">
+          <tal:leadimage tal:condition="python: contains_leadimage and first"
+                         tal:define="scale_func context/@@images;
+                          scaled_image python: getattr(context.aq_explicit, 'image', False) and scale_func.scale('image', scale='large')">
+
+                <div class="carousel-image-container">
+                  <img tal:replace="structure python: scaled_image.tag(css_class='newsImage')" />
+                </div>
+          </tal:leadimage>
+        
+          <div class="carousel-video-container"
+            tal:define="video_url python: slideshow_video.getObject().youtube_url;
+                        video_id python: context_tools.get_vimeo_id(video_url);">
+
+            <iframe tal:attributes="src python: 'https://player.vimeo.com/video/%s?dnt=1&loop=1&background=1' %(video_id)" frameborder="0" allow="autoplay; fullscreen;" allowfullscreen="" data-ready="true"></iframe>
+
+          </div>
+        </div>
+      </tal:repeat>
+      
+      <tal:leadimage tal:condition="python: contains_leadimage and not slideshow_videos"
           tal:define="scale_func context/@@images;
                       scaled_image python: getattr(context.aq_explicit, 'image', False) and scale_func.scale('image', scale='large')">
-
-          <div class="carousel-slide">
-            <div class="carousel-image-container">
-              <img tal:replace="structure python: scaled_image.tag(css_class='newsImage')" />
+            <div class="carousel-slide">
+              <div class="carousel-image-container">
+                <img tal:replace="structure python: scaled_image.tag(css_class='newsImage')" />
+              </div>
             </div>
-          </div>
-
       </tal:leadimage>
 
-      <tal:repeat repeat="image_item slideshow_images">
+      <tal:repeat repeat="slideshow_item slideshow_images">
         <div class="carousel-slide">
           <div class="carousel-image-container">
-            <img tal:replace="structure python:image_scale.tag(image_item, 'image', scale='large', css_class='newsImage')" />
+            <img tal:replace="structure python:image_scale.tag(slideshow_item, 'image', scale='large', css_class='newsImage')" />
           </div>
         </div>
       </tal:repeat>

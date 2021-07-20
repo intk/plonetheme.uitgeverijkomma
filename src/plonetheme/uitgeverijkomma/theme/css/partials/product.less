@@ -150,7 +150,11 @@ body.frontend.template-product_view {
             nav.pagination {
                 margin-bottom: 0px;
 
-                
+                li {
+                    @media(min-width: 992px) {
+                        clear: both;
+                    }
+                }
 
                 li > a,
                 li > span {
