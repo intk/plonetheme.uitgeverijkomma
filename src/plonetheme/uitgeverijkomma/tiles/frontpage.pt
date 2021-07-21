@@ -13,13 +13,16 @@
                       show_title python: data.get('show_title', True);
                       show_description python: data.get('show_description', True);
                       show_text python: data.get('show_text', True);
+                      show_as_header python: data.get('show_as_header', False);
+                      header_class python: 'header-item' if show_as_header else '';
                       show_image python: data.get('show_image', False);
+                      video_id python: data.get('video_id', False);
                       show_comments python: data.get('show_comments', False);
                       description_alternative python: data.get('description_alternative', False);
                       portal_type context/portal_type|nothing;
                       item_is_event python:portal_type in ['Event'];">
 
-      <section class="${view/tile_class} landscape-item">
+      <section class="${view/tile_class} landscape-item ${header_class}">
         
         <a href="" class="landscape-item-link" tal:attributes="href context/absolute_url|nothing">
           <tal:image condition="show_image">
@@ -28,6 +31,12 @@
               <figure><img tal:replace="structure image_tag" /></figure>
             </div>
           </tal:image>
+
+          <tal:video condition="video_id">
+            <div class="video-container">
+                <iframe tal:attributes="src python: 'https://player.vimeo.com/video/%s?dnt=1&loop=1&background=1' %(video_id)" frameborder="0" allow="autoplay; fullscreen;" allowfullscreen="" data-ready="true"></iframe>
+            </div>
+          </tal:video>
 
           <div class="frontpage-tile-content">
             <div class="fontpage-tile-content-wrapper">

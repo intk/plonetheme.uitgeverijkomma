@@ -12,6 +12,35 @@
 		height: 100%;
 	}
 
+	.slick-prev:before {
+		content: ''
+	}
+
+	.slick-next:before {
+		content: ''
+	}
+
+	@media(max-width: 991px) {
+		.slick-prev,
+		.slick-next {
+			width: 46px;
+			height: 22px;
+		}
+
+		.slick-prev {
+			background-image: url('/nl/intk/images/left_arrow.png');
+			background-repeat: no-repeat;
+			background-size: contain;
+		}
+
+		.slick-next {
+			background-image: url('/nl/intk/images/right_arrow.png');
+			background-repeat: no-repeat;
+			background-size: contain;
+		}
+	}
+
+
 	.slick-next {
 		right: 25px;
 		z-index: 4;
@@ -22,18 +51,41 @@
 		z-index: 4;
 	}
 
+	@media(min-width: 992px) {
+		.slick-next, .slick-prev {
+			position: absolute;
+			width: 50%;
+			height: 100%;
+			top: 0;
+			z-index: 99;
+			border-bottom: 0px;
+			-webkit-transform: none;
+			-ms-transform: none;
+			transform: none;
+		}
+
+		.slick-prev {
+			cursor: url('/nl/intk/images/left_arrow.png') 0 0, pointer;
+			left: 0;
+		}
+
+		.slick-next {
+			cursor: url('/nl/intk/images/right_arrow.png') 0 0, pointer;
+			right: 0;
+		}
+
+		.slick-prev:before {
+			content: ''
+		}
+	
+		.slick-next:before {
+			content: ''
+		}
+	}
+
 	.slick-prev:before, .slick-next:before {
 		font-family: 'Glyphicons Halflings';
 		color: #ffffff;
-		
-	}
-
-	.slick-prev:before {
-		content: '\e079'
-	}
-
-	.slick-next:before {
-		content: '\e080'
 	}
 
 	.slick-prev, .slick-next {
@@ -79,3 +131,5 @@
 		}
 	}
 }
+
+

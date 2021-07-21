@@ -160,6 +160,8 @@ function load_carousel() {
 		require(['jquery', 'collective-slick-js'], function($) {	
 			if (typeof($("#header-carousel").slick) !== "undefined") {
 				$("#header-carousel").slick();
+
+				
 			}
 		});
 	}

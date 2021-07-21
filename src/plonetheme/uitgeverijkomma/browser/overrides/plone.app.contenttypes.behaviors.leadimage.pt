@@ -31,7 +31,7 @@
   <tal:withslideshow tal:condition="contains_slideshow">
 
     <div id="header-carousel" class="leadImage contains-image">
-      
+
       <tal:repeat repeat="slideshow_video slideshow_videos">
         <div class="carousel-slide video-slide"
           tal:define="first repeat/slideshow_video/start">
@@ -49,7 +49,7 @@
                         video_id python: context_tools.get_vimeo_id(video_url);">
 
             <iframe tal:attributes="src python: 'https://player.vimeo.com/video/%s?dnt=1&loop=1&background=1' %(video_id)" frameborder="0" allow="autoplay; fullscreen;" allowfullscreen="" data-ready="true"></iframe>
-
+ 
           </div>
         </div>
       </tal:repeat>

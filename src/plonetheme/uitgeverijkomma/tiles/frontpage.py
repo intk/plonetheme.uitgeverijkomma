@@ -30,6 +30,13 @@ class IFrontpageTile(IExistingContentTile):
         required=False,
     )
 
+
+    show_as_header = schema.Bool(
+        title=_(u"Show content has header"),
+        default=False,
+        required=False,
+    )
+
     image_scale = schema.Choice(
         title=_(u"Image scale"),
         vocabulary="plone.app.vocabularies.ImagesScales",
@@ -51,6 +58,15 @@ class IFrontpageTile(IExistingContentTile):
         title=_(u"Replace the description with a custom text"),
         description=_(
             u"The item's description will be replaced with the text on this field"
+        ),
+        default=u"",
+        required=False
+    )
+
+    video_id = schema.TextLine(
+        title=_(u"Video ID"),
+        description=_(
+            u"Item will show a video if an id is added"
         ),
         default=u"",
         required=False
