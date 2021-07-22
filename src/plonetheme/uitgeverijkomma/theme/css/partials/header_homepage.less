@@ -109,13 +109,11 @@
 }
 
 body.frontend.section-frontpage div.outer-wrapper {
-
+	.headerText();
+	
 	#main-container {
 		.headerText();
 	}
-
-
-	
 
 	@media (min-width: 1850px) {
 		#main-container .content-wrapper {
@@ -132,6 +130,9 @@ body.frontend.section-frontpage div.outer-wrapper {
 		top: 180px;
 	}
 
+	#top-header-wrapper #content-header {
+		transform: none;
+	}
 	@media (max-width: 991px) {
         #portal-logo {
         	width: 95%;
@@ -212,9 +213,32 @@ body.frontend.section-frontpage div.outer-wrapper {
 	}
 
 
-	
+	#mainnavigation-wrapper {
+		position: absolute;
 
-	#content-header {
+		&.is-hidden {
+			-webkit-transform: none;
+			-ms-transform: none;
+			transform: none;
+		}
+	}
+
+	div.main-container-wrapper {
+		z-index: 100;
+	}
+
+	#top-header-wrapper {
+		position: -webkit-sticky;
+		position: sticky;
+		top: 0;
+		left: 0;
+		height: auto;
+		z-index: 1;
+		-webkit-transform: translateZ(0);
+		transform: translateZ(0);
+	}
+
+	#top-header-wrapper #content-header {
 		position: absolute;
 		top: 45px;
 		left: 45px;

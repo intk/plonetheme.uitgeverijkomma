@@ -72,6 +72,12 @@
   <drop css:theme="#header-wrapper .container.main" css:if-content="body.template-layout"/>
   <drop css:theme="#header-wrapper .container.layout" css:if-content="body.template-search"/>
 
+  <replace css:theme="#header-wrapper .header-item" css:content=".landscape-item.header-item" method="raw" css:if-content="body.section-frontpage" />
+  <drop css:content=".landscape-item.header-item" css:if-content="body.section-frontpage"/>
+
+  <replace css:theme="#header-wrapper .header-text" css:content=".header-text-wrapper" method="raw" css:if-content="body.frontend.section-frontpage" />
+  <drop css:content=".header-text-wrapper" css:if-content="body.frontend.section-frontpage"/>
+  
   <!-- Central column -->
   <replace css:theme="#content-container" method="raw">
 
