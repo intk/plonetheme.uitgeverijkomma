@@ -62,6 +62,7 @@
 			-webkit-transform: none;
 			-ms-transform: none;
 			transform: none;
+			border-color: transparent;
 		}
 
 		.slick-prev {
@@ -89,10 +90,14 @@
 	}
 
 	.slick-prev, .slick-next {
+		-webkit-box-shadow: none;
+		box-shadow: none;
+
 		&:hover,
 		&:active,
 		&:active:focus {
 			outline: none;
+			-webkit-box-shadow: none;
 			box-shadow: none;
 		}
 	}

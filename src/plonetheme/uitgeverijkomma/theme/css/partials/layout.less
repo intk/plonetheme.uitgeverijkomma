@@ -50,7 +50,7 @@
     /* Body text */
     p {
         .Lato();
-        font-size: 22px;
+        font-size: 21px;
         line-height: @theme-line-height-text;
         color: @theme-description-color;
         margin: 0 0 @theme-text-margin;
@@ -167,9 +167,11 @@
         margin-bottom: @theme-margin-bottom-table;
         font-size: @theme-font-size-table;
 
-        @media(min-width: 1850px) {
-            font-size: 35px;
-        }
+        &:not(.cart_sum_content) {
+            @media(min-width: 1850px) {
+                font-size: 35px;
+            }
+        }   
     }
 
     table th {
@@ -193,8 +195,8 @@
         border-top: 0px;
         border-left: 0px;
         border-right: 0px;
-        padding-top: 25px;
-        padding-bottom: 20px;
+        padding-top: 5px;
+        padding-bottom: 0px;
     }
 
     table > thead > tr > th,
