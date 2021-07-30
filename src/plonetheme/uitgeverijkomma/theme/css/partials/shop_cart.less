@@ -74,6 +74,30 @@
     }
 }
 
+.cartViewletActionsButtons() {
+    .cart_viewlet_actions {
+
+        padding-top: 10px;
+
+        .context.go_to_cart_action:before {
+            display: none;
+        }
+
+        .context.go_to_cart_action {
+            .shopButtonBlack();
+            text-decoration: none !important;
+        }
+
+        a:nth-child(1) {
+            float: left;
+        }
+
+        a:nth-child(2) {
+            float: right;
+        }
+    }
+}
+
 .cartItems() {
     tr.shipping {
         display: none !important;
@@ -364,4 +388,79 @@ body.frontend.template-cart div.outer-wrapper #main-container {
     .cartStructure();
     .cartItems();
     .cartSummaryButtons();
+}
+
+div.website-wrapper #cart_viewlet #cart_viewlet_details {
+
+    right: 0;
+    width: 50vw;
+    min-width: 800px;
+
+    border: 0px;
+    box-shadow: none;
+    border-radius: 0px;
+
+    @media(max-width: 991px) {
+        min-width: 100%;
+        width: 100vw;
+        height: auto;
+    }
+
+    .summary_item {
+        border-bottom: 0px;
+    }
+    
+    label {
+        font-weight: 400;
+    }
+
+    .cartItems();
+    .cartViewletActionsButtons();
+
+    a {
+        color: #000000;
+        text-decoration: underline;
+
+        &:hover,
+        &:focus,
+        &:active:focus {
+            color: #000000;
+            text-decoration: none;
+        }
+    }
+
+    .cart_item_count {
+        padding: 6px 12px;
+        text-align: left;
+    }
+}
+
+div.website-wrapper #cart_viewlet_wrapper {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1050;
+}
+
+div.website-wrapper #cart_viewlet {
+    padding: 42px 25px;
+
+    #cart_viewlet_summary {
+        span:not(.cart_total_count) {
+            display: none;
+        }
+
+        a {
+            color: #ffffff;
+            text-shadow: 0 0 5px #000;
+
+            &:hover,
+            &:focus,
+            &:active:focus {
+                color: #ffffff;
+                text-decoration: underline;
+                text-shadow: 0 0 5px #000;
+            }
+        }
+    }
 }

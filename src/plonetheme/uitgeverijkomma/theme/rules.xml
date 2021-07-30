@@ -182,6 +182,10 @@
   <drop css:theme="#portal-toolbar" css:if-content=".userrole-anonymous" />
   <replace css:theme="#anonymous-actions" css:content-children="#portal-personaltools-wrapper" css:if-not-content=".ajax_load" css:if-content=".userrole-anonymous" />
 
+  <!-- Cart Viewlet -->
+  <replace css:theme-children="#cart_viewlet_wrapper" css:content="#cart_viewlet" method="raw" />
+  <drop css:content="#cart_viewlet" />
+
   <xsl:template match="//script[contains(@src, 'production')]">
       <xsl:copy>
         <xsl:copy-of select="@*" />
