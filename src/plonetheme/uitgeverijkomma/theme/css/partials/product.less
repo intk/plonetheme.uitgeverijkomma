@@ -1,3 +1,27 @@
+body:not(.frontend) {
+    #formfield-form-widgets-IBook-price,
+    #formfield-form-widgets-IBook-soldout,
+    #formfield-form-widgets-IBuyableBehavior-item_comment_enabled,
+    #formfield-form-widgets-IBuyableBehavior-item_comment_required,
+    #formfield-form-widgets-IBuyableBehavior-item_quantity_unit_float,
+    #formfield-form-widgets-IBuyableBehavior-item_quantity_unit,
+    #formfield-form-widgets-IBuyablePeriodBehavior-buyable_effective,
+    #formfield-form-widgets-IBuyablePeriodBehavior-buyable_expires,
+    #formfield-form-widgets-IGlobalNotificationTextBehavior-global_order_text,
+    #formfield-form-widgets-IGlobalNotificationTextBehavior-global_overbook_text,
+    #formfield-form-widgets-IItemNotificationTextBehavior-order_text,
+    #formfield-form-widgets-IItemNotificationTextBehavior-overbook_text,
+    #formfield-form-widgets-IBuyableBehavior-item_cart_count_limit {
+        display: none !important;
+    }
+
+
+}
+
+#exposeMask {
+    z-index: 0 !important;
+}
+
 body.frontend.template-document_view {
     #main-container .content-wrapper {
         margin-top: 45px;
@@ -97,6 +121,10 @@ body.frontend.template-product_view {
             margin-top: 73px;
             padding-left: 20px;
             padding-right: 20px;
+        }
+
+        dl.details {
+            margin-bottom: 0px;
         }
     }
 

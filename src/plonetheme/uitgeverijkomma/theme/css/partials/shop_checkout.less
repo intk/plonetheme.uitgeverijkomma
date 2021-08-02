@@ -63,6 +63,10 @@ body.template-checkout {
         }
         input, select, textarea, .btn {
             font-size: 14px !important;
+            
+            @media(max-width: 991px) {
+                font-size: 16px !important;
+            }
         }
 
         padding-bottom: 50px;
@@ -76,6 +80,11 @@ body.template-checkout {
         #input-checkout-delivery_address-country {
             width: 20%;
             font-size: 14px;
+
+            @media(max-width: 991px) {
+                width: 50%;
+                font-size: 16px;
+            }
         }
 
         .field input[type="text"], .field input[type="email"], .field select {
@@ -126,16 +135,19 @@ body.template-checkout {
             }
         }
 
+        #tag-checkout-payment_selection-heading,
+        #tag-checkout-shipping_selection-heading,
+        #field-checkout-payment_selection-payment,
+        #field-checkout-shipping_selection-shipping {
+            display: none;
+        }
+        
+
         @media(min-width: 992px) {
             max-width: 700px;
             margin: 0 auto;
 
-            #tag-checkout-payment_selection-heading,
-            #tag-checkout-shipping_selection-heading,
-            #field-checkout-payment_selection-payment,
-            #field-checkout-shipping_selection-shipping {
-                display: none;
-            }
+            
 
             #field-checkout-personal_data-firstname,
             #input-checkout-personal_data-lastname,
@@ -175,6 +187,10 @@ body.template-checkout {
     #form-checkout.mode_display {
         label {
             font-weight: 400;
+        }
+
+        #field-checkout-delivery_address-alternative_delivery label {
+            display: block;
         }
 
         img.cart_item_preview_image {

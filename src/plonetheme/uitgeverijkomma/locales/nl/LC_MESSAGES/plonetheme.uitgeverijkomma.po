@@ -393,8 +393,8 @@ msgstr "Evenementen"
 
 #: ../object.py
 msgid "label_next_book"
-msgstr "Volgende boek"
+msgstr "Volgende"
 
 #: ../object.py
 msgid "label_prev_book"
-msgstr "Vorige boek"
+msgstr "Vorige"

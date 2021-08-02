@@ -20,6 +20,9 @@
   </div>
 
   <div id="product-share">
+    <h3 tal:condition="python: getattr(context, 'language', 'nl') == 'nl'">Delen</h3>
+    <h3 tal:condition="python: getattr(context, 'language', 'nl') != 'nl'">Share</h3>
+
     <a target="_blank" class="share-popup"
        tal:attributes="href python: 'http://www.twitter.com/intent/tweet?url=%s&text=%s' %(context.absolute_url(), context.Title())">Twitter</a>
     <a target="_blank" class="share-popup"
