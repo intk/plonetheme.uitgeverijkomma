@@ -253,4 +253,42 @@ body.template-edit.mosaic-layout-customized {
 	}
 }
 
+.productBtn() {
+    float: left;
+    width: auto;
+    height: 35px;
+    width: 100%;
+
+    span, dd {
+        .HelveticaRoman();
+        display: inline-block;
+        width: 100%;
+        height: 100%;
+        color: #ffffff;
+        line-height: 30px;
+        text-align: left;
+        padding: 5px;
+        padding-left: 8px;
+        padding-right: 8px;
+        font-size: 22px;
+
+        @media(min-width: 992px) and (max-width: 1350px) {
+            font-size: 1.5vw;
+            line-height: 29px;
+        }
+    }
+
+    @media(min-width: 1850px) {
+        height: 60px;
+
+        span {
+            font-size: 40px;
+            line-height: 50px;
+            padding: 10px;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+    }
+}
+
 

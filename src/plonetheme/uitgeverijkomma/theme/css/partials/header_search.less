@@ -11,29 +11,44 @@ body.template-search {
 		}
 
 		#searchform .input-group-btn input {
+			.Lato();
 			background-color: #0a0a0a;
 			border-color: #0a0a0a;
 			color: #ffffff;
 
+			font-size: 20px;
+			line-height: 32px;
+			height: 40px;
+
 			&:hover,
 			&:focus,
 			&:active:focus {
-				background-color: #ffffff;
-				border-color: #ffffff;
-				color: #0a0a0a;
+				background-color: #a6a69b;
+				border-color: #a6a69b;
+				color: #ffffff;
 			}
 		}
 
+		.main-container-wrapper h1.documentFirstHeading {
+			display: none;
+		}
 	}
 }
 
 body.frontend.template-search div.website-wrapper.no-image div.outer-wrapper {
     #top-header-wrapper {
         h1.documentFirstHeading {
+			font-size: 35px;
+			margin-left: 45px;
+			margin-right: 45px;
+
             margin-top: 250px !important;
 
             @media(max-width: 991px) {
+				font-size: 25px;
                 margin-top: 110px !important;
+				margin-left: 25px;
+				margin-right: 25px;
             } 
         }
     }

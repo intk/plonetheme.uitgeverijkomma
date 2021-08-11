@@ -30,6 +30,17 @@ class IFrontpageTile(IExistingContentTile):
         required=False,
     )
 
+    show_author = schema.Bool(
+        title=_(u"Show the authors (if item is a Product)"),
+        default=True,
+        required=False,
+    )
+
+    show_price = schema.Bool(
+        title=_(u"Show the price (if item is a Product)"),
+        default=True,
+        required=False,
+    )
 
     show_as_header = schema.Bool(
         title=_(u"Show content has header"),
@@ -83,6 +94,13 @@ class IFrontpageTile(IExistingContentTile):
     form.omitted('tile_class')
 
 class FrontpageTile(ExistingContentTile):
+
+    def get_item_price(self, item):
+        price = getattr(item, 'price', '99,-')
+        if price:
+            return "€ %s" %(price)
+        else:
+            return "€ 99,-"
 
     def formatted_date(self, item):
         date_provider = getMultiAdapter(

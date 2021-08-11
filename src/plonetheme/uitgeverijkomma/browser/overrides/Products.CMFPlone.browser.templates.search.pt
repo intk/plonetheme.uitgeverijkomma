@@ -256,6 +256,8 @@
                                   Cropped description
                                 </p>
 
+                                <p class="search-result-price" tal:content="python: '€ %s' %(getattr(item.getObject(), 'price', ''))" tal:condition="python: item.PortalType() in ['product', 'Product']"></p>
+
                                 <cite class="documentLocation link-location"
                                       tal:define="breadcrumbs python: view.breadcrumbs(item);
                                                   is_rtl context/@@plone_portal_state/is_rtl;"

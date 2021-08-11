@@ -32,7 +32,7 @@
   <div id="product-price"
     tal:define="soldout python: getattr(context, 'soldout', False);">
 
-    <h3>Bestel</h3>
+    <h3 tal:content="python: 'Buy' if getattr(context, 'language', 'nl') == 'en' else 'Bestel'">Bestel</h3>
 
     <div class="product-price" tal:on-error="nothing" tal:condition="not:soldout">
       <span>€ <span tal:replace="python: context.price"></span></span>

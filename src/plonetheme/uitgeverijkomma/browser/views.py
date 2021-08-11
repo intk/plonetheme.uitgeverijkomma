@@ -84,7 +84,7 @@ class IBook(model.Schema):
     model.fieldset(
         'book',
         label=_(u'Book', default=u'Book'),
-        fields=['specs'],
+        fields=['specs', 'author'],
     )
 
     specs = RichTextField(
@@ -95,6 +95,15 @@ class IBook(model.Schema):
     form.widget('specs', RichTextFieldWidget)
     dexteritytextindexer.searchable('notes')
 
+
+    author = schema.TextLine(
+        title=_(u"Author"),
+        description=_(
+            u"Enter the name of the author(s)"
+        ),
+        default=u"",
+        required=False
+    )
 
     model.fieldset(
         'shop',

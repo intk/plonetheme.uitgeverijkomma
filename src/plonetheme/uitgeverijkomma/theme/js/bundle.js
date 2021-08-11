@@ -185,4 +185,17 @@ jQuery(document).ready(function () {
 
   	/* Load carousel */
   	load_carousel();
+
+	if (jQuery("body.section-frontpage").length > 0) {
+		var body = document.body,timer;
+			window.addEventListener('scroll', function() {
+			clearTimeout(timer);
+			if(!body.classList.contains('disable-hover')) {
+				body.classList.add('disable-hover')
+			}
+			timer = setTimeout(function(){
+				body.classList.remove('disable-hover')
+			}, 300);
+		}, false);
+	}
 });
