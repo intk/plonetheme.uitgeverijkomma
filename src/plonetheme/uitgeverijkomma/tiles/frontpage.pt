@@ -18,6 +18,9 @@
                       show_image python: data.get('show_image', False);
                       video_id python: data.get('video_id', False);
                       show_comments python: data.get('show_comments', False);
+                      show_author python: data.get('show_author', False);
+                      show_price python: data.get('show_price', False);
+                      show_buttons python: data.get('show_buttons', False);
                       description_alternative python: data.get('description_alternative', False);
                       portal_type context/portal_type|nothing;
                       item_is_event python:portal_type in ['Event'];
@@ -47,7 +50,7 @@
                     tal:condition="show_title"
                     ><span tal:content="title">Title or id</span></h2>
 
-                <p class="frontpage-item-authors" tal:content="python: getattr(context, 'author', '')" tal:condition="item_is_product"></p>
+                <p class="frontpage-item-authors" tal:content="python: getattr(context, 'author', '')" tal:condition="python: item_is_product and show_author"></p>
 
                 <tal:notevent tal:condition="python: not item_is_event">
                   <p class="description"
@@ -81,19 +84,19 @@
                     <input style="display:none" class="cart_item_count" type="number" value="1"></input>
                   </div>
                   <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                    <p class="frontpage-item-price">
+                    <p class="frontpage-item-price" tal:condition="show_price">
                       <span tal:replace="python: view.get_item_price(context)"></span>
                     </p>
                   </div>
                   <div class="clearfix"></div>
                   <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                    <div class="view-btn">
+                    <div class="view-btn" tal:condition="show_buttons">
                       <span>Bekijk</span>
                       <span class="btn-label-view"></span>
                     </div>
                   </div>
                   <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                    <div class="product-buy-btn">
+                    <div class="product-buy-btn" tal:condition="show_buttons">
                       <span>In winkelmand</span>
                       <span class="btn-label-cart"></span>
                     </div>

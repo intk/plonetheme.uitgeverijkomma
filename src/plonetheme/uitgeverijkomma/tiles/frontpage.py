@@ -42,6 +42,12 @@ class IFrontpageTile(IExistingContentTile):
         required=False,
     )
 
+    show_buttons = schema.Bool(
+        title=_(u"Show the buttons (if item is a Product)"),
+        default=True,
+        required=False,
+    )
+
     show_as_header = schema.Bool(
         title=_(u"Show content has header"),
         default=False,
