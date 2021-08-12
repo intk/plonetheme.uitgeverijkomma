@@ -73,10 +73,12 @@
 
               <div class="frontpage-tile-content-wrapper-bottom">
               <tal:product tal:condition="python:item_is_product">
-                <div class="row no-margin frontpage-item-details">
+                <div class="row no-margin frontpage-item-details buyable">
                   
                   <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                     <br/>
+                    <span style="display:none" class="cart_item_uid" tal:content="context/UID"></span>
+                    <input style="display:none" class="cart_item_count" type="number" value="1"></input>
                   </div>
                   <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                     <p class="frontpage-item-price">
