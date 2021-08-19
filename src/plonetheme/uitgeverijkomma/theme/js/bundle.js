@@ -33,82 +33,7 @@ function getCookie(name) {
 })();
 
 function load_menu() {
-	var mainHeader = $('#mainnavigation-wrapper'),
-		secondaryNavigation = $('.cd-secondary-nav'),
-		//this applies only if secondary nav is below intro section
-		belowNavHeroContent = $('.sub-nav-hero'),
-		headerHeight = mainHeader.height();
 	
-	//set scrolling variables
-	var scrolling = false,
-		previousTop = 0,
-		currentTop = 0,
-		scrollDelta = 10,
-		scrollOffset = 150;
-
-	$(window).on('scroll', function(){
-		if( !scrolling ) {
-			scrolling = true;
-			(!window.requestAnimationFrame)
-				? setTimeout(autoHideHeader, 250)
-				: requestAnimationFrame(autoHideHeader);
-		}
-	});
-
-	$(window).on('resize', function(){
-		headerHeight = mainHeader.height();
-	});
-
-	function autoHideHeader() {
-		var currentTop = $(window).scrollTop();
-
-		( belowNavHeroContent.length > 0 ) 
-			? checkStickyNavigation(currentTop) // secondary navigation below intro
-			: checkSimpleNavigation(currentTop);
-
-	   	previousTop = currentTop;
-		scrolling = false;
-	}
-
-	function checkSimpleNavigation(currentTop) {
-		//there's no secondary nav or secondary nav is below primary nav
-	    if (previousTop - currentTop > scrollDelta) {
-	    	//if scrolling up...
-	    	mainHeader.removeClass('is-hidden');
-	    } else if( currentTop - previousTop > scrollDelta && currentTop > scrollOffset) {
-	    	//if scrolling down...
-	    	mainHeader.addClass('is-hidden');
-	    }
-	}
-
-	function checkStickyNavigation(currentTop) {
-		//secondary nav below intro section - sticky secondary nav
-		var secondaryNavOffsetTop = belowNavHeroContent.offset().top - secondaryNavigation.height() - mainHeader.height();
-		
-		if (previousTop >= currentTop ) {
-	    	//if scrolling up... 
-	    	if( currentTop < secondaryNavOffsetTop ) {
-	    		//secondary nav is not fixed
-	    		mainHeader.removeClass('is-hidden');
-	    		secondaryNavigation.removeClass('fixed slide-up');
-	    		belowNavHeroContent.removeClass('secondary-nav-fixed');
-	    	} else if( previousTop - currentTop > scrollDelta ) {
-	    		//secondary nav is fixed
-	    		mainHeader.removeClass('is-hidden');
-	    	}
-	    	
-	    } else {
-	    	//if scrolling down...	
-	 	  	if( currentTop > secondaryNavOffsetTop + scrollOffset ) {
-	 	  		//hide primary nav
-	    		mainHeader.addClass('is-hidden');
-	    	} else if( currentTop > secondaryNavOffsetTop ) {
-	    		//once the secondary nav is fixed, do not hide primary nav if you haven't scrolled more than scrollOffset 
-	    		mainHeader.removeClass('is-hidden');
-	    	}
-
-	    }
-	}
 };
 
 function load_cookie_banner() {
@@ -160,12 +85,76 @@ function load_carousel() {
 		require(['jquery', 'collective-slick-js'], function($) {	
 			if (typeof($("#header-carousel").slick) !== "undefined") {
 				$("#header-carousel").slick();
-
-				
 			}
 		});
 	}
-}
+};
+
+function load_infinite_scroll() {
+	var batch_size = 20;
+	var next_button_selector = 'nav.pagination li.next a';
+
+	if (jQuery('.entries').length > 0) {
+		let infScroll = new InfiniteScroll('.entries', {
+			path: function() {
+				let pageNumber = (this.loadCount + 1)*batch_size;
+				let path = $(next_button_selector).attr('href');
+
+				if (path.match(/^(.*?b_start.*?$)/)) {
+					// Plone Batching
+					parsed_path = path.match(/^(.*?b_start:int=)\d*(.*?$)/).slice(1);
+					return parsed_path[0] + pageNumber + parsed_path[1] + '&b_size='+ batch_size + '&ajax_load=1';
+				}
+				return '';
+				
+			},
+			append: '.entry-item',
+			history: false,
+		});
+
+		infScroll.on('append', function(body, path, items, response) {
+			jQuery(items).each(function() {
+				var product_btns = $(this).find('.product-buy-btn');
+				if (product_btns.length > 0) {
+					var product_btn = product_btns[0];
+
+					jQuery(product_btn).unbind('click').bind('click', function(e) {
+						e.preventDefault();
+						window.bda_plone_cart.buy_now(jQuery(product_btn));
+					});
+				}
+			});
+		});
+	}
+};
+
+function load_disable_hover() {
+
+	var timer;
+	var body = document.body;
+
+	window.addEventListener('scroll', function() {
+		clearTimeout(timer);
+		if(!body.classList.contains('disable-hover')) {
+		  body.classList.add('disable-hover')
+		}
+	
+		timer = setTimeout(function(){
+		  body.classList.remove('disable-hover')
+		}, 250);
+	  }, false);
+};
+
+
+function load_frontpage_animation() {
+	var frontpage_animation = sessionStorage.getItem('frontpageAnimation');
+	if (frontpage_animation != null && frontpage_animation != undefined) {
+		jQuery('html').addClass('no-frontpage-animation');
+	} else {
+		jQuery('html').addClass('frontpage-animation');
+		sessionStorage.frontpageAnimation = true;
+	}
+};
 
 jQuery(document).ready(function () {
 	/* Menu */
@@ -186,16 +175,14 @@ jQuery(document).ready(function () {
   	/* Load carousel */
   	load_carousel();
 
-	if (jQuery("body.section-frontpage").length > 0) {
-		var body = document.body,timer;
-			window.addEventListener('scroll', function() {
-			clearTimeout(timer);
-			if(!body.classList.contains('disable-hover')) {
-				body.classList.add('disable-hover')
-			}
-			timer = setTimeout(function(){
-				body.classList.remove('disable-hover')
-			}, 300);
-		}, false);
-	}
+	/* Disable over on scroll */
+	load_disable_hover();
+
+	/* load infinite scroll */
+	load_infinite_scroll();
+
+	/* Frontpage animation */
+	load_frontpage_animation();
+	
 });
+

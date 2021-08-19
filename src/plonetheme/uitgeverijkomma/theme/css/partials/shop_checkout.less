@@ -27,6 +27,8 @@ body.template-checkout {
     .documentFirstHeading {
         border-bottom: 0px;
         font-size: 30px;
+        padding-left: 15px;
+        padding-right: 15px;
     }
 
     h2, h3 {
@@ -37,15 +39,19 @@ body.template-checkout {
 
     h2 {
         font-size: 20px;
+        margin-left: 15px;
+        margin-right: 15px;
     }
 
     #input-checkout-checkout_back,
     #input-checkout-confirm_back {
+        margin-left: 15px;
         .shopButtonGrey();
     }
 
     #input-checkout-next,
     #input-checkout-finish {
+        margin-right: 15px;
         .shopButtonBlack();
     }
 
@@ -60,6 +66,8 @@ body.template-checkout {
     article#content {
         .field {
             margin-bottom: 20px;
+            padding-left: 15px;
+            padding-right: 15px;
         }
         input, select, textarea, .btn {
             font-size: 14px !important;
@@ -147,27 +155,31 @@ body.template-checkout {
             max-width: 700px;
             margin: 0 auto;
 
-            
-
             #field-checkout-personal_data-firstname,
-            #input-checkout-personal_data-lastname,
             #field-checkout-personal_data-email,
-            #input-checkout-personal_data-phone,
             #field-checkout-billing_address-street,
-            #input-checkout-billing_address-housenumber,
             #field-checkout-billing_address-housenumber_addition,
             #field-checkout-billing_address-zip,
-            #input-checkout-billing_address-city,
             #field-checkout-delivery_address-firstname,
-            #input-checkout-delivery_address-lastname,
             #field-checkout-delivery_address-email,
-            #input-checkout-delivery_address-phone,
             #field-checkout-delivery_address-street,
-            #input-checkout-delivery_address-housenumber,
             #field-checkout-delivery_address-housenumber_addition,
-            #field-checkout-delivery_address-zip,
-            #input-checkout-delivery_address-city  {
+            #field-checkout-delivery_address-zip {
                 width: 50%;
+            }
+
+
+
+            #field-checkout-personal_data-lastname,
+            #field-checkout-personal_data-phone,
+            #field-checkout-billing_address-housenumber,
+            #field-checkout-billing_address-city,
+            #field-checkout-delivery_address-lastname,
+            #field-checkout-delivery_address-phone,
+            #field-checkout-delivery_address-housenumber,
+            #field-checkout-delivery_address-city {
+                width: 50%;
+                float: left;
             }
 
             #field-checkout-billing_address-street,
@@ -187,6 +199,22 @@ body.template-checkout {
     #form-checkout.mode_display {
         label {
             font-weight: 400;
+        }
+
+        #tag-checkout-accept_terms_and_conditions-accept_terms_description {
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+        
+        #field-checkout-personal_data-lastname,
+        #field-checkout-personal_data-phone,
+        #field-checkout-billing_address-housenumber,
+        #field-checkout-billing_address-city,
+        #field-checkout-delivery_address-lastname,
+        #field-checkout-delivery_address-phone,
+        #field-checkout-delivery_address-housenumber,
+        #field-checkout-delivery_address-city {
+            float: none;
         }
 
         #field-checkout-delivery_address-alternative_delivery label {

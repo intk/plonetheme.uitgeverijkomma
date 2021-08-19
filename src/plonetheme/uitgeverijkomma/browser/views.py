@@ -13,7 +13,57 @@ from zope import schema
 from collective import dexteritytextindexer
 from urllib.parse import urlparse
 
+import plone.api
+from plone.app.contenttypes.behaviors.leadimage import ILeadImageBehavior
+
 class ContextToolsView(BrowserView):
+
+    def get_lead_image(self, item):
+
+        if getattr(item, 'portal_type', '') in ['product', 'Product']:
+            slideshow = self.get_slideshow_folder(item)
+
+            if slideshow:
+                contents = self.get_folder_contents(slideshow)
+
+                for brain in contents:
+                    if getattr(brain, 'portal_type', '') == 'Image':
+                        return brain
+                        
+                return None
+            else:
+                return None
+        else:
+            return None
+
+    def get_item_price(self, item):
+
+        soldout = getattr(item, 'soldout', False)
+
+        if soldout:
+            if getattr(self.context, 'language', "") == "nl":
+                return "Uitverkocht"
+            else:
+                return "Sold out"
+
+        price = getattr(item, 'price', '99,-')
+        if price:
+            return "€ %s" %(price)
+        else:
+            return "€ 99,-"
+
+    def get_listing_item_video_id(self, item):
+ 
+        videos = plone.api.content.find(context=item, portal_type="WildcardVideo")
+
+        if videos:
+            video_brain = videos[0]
+            video = video_brain.getObject()
+            url = getattr(video, 'youtube_url', '')
+
+            return self.get_vimeo_id(url)
+        else:
+            return False
 
     def get_vimeo_id(self, video_url):
         if video_url:

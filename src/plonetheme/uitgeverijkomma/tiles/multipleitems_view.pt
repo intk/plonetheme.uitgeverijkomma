@@ -24,7 +24,7 @@
  
       <tal:listing condition="results">
         
-        <div class="entries">
+        <div class="multiple-items">
 
           <tal:entry repeat="item results">
             
@@ -39,48 +39,30 @@
                             item_url python: item.portal_type in view_types and item.getURL() + '/view' or item.getURL();
                             item_link item_url;
                             item_type item/PortalType;
-                            item_is_special python: item_type in ['Person', 'Connector', 'Organization', 'Testimonial'];
-                            hide_link_special_types python: True if item_is_special and not show_about else False;">
+                            item_is_video python: item_type in ['WildcardVideo'];">
 
-              <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 entry-item">
+              <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
 
-                <article class="entry">
+                <div class="inner-wrapper">
 
-                  <header>
+                  <div class="video-wrapper">
+                    <div class="video-container" tal:condition="item_is_video"
+                      tal:define="video_url python: getattr(obj, 'youtube_url', '');
+                                  video_id python: video_url.replace('https://vimeo.com/', '');">
 
-                    <div class="summary" tal:attributes="title python: item_title if not item_is_special else ''">
-
-                      <div class="image-wrapper"
-                      tal:define="img_scale python: 'video' if item_type in ['WildcardVideo'] else img_scale">
-                        <a tal:attributes="href item_link;"
-                           tal:condition="python: item_has_image"
-                           tal:omit-tag="hide_link_special_types">
-
-                           <img tal:replace="structure python:image_scale.tag(item, 'image', scale=img_scale, css_class=img_class, direction='down')" />
-                        </a>
-                      </div> 
-                    
-                      <div class="title-wrapper">
-                        <a tal:attributes="href item_link;
-                                           title item_title;
-                                           class string:$item_wf_state_class;"
-                           tal:omit-tag="hide_link_special_types"><span tal:content="item_title" tal:attributes="class python: 'item-title' if hide_link_special_types else ''"></span>
-                        </a>
-                      </div>
+                      <iframe tal:attributes="src python: 'https://player.vimeo.com/video/%s?dnt=1&loop=1&background=1' %(video_id)" frameborder="0" allow="autoplay; fullscreen;" allowfullscreen="" data-ready="true"></iframe>
                     </div>
-
-                  </header>
-
-                  <!-- Description -->
-                  <div class="description-wrapper" tal:condition="show_description">
-                    <p class="description"
-                        tal:condition="item_description"
-                        tal:content="item_description">
-                      description
-                    </p>
                   </div>
 
-                </article>
+                  <div class="title-wrapper">
+                    <p><span tal:replace="item_title"></span></p>
+                  </div>
+
+                  <div class="text-wrapper">
+                    <div tal:content="structure python:obj.text.output_relative_to(view.context)" tal:on-error="nothing"></div>
+                  </div>
+
+                </div>
               </div>
 
               <tal:clearfix tal:condition="python: number % 3 == 0" tal:define="number repeat/item/number">

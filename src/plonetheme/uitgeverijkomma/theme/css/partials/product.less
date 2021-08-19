@@ -42,6 +42,11 @@ body:not(.template-product_view) {
 
 /* Product view */
 body.frontend.template-product_view {
+
+    div.documentDescription {
+        display: none !important;
+    }
+
     #main-container .content-wrapper {
         margin-top: 45px;
 
@@ -77,6 +82,10 @@ body.frontend.template-product_view {
 
     #main-container .product-details {
         margin-top: 45px;
+
+        nav#category {
+            display: none !important;
+        }
 
         h3 {
             line-height: 1.2;

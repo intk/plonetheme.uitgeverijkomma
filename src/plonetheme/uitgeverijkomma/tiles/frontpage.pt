@@ -8,6 +8,9 @@
   
   <tal:block condition="nocall:view/item_macros">
     <body tal:define="context nocall:view/content_context;
+                      portal context/@@plone_portal_state/portal;
+                      image_scale portal/@@image_scale;
+                      context_tools python: context.restrictedTraverse('@@context_tools');
                       item_macro nocall:view/item_macros/content-core|nothing;
                       data view/data;
                       show_title python: data.get('show_title', True);
@@ -24,6 +27,7 @@
                       description_alternative python: data.get('description_alternative', False);
                       portal_type context/portal_type|nothing;
                       item_is_event python:portal_type in ['Event'];
+                      item_lead_image python: context_tools.get_lead_image(context);
                       item_is_product python:portal_type in ['product', 'Product'];">
 
       <section class="${view/tile_class} landscape-item ${header_class}">
@@ -31,8 +35,8 @@
         <a href="" class="landscape-item-link" tal:attributes="href context/absolute_url|nothing">
           <tal:image condition="show_image">
             <div class="content-image"
-                 tal:define="image_tag view/image_tag">
-              <figure><img tal:replace="structure image_tag" /></figure>
+                 tal:condition="item_lead_image">
+              <figure><img tal:replace="structure python:image_scale.tag(item_lead_image, 'image', scale='large')" /></figure>
             </div>
           </tal:image>
 
@@ -84,8 +88,8 @@
                     <input style="display:none" class="cart_item_count" type="number" value="1"></input>
                   </div>
                   <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                    <p class="frontpage-item-price" tal:condition="show_price">
-                      <span tal:replace="python: view.get_item_price(context)"></span>
+                    <p class="frontpage-item-price" tal:condition="python: show_price and getattr(context, 'soldout', False) == False">
+                      <span tal:replace="python: context_tools.get_item_price(context)"></span>
                     </p>
                   </div>
                   <div class="clearfix"></div>
@@ -96,9 +100,12 @@
                     </div>
                   </div>
                   <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                    <div class="product-buy-btn" tal:condition="show_buttons">
-                      <span>In winkelmand</span>
+                    <div class="product-buy-btn" tal:condition="python: getattr(context, 'soldout', False) == False">
+                      <span tal:content="python: 'In winkelmand' if getattr(context, 'language', 'nl') == 'nl' else 'Add to cart'">In winkelmand</span>
                       <span class="btn-label-cart"></span>
+                    </div>
+                    <div class="product-buy-btn-soldout view-btn" tal:condition="python: getattr(context, 'soldout', False) == True">
+                      <span tal:content="python: 'Uitverkocht' if getattr(context, 'language', 'nl') == 'nl' else 'Soldout'">In winkelmand</span>
                     </div>
                   </div>
               </tal:product>

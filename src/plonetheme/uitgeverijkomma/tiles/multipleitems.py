@@ -34,7 +34,6 @@ from plone.app.standardtiles.contentlisting import ContentListingTile
 class MultipleitemsTile(ContentListingTile):
     template = ViewPageTemplateFile("multipleitems.pt")
 
-
     def contents(self):
         """Search results"""
         builder = getMultiAdapter(
@@ -53,8 +52,6 @@ class MultipleitemsTile(ContentListingTile):
         
         alsoProvides(self.request, IContentListingTileLayer)
         return getMultiAdapter((accessor, self.request), name=view)(**options)
-
-
 
 class IMultipleitemsTile(IContentListingTile):
     show_url = schema.TextLine(

@@ -55,8 +55,11 @@
 
   <!-- header wrapper for search -->
   <replace css:theme-children="#header-wrapper .container" css:content="h1.documentFirstHeading" method="raw" css:if-content="body.template-search"/>
+  <replace css:theme-children="#header-wrapper .container.main #title-above-header" css:content="h1.documentFirstHeading" method="raw" css:if-content="body.template-listing_view"/>
   
-  <drop css:content="h1.documentFirstHeading" css:if-content="body.template-search"/>
+  <drop css:content="h1.documentFirstHeading" css:if-not-content="body.template-search"/>
+  <drop css:content="h1.documentFirstHeading" css:if-content="body.template-listing_view"/>
+  
   <drop css:content="ul.event.summary"/>
 
   <drop css:theme="#header-wrapper .container.main .event-summary" css:if-not-content="body.portaltype-event"/>

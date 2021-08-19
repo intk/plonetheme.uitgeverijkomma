@@ -2,6 +2,7 @@
 body.frontend {
 
 	.pagination {
+		
 		width: 100%;
 
 		margin-top: 50px;
@@ -11,8 +12,6 @@ body.frontend {
 			margin-left: 0px;
 	    	padding-inline-start: 0px;
 		}
-
-
 
 		li > a, .pagination li > span {
 			background-color: transparent;
@@ -41,5 +40,12 @@ body.frontend {
 			float: right;
 		}
 
+	}
+}
+
+body.frontend.portaltype-folder,
+body.frontend.portaltype-collection {
+	.pagination {
+		display: none !important;
 	}
 }

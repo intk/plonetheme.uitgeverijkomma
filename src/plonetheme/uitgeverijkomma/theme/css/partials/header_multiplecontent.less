@@ -4,18 +4,81 @@ body.frontend.portaltype-collection:not(.template-index-html),
 body.frontend.template-listing_view:not(.template-index-html) {
 	background-color: @theme-color-dark-green;
 
+	&.plone-toolbar-left-expanded {
+		.website-wrapper:not(.no-image) #mainnavigation-wrapper {
+			left: 0px !important;
+		}
+	}
+
+	#main-container .content-wrapper {
+		margin-top: 0px;
+	}
+	.documentDescription {
+		display: none !important;
+	}
+
+
+	@media (min-width: 1850px) {
+		#main-container .content-wrapper {
+			padding-right: 0px !important;
+		}
+	}
+	
+	h1.documentFirstHeading {
+		display: none;
+	}
+
+	#header-wrapper {
+		position: relative;
+	}
+
+	#header-wrapper #title-above-header {
+		h1.documentFirstHeading {
+			display: block !important;
+			font-size: 45px;
+			line-height: 1.115;
+		}
+
+		position: absolute;
+		bottom: 20px;
+		left: 45px;
+
+		@media(max-width: 991px) {
+			left: 20px;
+		}
+	}
+
 	div.website-wrapper {
 		background: @theme-color-dark-green;
 
 		&.no-image {
 			#header-wrapper {
 				h1.documentFirstHeading {
+					display: none;
 					margin-top: 260px !important;
 
 					@media(max-width: 991px) {
 						margin-top: 110px !important;
 					} 
 				}
+			}
+		}
+
+		&:not(.no-image) {
+
+			#top-header-wrapper {
+				position: -webkit-sticky;
+				position: sticky;
+				top: 0;
+				left: 0;
+				height: auto;
+				z-index: 1;
+				-webkit-transform: translateZ(0);
+				transform: translateZ(0);
+			}
+
+			#main-container > div:first-child {
+				z-index: 1000;
 			}
 		}
 	}
@@ -27,7 +90,7 @@ body.frontend.template-listing_view:not(.template-index-html) {
 
 			.newsImageContainer {
 				min-height: 400px;
-    			max-height: 600px;
+    			max-height: 95vh;
 			}
 
 			.logo-separator {
@@ -35,12 +98,14 @@ body.frontend.template-listing_view:not(.template-index-html) {
 			}
 
 			h1.documentFirstHeading {
+				display: none;
 				color: #ffffff;
 				text-align: center;
 				margin-bottom: 15px;
 			}
 
 			.documentDescription {
+				display: none;
 				color: #ffffff;
 				text-align: left;
 
@@ -71,14 +136,13 @@ body.frontend.template-listing_view:not(.template-index-html) {
 		}
 
 		.entries {
-			margin-top: 100px;
+			margin-top: 0px;
 		}
-
-
 
 		@media(min-width: 992px) {
 	        h1.documentFirstHeading { 
-	            margin-top: 100px;
+	            margin-top: 0px;
+				display: none;
 	        }
 	    }
 	}

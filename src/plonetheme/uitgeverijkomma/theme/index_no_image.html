@@ -10,6 +10,7 @@
     <!-- End Google Tag Manager -->
     
     <title>Uitgeverijkomma</title>
+    <script src="https://unpkg.com/infinite-scroll@4/dist/infinite-scroll.pkgd.min.js"></script>
   </head>
 
   <body>
@@ -25,10 +26,13 @@
     <div class="website-wrapper no-image">
       
       <div class="outer-wrapper">
+        <a id="cart_close_wrapper" href="javascript:history.back()">
+        </a>
+        
         <div id="cart_viewlet_wrapper">
         </div>
   
-
+        
         <div id="bdajax-overlays">
           <div id="ajax-spinner">
             <img src="/++resource++bdajax/loading-spokes.svg" width="64" height="64" alt="" style="display:none"/>

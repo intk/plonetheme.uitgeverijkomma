@@ -29,7 +29,9 @@
     <!-- Tiles -->
     <record name="plone.app.tiles">
       <value purge="false">
-      <element>plonetheme.uitgeverijkomma.tiles.frontpage</element>
+       <element>plonetheme.uitgeverijkomma.tiles.frontpage</element>
+       <element>plonetheme.uitgeverijkomma.tiles.threecolumns</element>
+       <element>plonetheme.uitgeverijkomma.tiles.multipleitems</element>
       </value>
     </record>
 
@@ -42,7 +44,16 @@
       </field>
     </record>
 
-    <records prefix="plone.app.mosaic.app_tiles.plonetheme.uitgeverijkomma_tiles_frontpage"
+    <record name="plonetheme.uitgeverijkomma.tiles.threecolumns_views">
+      <field type="plone.registry.field.Dict">
+        <title>Threecolumns Views</title>
+        <required>False</required>
+        <key_type type="plone.registry.field.TextLine" />
+        <value_type type="plone.registry.field.TextLine" />
+      </field>
+    </record>
+
+    <records prefix="plone.app.mosaic.app_tiles.plonetheme_uitgeverijkomma_tiles_frontpage"
            interface="plone.app.mosaic.interfaces.ITile">
     <value key="name">plonetheme.uitgeverijkomma.tiles.frontpage</value>
     <value key="label">Frontpage tile</value>
@@ -55,5 +66,33 @@
     <value key="rich_text">false</value>
     <value key="weight">20</value>
   </records>
+
+  <records prefix="plone.app.mosaic.app_tiles.plonetheme_uitgeverijkomma_tiles_threecolumns"
+           interface="plone.app.mosaic.interfaces.ITile">
+    <value key="name">plonetheme.uitgeverijkomma.tiles.threecolumns</value>
+    <value key="label">Threecolumns tile</value>
+    <value key="category">structure</value>
+    <value key="tile_type">app</value>
+    <value key="default_value"></value>
+    <value key="read_only">false</value>
+    <value key="settings">true</value>
+    <value key="favorite">false</value>
+    <value key="rich_text">false</value>
+    <value key="weight">10</value>
+  </records>
+
+  <records prefix="plone.app.mosaic.app_tiles.plonetheme_uitgeverijkomma_tiles_multipleitems"
+           interface="plone.app.mosaic.interfaces.ITile">
+      <value key="name">plonetheme.uitgeverijkomma.tiles.multipleitems</value>
+      <value key="label">Multiple items</value>
+      <value key="category">advanced</value>
+      <value key="tile_type">app</value>
+      <value key="default_value"></value>
+      <value key="read_only">false</value>
+      <value key="settings">true</value>
+      <value key="favorite">false</value>
+      <value key="rich_text">false</value>
+      <value key="weight">15</value>
+    </records>
     
 </registry>

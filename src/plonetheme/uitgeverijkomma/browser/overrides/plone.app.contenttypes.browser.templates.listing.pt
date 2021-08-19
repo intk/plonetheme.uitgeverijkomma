@@ -51,59 +51,125 @@
                 item_link python:item_type in view.use_view_action and item_url+'/view' or item_url;
                 item_is_event python:view.is_event(obj);
                 item_has_image python:item.getIcon;
+                lead_image python:context_tools.get_lead_image(obj);
+                item_lead_image python: lead_image if lead_image else item;
+                video_id python: context_tools.get_listing_item_video_id(obj);
                 item_type_class python:('contenttype-' + view.normalizeString(item_type)) if showicons else '' ;
                 item_is_special python: item_type in ['Person', 'Connector', 'Organization', 'Testimonial'];
+                item_is_product python: item_type in ['product', 'Product'];
                 hide_link_special_types python: True if item_is_special and not showabout else False;
                 show_block python: False if not item_has_image and isanon else True;
                 " tal:condition="show_block">
               
               <metal:block define-slot="entry">
                 <div class="entry-item">
-                  <article class="entry">
+                  <article class="entry" tal:attributes="class python: 'entry' if item_has_image else 'entry no-image'">
                     
                     <header metal:define-macro="listitem" tal:attributes="class python:'vevent' if item_is_event else None">
                       
-                      
-                        <a tal:attributes="href item_link;
-                                           class string:$item_type_class $item_wf_state_class url;
-                                           title item_title;">
-                        
 
-                          <div class="image-wrapper"
-                            tal:define="thumb_scale_list python: 'video' if item_type in ['WildcardVideo'] else thumb_scale_list">
-                               <img tal:replace="structure python:image_scale.tag(item, 'image', scale=thumb_scale_list, css_class=img_class)" />
+                        <tal:notproduct tal:condition="not:item_is_product">
+                          <a tal:attributes="href item_link;
+                                            class string:$item_type_class $item_wf_state_class url;
+                                            title item_title;">
+                            <div class="image-wrapper"
+                              tal:define="thumb_scale_list python: 'video' if item_type in ['WildcardVideo'] else thumb_scale_list">
+                                <img tal:replace="structure python:image_scale.tag(item_lead_image, 'image', scale=thumb_scale_list, css_class=img_class)" />
+                                
+                            </div>
+                            <div class="summary" tal:attributes="title python: item_title if not item_is_special else ''">
+                              <div class="title-wrapper">
+                                <span tal:content="item_title" tal:attributes="class python: 'item-title' if hide_link_special_types else ''"></span>
+                              </div>
+                              <div class="description-wrapper">
+                                <p class="description"
+                                    tal:condition="item_description"
+                                    tal:content="item_description"
+                                    omit-tag="item_is_event" tal:condition="not:item_is_event">
+                                  description
+                                </p>
+
+                                <p class="description"
+                                    tal:condition="item_description"
+                                    omit-tag="not:item_is_event" tal:condition="item_is_event">
+                                  <tal:date tal:replace="structure python:view.formatted_date(obj)"/>
+                                </p>
+                              </div>
                           </div>
+                        </a>
+                      </tal:notproduct>
 
-
-                          <div class="summary" tal:attributes="title python: item_title if not item_is_special else ''">
-
-                            <div class="title-wrapper">
-                              <span tal:content="item_title" tal:attributes="class python: 'item-title' if hide_link_special_types else ''"></span>
+                      <tal:product tal:condition="item_is_product">
+                        <a href="" class="product-item-link" tal:attributes="href item_link">
+                          
+                          <div class="image-wrapper">
+                            <img tal:replace="structure python:image_scale.tag(item_lead_image, 'image', scale=thumb_scale_list, css_class=img_class)" />
+                          </div>
+                            
+                          <tal:video condition="video_id">
+                            <div class="video-container">
+                                <iframe tal:attributes="src python: 'https://player.vimeo.com/video/%s?dnt=1&loop=1&background=1' %(video_id)" frameborder="0" allow="autoplay; fullscreen;" allowfullscreen="" data-ready="true"></iframe>
                             </div>
+                          </tal:video>
 
-                            <div class="description-wrapper">
-                              
-                              <p class="description"
-                                  tal:condition="item_description"
-                                  tal:content="item_description"
-                                  omit-tag="item_is_event" tal:condition="not:item_is_event">
-                                description
-                              </p>
+                          <div class="product-content">
+                            
+                            <div class="product-content-wrapper-header">
+                              <div class="col-xs-12">
+                                <h2 tal:condition="item_title"><span tal:content="item_title">Title or id</span></h2>
 
-                              <p class="description"
-                                  tal:condition="item_description"
-                                  omit-tag="not:item_is_event" tal:condition="item_is_event">
-                                <tal:date tal:replace="structure python:view.formatted_date(obj)"/>
-                              </p>
+                                <p class="product-item-authors" tal:content="python: getattr(obj, 'author', '')"></p>
+
+                                <p class="description"
+                                    tal:content="item_description"
+                                    tal:condition="item_description">
+                                    Description
+                                </p>
+                              </div>
+
+                              </div>
+
+                              <div class="product-content-wrapper-bottom">
+                                <div class="row no-margin product-item-details buyable">
+                                  
+                                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <br/>
+                                    <span style="display:none" class="cart_item_uid" tal:content="item/UID"></span>
+                                    <input style="display:none" class="cart_item_count" type="number" value="1"></input>
+                                  </div>
+
+                                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <p class="product-item-price" tal:condition="python: getattr(obj, 'soldout', False) == False">
+                                      <span tal:replace="python: context_tools.get_item_price(item)"></span>
+                                    </p>
+                                  </div>
+                                  
+                                  <div class="clearfix"></div>
+                                  
+                                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <div class="view-btn">
+                                      <span tal:content="python: 'Bekijk' if getattr(context, 'language', 'nl') == 'nl' else 'View'">Bekijk</span>
+                                      <span class="btn-label-view"></span>
+                                    </div>
+                                  </div>
+                                  
+                                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <div class="product-buy-btn" tal:condition="python: getattr(obj, 'soldout', False) == False">
+                                      <span tal:content="python: 'In winkelmand' if getattr(context, 'language', 'nl') == 'nl' else 'Add to cart'">In winkelmand</span>
+                                      <span class="btn-label-cart"></span>
+                                    </div>
+                                    <div class="product-buy-btn-soldout view-btn" tal:condition="python: getattr(obj, 'soldout', False) == True">
+                                      <span tal:content="python: 'Uitverkocht' if getattr(context, 'language', 'nl') == 'nl' else 'Soldout'">In winkelmand</span>
+                                    </div>
+                                  </div>
+                              </div>
                             </div>
-
-
-                        </div>
-                      </a>
+                          </div>
+                        </a>
+                      </tal:product>
                     </header>
                   </article>
                 </div>
-
               </metal:block>
             </tal:block>
           </tal:repeat>

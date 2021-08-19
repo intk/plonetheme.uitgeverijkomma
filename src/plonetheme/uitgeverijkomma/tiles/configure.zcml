@@ -26,4 +26,45 @@
         name="Available Frontpage Views"
         />
 
+    <plone:tile
+        name="plonetheme.uitgeverijkomma.tiles.threecolumns"
+        title="Threecolumns item"
+        description="A tile which displays a content object with three columns"
+        add_permission="cmf.ModifyPortalContent"
+        class=".threecolumns.ThreecolumnsTile"
+        for="*"
+        permission="zope.Public"
+        schema=".threecolumns.IThreecolumnsTile"
+        template="threecolumns.pt"
+        />
+
+    <utility
+        component="plonetheme.uitgeverijkomma.tiles.threecolumns.availableThreecolumnsViewsVocabulary"
+        name="Available Threecolumns Views"
+        />
+
+    <plone:tile
+        name="plonetheme.uitgeverijkomma.tiles.multipleitems"
+        title="Multiple items"
+        description='Display the results of a saved search of the site content'
+        permission="zope2.View"
+        add_permission="cmf.ModifyPortalContent"
+        class=".multipleitems.MultipleitemsTile"
+        schema=".multipleitems.IMultipleitemsTile"
+        for="*"
+        />
+
+    <utility
+        component="plonetheme.uitgeverijkomma.tiles.multipleitems.availableListingViewsVocabulary"
+        name="Available Multiple items Views"
+        />
+
+    <browser:page
+        name="multipleitems_view"
+        for="*"
+        layer="plone.app.standardtiles.contentlisting.IContentListingTileLayer"
+        permission="zope2.View"
+        template="multipleitems_view.pt"
+        />
+
 </configure>

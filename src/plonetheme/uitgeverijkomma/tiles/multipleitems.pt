@@ -13,19 +13,6 @@
                     background_color python: data.get('background_color', 'White');"
         tal:attributes="class python: 'multipleitems-wrapper row %s' %(background_color)">
 
-        <h2 class="tileHeader col-xs-7 col-sm-9"
-            tal:condition="view/title"
-            tal:content="view/title">
-          Title
-        </h2>
-        <div class="show_more_link col-xs-5 col-sm-3" tal:condition="show_url"><a href="" tal:attributes="href show_url">Bekijk meer</a></div>
-
-        <div class="documentDescription"
-            tal:condition="view/description"
-            tal:content="view/description">
-          Description
-        </div>
-
       <div tal:replace="structure python:view.contents()">Listing</div>
     </div>
   </body>
