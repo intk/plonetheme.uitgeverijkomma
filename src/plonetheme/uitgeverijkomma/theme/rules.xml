@@ -169,10 +169,6 @@
   <replace css:theme-children="#menu-language-selector" css:content="#portal-languageselector" method="raw" />
   <drop css:content="#portal-languageselector" />
 
-  <!-- Move selected language to collapse panel heading -->
-  <replace css:theme="span.selected-language" css:content="#portal-languageselector li.currentLanguage span" method="raw" />
-  <drop css:content="#portal-languageselector li.currentLanguage" />
-
   <!-- Content header -->
   <replace css:theme="#portal-top" css:content-children="#portal-top" />
 

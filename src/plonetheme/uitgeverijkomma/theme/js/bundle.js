@@ -33,7 +33,23 @@ function getCookie(name) {
 })();
 
 function load_menu() {
-	
+	var isLateralNavAnimating = false;
+	var menu_buttons = document.getElementsByClassName("cd-nav-trigger-wrapper");
+
+	var trigger_menu_button = function(event) {
+			if( !isLateralNavAnimating ) {
+			if (jQuery(this).parents('.csstransitions').length > 0) isLateralNavAnimating = true;
+			jQuery('body').toggleClass('navigation-is-open');
+
+			jQuery('.cd-navigation-wrapper').one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function() {
+					isLateralNavAnimating = false;
+			});
+		}
+	};
+
+	for (var i = 0; i < menu_buttons.length; i++) {
+		menu_buttons[i].addEventListener('click', trigger_menu_button, {passive: true});
+	}
 };
 
 function load_cookie_banner() {
@@ -156,6 +172,23 @@ function load_frontpage_animation() {
 	}
 };
 
+function load_menu_subitems() {
+	var coll = document.getElementsByClassName("has_subtree");
+	var i;
+
+	for (i = 0; i < coll.length; i++) {
+		coll[i].addEventListener("click", function() {
+			if (jQuery(this).hasClass('open')) {
+				jQuery(this).removeClass('open');
+			} else {
+
+				jQuery('.has_subtree.open').removeClass('open');
+				jQuery(this).addClass('open');
+			}
+		});
+	}
+};
+
 jQuery(document).ready(function () {
 	/* Menu */
 	load_menu();
@@ -183,6 +216,9 @@ jQuery(document).ready(function () {
 
 	/* Frontpage animation */
 	load_frontpage_animation();
+
+	/* Menu subitems for mobile */
+	load_menu_subitems();
 	
 });
 
