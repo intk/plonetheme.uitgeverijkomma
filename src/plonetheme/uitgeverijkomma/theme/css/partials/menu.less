@@ -35,10 +35,9 @@
 			border-top: 2px solid #a6a69b;
 		}
 
-		@media(min-width: 1850px) {
+		@media(min-width: 2300px) {
 			font-size: 28px;
 		}
-
 	}
 
 	label {
@@ -65,7 +64,11 @@
 			padding-bottom: 5px;
 			min-width: 8em;
 
+			
+
+		
 			@media(max-width: 991px) {
+				width: 100%;
 				font-size: 23px;
 				line-height: 40px;
 				padding-top: 5px;
@@ -84,7 +87,7 @@
 					text-decoration: none !important;
 				}
 			}
-			@media(min-width: 1850px) {
+			@media(min-width: 2300px) {
 				font-size: 55px;
 			}
 		}
@@ -242,7 +245,7 @@
 		top: 35px;
 		right: 27vw;
 
-		@media(min-width: 1850px) {
+		@media(min-width: 2300px) {
 			right: 23.2vw;
 		}
 
@@ -338,8 +341,20 @@
 
 .plone-toolbar-left-expanded #cd-nav div.search-bar-wrapper {
 	@media(max-width: 991px) {
-		left: 200px;
+		left: 180px;
+
+		input[type="text"] {
+			width: ~"calc(85vw - 120px)";
+
+		}
 	}
 }	
+
+.plone-toolbar-left-expanded #cd-nav .container {
+
+	@media(max-width: 991px) {
+		padding-left: 120px;
+	}
+}
 
 

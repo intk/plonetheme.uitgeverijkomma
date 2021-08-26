@@ -4,6 +4,26 @@ body:not(.is-mobile).disable-hover {
     .entries, .entries *, .mosaic-grid-row, .mosaic-grid-row * {
         pointer-events: none !important;
     }
+
+    section.landscape-item .frontpage-tile-content span.description, 
+    section.landscape-item .frontpage-tile-content span.frontpage-item-authors,
+    section.landscape-item .frontpage-tile-content p,
+    .entries .entry-item .product-content span.product-item-authors,
+    .entries .entry-item .product-content span.description,
+    .entries .entry-item .product-content p {
+        display: table !important;
+    }
+
+    .entries .entry-item .product-content div.product-buy-btn,
+    .entries .entry-item .product-content div.view-btn,
+    section.landscape-item .frontpage-tile-content div.product-buy-btn, 
+    section.landscape-item .frontpage-tile-content div.view-btn {
+        display: inline !important;
+
+        span {
+            display: table !important;
+        }
+    }
 }
 
 .links() {
@@ -61,7 +81,7 @@ body:not(.is-mobile).disable-hover {
         color: @theme-description-color;
         margin: 0 0 @theme-text-margin;
 
-        @media(min-width: 1850px) {
+        @media(min-width: 2300px) {
             font-size: 40px;
             margin-bottom: 50px;
         }
@@ -73,7 +93,7 @@ body:not(.is-mobile).disable-hover {
         opacity: 0.4;
         line-height: 18px;
 
-        @media(min-width: 1850px) {
+        @media(min-width: 2300px) {
             font-size: 40px;
         }
     }
@@ -115,7 +135,7 @@ body:not(.is-mobile).disable-hover {
         color: @theme-description-color;
         margin-bottom: @theme-text-margin;
 
-        @media(min-width: 1850px) {
+        @media(min-width: 2300px) {
             font-size: 40px;
         }
     }
@@ -152,7 +172,7 @@ body:not(.is-mobile).disable-hover {
         float: none;
         letter-spacing: 0.00em;
 
-        @media(min-width: 1850px) {
+        @media(min-width: 2300px) {
             font-size: 40px;
         }
         
@@ -174,7 +194,7 @@ body:not(.is-mobile).disable-hover {
         font-size: @theme-font-size-table;
 
         &:not(.cart_sum_content) {
-            @media(min-width: 1850px) {
+            @media(min-width: 2300px) {
                 font-size: 35px;
             }
         }   

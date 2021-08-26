@@ -51,13 +51,16 @@
                 item_link python:item_type in view.use_view_action and item_url+'/view' or item_url;
                 item_is_event python:view.is_event(obj);
                 item_has_image python:item.getIcon;
-                lead_image python:context_tools.get_lead_image(obj);
+                video_data python: context_tools.get_listing_item_video_id(obj);
+                video_id python: video_data.get('video_id', False);
+                lead_image python:context_tools.get_lead_image(obj) if not video_id else None;
                 item_lead_image python: lead_image if lead_image else item;
-                video_id python: context_tools.get_listing_item_video_id(obj);
+                video_thumb_url python: video_data.get('thumb_url', False);
                 item_type_class python:('contenttype-' + view.normalizeString(item_type)) if showicons else '' ;
                 item_is_special python: item_type in ['Person', 'Connector', 'Organization', 'Testimonial'];
                 item_is_product python: item_type in ['product', 'Product'];
                 hide_link_special_types python: True if item_is_special and not showabout else False;
+                is_logged_in python: 'logged_in' if not isanon else '';
                 show_block python: False if not item_has_image and isanon else True;
                 " tal:condition="show_block">
               
@@ -100,10 +103,12 @@
                       </tal:notproduct>
 
                       <tal:product tal:condition="item_is_product">
+
                         <a href="" class="product-item-link" tal:attributes="href item_link">
                           
                           <div class="image-wrapper">
-                            <img tal:replace="structure python:image_scale.tag(item_lead_image, 'image', scale=thumb_scale_list, css_class=img_class)" />
+                            <img tal:replace="structure python:image_scale.tag(item_lead_image, 'image', scale=thumb_scale_list, css_class=img_class)" tal:condition="not:video_thumb_url"/>
+                            <img tal:attributes="class img_class; src video_thumb_url" tal:condition="video_thumb_url"/>
                           </div>
                             
                           <tal:video condition="video_id">
@@ -112,19 +117,19 @@
                             </div>
                           </tal:video>
 
-                          <div class="product-content">
+                          <div class="product-content ${is_logged_in}">
                             
                             <div class="product-content-wrapper-header">
                               <div class="col-xs-12">
                                 <h2 tal:condition="item_title"><span tal:content="item_title">Title or id</span></h2>
 
-                                <p class="product-item-authors" tal:content="python: getattr(obj, 'author', '')"></p>
+                                <span class="product-item-authors" tal:content="python: getattr(obj, 'author', '')"></span>
 
-                                <p class="description"
+                                <span class="description"
                                     tal:content="item_description"
                                     tal:condition="item_description">
                                     Description
-                                </p>
+                                </span>
                               </div>
 
                               </div>

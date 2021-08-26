@@ -11,10 +11,6 @@ body.template-checkout {
         margin-top: 2px;
     }
 
-    #mainnavigation-wrapper {
-        display: none;
-    }
-
     .Lato();
 
     .layout();
@@ -84,6 +80,7 @@ body.template-checkout {
         }
 
         #input-checkout-personal_data-gender,
+        #input-checkout-delivery_address-gender,
         #input-checkout-billing_address-country,
         #input-checkout-delivery_address-country {
             width: 20%;
@@ -110,7 +107,8 @@ body.template-checkout {
 
 
         #input-checkout-payment_selection-payment_method-ideal,
-        #input-checkout-payment_selection-payment_method-creditcard {
+        #input-checkout-payment_selection-payment_method-creditcard,
+        #input-checkout-payment_selection-payment_method-paypal {
             margin-right: 57px !important;
             vertical-align: middle;
             height: auto;
@@ -131,6 +129,13 @@ body.template-checkout {
             background-image: url("/nl/intk/images/payment_icons.png");
             background-repeat: no-repeat;
             background-position: 25px -227px;
+        }
+
+        label[for='input-checkout-payment_selection-payment_method-paypal'] {
+            height: 40px;
+            background-image: url("/nl/intk/images/payment_icons.png");
+            background-repeat: no-repeat;
+            background-position: 25px -188px;
         }
 
         @media(max-width: 991px) {
@@ -157,6 +162,8 @@ body.template-checkout {
 
             #field-checkout-personal_data-firstname,
             #field-checkout-personal_data-email,
+            #field-checkout-personal_data-vat_number,
+            #field-checkout-personal_data-company,
             #field-checkout-billing_address-street,
             #field-checkout-billing_address-housenumber_addition,
             #field-checkout-billing_address-zip,
@@ -164,7 +171,9 @@ body.template-checkout {
             #field-checkout-delivery_address-email,
             #field-checkout-delivery_address-street,
             #field-checkout-delivery_address-housenumber_addition,
-            #field-checkout-delivery_address-zip {
+            #field-checkout-delivery_address-zip,
+            #field-checkout-delivery_address-vat_number,
+            #field-checkout-delivery_address-company {
                 width: 50%;
             }
 
@@ -172,12 +181,16 @@ body.template-checkout {
 
             #field-checkout-personal_data-lastname,
             #field-checkout-personal_data-phone,
+            #field-checkout-personal_data-vat_number,
+            #field-checkout-personal_data-company,
             #field-checkout-billing_address-housenumber,
             #field-checkout-billing_address-city,
             #field-checkout-delivery_address-lastname,
             #field-checkout-delivery_address-phone,
             #field-checkout-delivery_address-housenumber,
-            #field-checkout-delivery_address-city {
+            #field-checkout-delivery_address-city,
+            #field-checkout-delivery_address-vat_number,
+            #field-checkout-delivery_address-company {
                 width: 50%;
                 float: left;
             }
@@ -201,19 +214,31 @@ body.template-checkout {
             font-weight: 400;
         }
 
+        p.cart_item_description {
+            font-size: 16px;
+        }
+
         #tag-checkout-accept_terms_and_conditions-accept_terms_description {
             padding-left: 15px;
             padding-right: 15px;
         }
+
+        #field-checkout-delivery_address-alternative_delivery {
+            display: none;
+        }
         
         #field-checkout-personal_data-lastname,
         #field-checkout-personal_data-phone,
+        #field-checkout-personal_data-company,
+        #field-checkout-personal_data-vat_number,
         #field-checkout-billing_address-housenumber,
         #field-checkout-billing_address-city,
         #field-checkout-delivery_address-lastname,
         #field-checkout-delivery_address-phone,
         #field-checkout-delivery_address-housenumber,
-        #field-checkout-delivery_address-city {
+        #field-checkout-delivery_address-city,
+        #field-checkout-delivery_address-company,
+        #field-checkout-delivery_address-vat_number {
             float: none;
         }
 
@@ -233,6 +258,19 @@ body.template-checkout {
         }
 
         #field-checkout-personal_data-phone {
+            clear: both;
+        }
+
+        #field-checkout-billing_address-housenumber,
+        #field-checkout-billing_address-housenumber_addition,
+        #field-checkout-delivery_address-housenumber,
+        #field-checkout-delivery_address-housenumber_addition {
+            display: inline-block;
+            padding-left: 0px;
+        }
+
+        #field-checkout-billing_address-zip,
+        #field-checkout-delivery_address-zip {
             clear: both;
         }
 
@@ -259,6 +297,10 @@ body.template-checkout {
             display: block;
             margin-left: 0px;
             padding-top: 10px;
+            font-size: 16px;
+            border-bottom: 1px solid #0a0a0a;
+            line-height: 32px;
+            color: #0a0a0a;
         }
 
         table.cart_sum_content {
@@ -314,13 +356,6 @@ body.template-checkout {
     }
 }
 
-body.template-pay_invoice_done,
-body.template-payment {
-    #mainnavigation-wrapper {
-        display: none;
-    }
-}
-
 body.template-orders,
 body.template-bookings {
     .content-wrapper > .documentFirstHeading  {
@@ -334,6 +369,12 @@ body.template-payment div.outer-wrapper #main-container {
     .Lato();
     .layout();
     .buttons();
+
+    padding-top: 80px;
+
+    @media(min-width: 992px) {
+        padding-top: 150px;
+    }
 
     article#content {
         

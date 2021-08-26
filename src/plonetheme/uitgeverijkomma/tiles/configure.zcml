@@ -67,4 +67,28 @@
         template="multipleitems_view.pt"
         />
 
+    <plone:tile
+        name="plonetheme.uitgeverijkomma.tiles.index"
+        title="Index"
+        description='Display the results of a saved search as an index'
+        permission="zope2.View"
+        add_permission="cmf.ModifyPortalContent"
+        class=".index.IndexTile"
+        schema=".index.IIndexTile"
+        for="*"
+        />
+
+    <utility
+        component="plonetheme.uitgeverijkomma.tiles.index.availableIndexViewsVocabulary"
+        name="Available Index Views"
+        />
+
+    <browser:page
+        name="index_view"
+        for="*"
+        layer="plone.app.standardtiles.contentlisting.IContentListingTileLayer"
+        permission="zope2.View"
+        template="index_view.pt"
+        />
+
 </configure>

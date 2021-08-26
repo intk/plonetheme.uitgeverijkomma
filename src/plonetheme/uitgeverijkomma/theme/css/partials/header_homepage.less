@@ -50,7 +50,7 @@
 			padding-bottom: 0px;
 			font-size: 25px;
 
-			@media(min-width: 1850px) {
+			@media(min-width: 2300px) {
 				font-size: 50px;
 			}
 		}
@@ -66,7 +66,7 @@
 			left: 45px;
 		}
 
-		@media(min-width: 1850px) {
+		@media(min-width: 2300px) {
 			left: 75px;
 			bottom: 10px;
 		}
@@ -136,6 +136,28 @@
 	}
 }
 
+@keyframes shrinkXL {
+	0% {
+		width: 100%;
+	}
+
+	100% {
+		width: 120px;
+		height: auto;
+	}
+}
+
+@-webkit-keyframes shrinkXL {
+	0% {
+		width: 100%;
+	}
+
+	100% {
+		width: 120px;
+		height: auto;
+	}
+}
+
 body.frontend.section-frontpage div.outer-wrapper {
 	.headerText();
 	
@@ -143,9 +165,9 @@ body.frontend.section-frontpage div.outer-wrapper {
 		.headerText();
 	}
 
-	@media (min-width: 1850px) {
+	@media (min-width: 2300px) {
 		#main-container .content-wrapper {
-		  padding-right: 0px;
+		  padding-right: 15px;
 		}
 	  }
 
@@ -224,14 +246,14 @@ body.frontend.section-frontpage div.outer-wrapper {
 		}
 	  }
 
-	@media(min-width: 1850px) and (max-height: 1255px) {
+	@media(min-width: 2300px) and (max-height: 1255px) {
 		.mosaic-ILeadImageBehavior-image-tile,
 		.landscape-item.header-item  {
 			height: 95vh;
 		}
 	}
 
-	@media(min-width: 1850px) and (max-height: 900px) {
+	@media(min-width: 2300px) and (max-height: 900px) {
 		.mosaic-ILeadImageBehavior-image-tile,
 		.landscape-item.header-item  {
 			min-height: 900px;
@@ -289,7 +311,7 @@ body.frontend.section-frontpage div.outer-wrapper {
 				width: 506px;
 			}
 
-			@media(min-width: 1850px) {
+			@media(min-width: 2300px) {
 				max-width: 800px;
 			}
 
@@ -301,11 +323,10 @@ body.frontend.section-frontpage div.outer-wrapper {
 					width: 506px;
 				}
 
-				@media(min-width: 1850px) and (max-height: 1255px) {
+				@media(min-width: 2300px) and (max-height: 1255px) {
 					max-width: 506px;
 					width: 506px;
 				}
-
 				
 			}
 
@@ -316,7 +337,7 @@ body.frontend.section-frontpage div.outer-wrapper {
 			top: 20px;
 		}
 
-		@media(min-width: 1850px) {
+		@media(min-width: 2300px) {
 			left: 75px;
 			top: 75px;
 		}
@@ -357,6 +378,15 @@ html.frontpage-animation body.frontend.section-frontpage div.outer-wrapper {
 		-webkit-animation: shrink .5s ease-in;
   		-webkit-animation-fill-mode: forwards;
 		-webkit-animation-delay:1.5s;
+
+		@media(min-width: 2300px) {
+			animation: shrinkXL .5 ease-in;
+			animation-fill-mode: forwards;
+			animation-delay: 1.5s;
+			-webkit-animation: shrinkXL .5s ease-in;
+			-webkit-animation-fill-mode: forwards;
+			-webkit-animation-delay:1.5s;
+		}
 	}
 }
 
@@ -368,6 +398,10 @@ html.no-frontpage-animation body.frontend.section-frontpage div.outer-wrapper {
 	#top-header-wrapper #content-header #portal-logo img {
 		width: 70px;
 		display: block;
+
+		@media(min-width: 2300px) {
+			width: 120px;
+		}
 	}
 }
 

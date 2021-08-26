@@ -12,9 +12,42 @@ from plone.supermodel import model
 from zope import schema
 from collective import dexteritytextindexer
 from urllib.parse import urlparse
+import urllib.request, json 
 
 import plone.api
 from plone.app.contenttypes.behaviors.leadimage import ILeadImageBehavior
+
+def get_vimeo_id(video_url):
+    if video_url:
+        try:
+            video_id = urlparse(video_url).path.lstrip("/")
+            return video_id
+        except:
+            return None
+    else:
+        return None
+
+def fix_all_videos():
+
+    from wildcard.media.subscribers import video_edited
+    import transaction
+    all_videos = plone.api.content.find(portal_type="WildcardVideo", Language='nl')
+    all_videos_en = plone.api.content.find(portal_type="WildcardVideo", Language='en')
+
+    for v_brain in all_videos:
+        v_obj = v_brain.getObject()
+        video_edited(v_obj, None)
+        v_obj.reindexObject()
+        transaction.get().commit()
+
+    for v_brain in all_videos_en:
+        v_obj = v_brain.getObject()
+        video_edited(v_obj, None)
+        v_obj.reindexObject()
+        transaction.get().commit()
+
+    return True
+    
 
 class ContextToolsView(BrowserView):
 
@@ -27,7 +60,7 @@ class ContextToolsView(BrowserView):
                 contents = self.get_folder_contents(slideshow)
 
                 for brain in contents:
-                    if getattr(brain, 'portal_type', '') == 'Image':
+                    if getattr(brain, 'portal_type', '') in ['Image']:
                         return brain
                         
                 return None
@@ -59,28 +92,28 @@ class ContextToolsView(BrowserView):
         if videos:
             video_brain = videos[0]
             video = video_brain.getObject()
-            url = getattr(video, 'youtube_url', '')
-
-            return self.get_vimeo_id(url)
+            url = getattr(video, 'youtube_url', '')   
+            video_thumb_url = getattr(video, 'vimeo_thumb_url', '')
+            
+            return {"video_id":self.get_vimeo_id(url), "thumb_url": video_thumb_url}
         else:
-            return False
+            return {"video_id":None, "thumb_url": None}
 
     def get_vimeo_id(self, video_url):
-        if video_url:
-            try:
-                video_id = urlparse(video_url).path.lstrip("/")
-                return video_id
-            except:
-                return None
-        else:
-            return None
+        return get_vimeo_id(video_url)
 
     def get_folder_contents(self, folder):
         return folder.getFolderContents()
 
     def get_videos_from_folder(self, contents):
         videos = [brain for brain in contents if getattr(brain, 'portal_type', None) in ["WildcardVideo"]]
-        return videos
+        video_thumb_url = None
+
+        if videos:
+            video = videos[0].getObject()
+            video_thumb_url = getattr(video, 'vimeo_thumb_url', None)
+
+        return videos, video_thumb_url
 
     def get_images_from_folder(self, contents):
         images = [brain for brain in contents if getattr(brain, 'portal_type', None) in ["Image"]]
@@ -102,10 +135,11 @@ class ContextToolsView(BrowserView):
             results = {}
             contents = self.get_folder_contents(slideshow)
             images = self.get_images_from_folder(contents)
-            videos = self.get_videos_from_folder(contents)
+            videos, video_thumb_url = self.get_videos_from_folder(contents)
 
             results['videos'] = videos
             results['images'] = images
+            results['video_thumb_url'] = video_thumb_url
             return results
         else:
             return {"videos": [], "images": []}
@@ -175,3 +209,28 @@ class IBook(model.Schema):
         default=False,
         required=False,
     )
+
+
+def get_vimeo_thumb(video_url="https://vimeo.com/578160762"):
+
+    VIMEO_GET_JSON_URL = "https://vimeo.com/api/v2/video/%s.json"
+
+    vimeo_id = get_vimeo_id(video_url)
+
+    if vimeo_id:
+        get_json_url = VIMEO_GET_JSON_URL % (vimeo_id)
+        with urllib.request.urlopen(get_json_url) as url:
+            data = json.loads(url.read().decode())
+            if data:
+                vimeo_json = data[0]
+                thumb_large = vimeo_json.get('thumbnail_large', '')
+                if thumb_large:
+                    return thumb_large.replace('_640', '')
+                else:
+                    return None
+            else:
+                return None
+    else:
+        return None
+
+

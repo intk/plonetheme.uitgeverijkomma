@@ -12,10 +12,8 @@
                          portal original_context/@@plone_portal_state/portal;
                          image_scale portal/@@image_scale;
                          data nocall:options/data|nothing;
-                         show_description python: data.get('show_description', False);
+                         show_authors python: data.get('show_authors', False);
                          img_format python: data.get('image_format', 'Square');
-                         use_awards_view python: data.get('use_awards_view', False);
-                         awards_view_class python: 'awards' if use_awards_view else '';
                          toLocalizedTime nocall:original_context/@@plone/toLocalizedTime;
                          pas_member original_context/@@pas_member;
                          registry original_context/portal_registry;
@@ -29,7 +27,7 @@
  
       <tal:listing condition="results">
         
-        <div class="multiple-items ${awards_view_class}">
+        <div class="multiple-items index">
 
           <tal:entry repeat="item results">
             
@@ -38,59 +36,43 @@
                             item_id item/getId;
                             item_title item/Title;
                             item_title python:item_title or item_id;
-                            item_description item/Description;
                             item_wf_state item/review_state;
                             item_wf_state_class python:'state-' + item_wf_state;
                             item_url python: item.portal_type in view_types and item.getURL() + '/view' or item.getURL();
                             item_link item_url;
                             item_type item/PortalType;
-                            item_is_video python: item_type in ['WildcardVideo'];">
+                            item_authors python: getattr(obj, 'author', None);
+                            video_data python: context_tools.get_listing_item_video_id(obj);
+                            video_id python: video_data.get('video_id', False);">
 
-              <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+              <div class="col-xs-12">
 
                 <div class="inner-wrapper">
                   
-                  <div class="description-wrapper" tal:condition="python: not item_is_video and use_awards_view">
-                    <p tal:content="item_description"></p>
-                  </div>
+                  <a href="" tal:attributes="href item_link" class="index-hover-link">
+                    <div class="title-wrapper block__title">
+                      <p>
+                        <span tal:replace="item_title"></span> <span tal:condition="python: show_authors and item_authors">- <span tal:replace="item_authors"></span></span>
+                         
+                      </p>
 
-                  <div class="title-wrapper" tal:condition="python: not item_is_video and use_awards_view">
-                    <p><span tal:replace="item_title"></span></p>
-                  </div>
+                      <div class="item_hoover_reveal">
+                        <div class="hover-container" tal:condition="video_id">
+                          <iframe tal:attributes="src python: 'https://player.vimeo.com/video/%s?dnt=1&loop=1&background=1' %(video_id)" frameborder="0" allow="autoplay; fullscreen;" allowfullscreen="" data-ready="true"></iframe>
+                        </div>
 
-                  <div class="image-wrapper" tal:condition="python: not item_is_video and use_awards_view and item_has_image">
-                      <figure><img tal:replace="structure python:image_scale.tag(item, 'image', scale='large')" /></figure>
-                  </div>
-
-                  <div class="video-wrapper" tal:condition="item_is_video">
-                    <div class="video-container"
-                      tal:define="video_url python: getattr(obj, 'youtube_url', '');
-                                  video_id python: video_url.replace('https://vimeo.com/', '');">
-
-                      <iframe tal:attributes="src python: 'https://player.vimeo.com/video/%s?dnt=1&loop=1&background=1' %(video_id)" frameborder="0" allow="autoplay; fullscreen;" allowfullscreen="" data-ready="true"></iframe>
+                        <div class="hover-container" tal:condition="python: not video_id and item_has_image">
+                          <img tal:replace="structure python:image_scale.tag(item, 'image', scale='large')" />  
+                        </div>
+                      </div> 
                     </div>
-                  </div>
-
-                  <div class="title-wrapper" tal:condition="item_is_video">
-                    <p><span tal:replace="item_title"></span></p>
-                  </div>
-
-                  <div class="text-wrapper">
-                    <div tal:content="structure python:obj.text.output_relative_to(view.context)" tal:on-error="nothing"></div>
-                  </div>
+                    
+                    
+                  </a>
 
                 </div>
               </div>
-
-              <tal:clearfix tal:condition="python: number % 3 == 0" tal:define="number repeat/item/number">
-                <div class="clearfix visible-lg visible-md"></div>
-              </tal:clearfix> 
-
-              <tal:clearfixmd condition="python: number % 2 == 0" tal:define="number repeat/item/number">
-                <div class="clearfix visible-sm"></div>
-              </tal:clearfixmd>
-
-              
+   
             </tal:block>
           </tal:entry>
         </div>

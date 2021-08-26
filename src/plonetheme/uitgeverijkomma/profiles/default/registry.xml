@@ -32,6 +32,7 @@
        <element>plonetheme.uitgeverijkomma.tiles.frontpage</element>
        <element>plonetheme.uitgeverijkomma.tiles.threecolumns</element>
        <element>plonetheme.uitgeverijkomma.tiles.multipleitems</element>
+       <element>plonetheme.uitgeverijkomma.tiles.index</element>
       </value>
     </record>
 
@@ -93,6 +94,20 @@
       <value key="favorite">false</value>
       <value key="rich_text">false</value>
       <value key="weight">15</value>
+    </records>
+
+  <records prefix="plone.app.mosaic.app_tiles.plonetheme_uitgeverijkomma_tiles_index"
+           interface="plone.app.mosaic.interfaces.ITile">
+      <value key="name">plonetheme.uitgeverijkomma.tiles.index</value>
+      <value key="label">Index</value>
+      <value key="category">advanced</value>
+      <value key="tile_type">app</value>
+      <value key="default_value"></value>
+      <value key="read_only">false</value>
+      <value key="settings">true</value>
+      <value key="favorite">false</value>
+      <value key="rich_text">false</value>
+      <value key="weight">16</value>
     </records>
     
 </registry>

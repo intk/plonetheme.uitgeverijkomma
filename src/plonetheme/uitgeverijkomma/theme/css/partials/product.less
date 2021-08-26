@@ -94,7 +94,7 @@ body.frontend.template-product_view {
             padding-bottom: 35px;
             border-bottom: 1px solid #a6a69b;
 
-            @media(min-width: 1850px) {
+            @media(min-width: 2300px) {
                 font-size: 40px;
                 padding-bottom: 60px;
                 margin-bottom: 18px;
@@ -105,7 +105,7 @@ body.frontend.template-product_view {
             font-size: 16px;
             margin-bottom: 22px;
 
-            @media(min-width: 1850px) {
+            @media(min-width: 2300px) {
                 font-size: 25px;
                 padding-right: 40px;
                 margin-bottom: 30px;
@@ -116,6 +116,7 @@ body.frontend.template-product_view {
             font-size: 16px;
             text-decoration: none;
             display: block;
+            line-height: 1.2;
 
             &:hover,
             &:focus,
@@ -123,8 +124,9 @@ body.frontend.template-product_view {
                 text-decoration: underline;
             }
 
-            @media(min-width: 1850px) {
+            @media(min-width: 2300px) {
                 font-size: 25px;
+                line-height: 1.2;
             }
         }
 
@@ -133,7 +135,7 @@ body.frontend.template-product_view {
             padding-right: 10px;
         }
 
-        @media(min-width: 1850px) {
+        @media(min-width: 2300px) {
             margin-top: 73px;
             padding-left: 20px;
             padding-right: 20px;
@@ -172,7 +174,7 @@ body.frontend.template-product_view {
             padding-top: 7px !important;
             padding-left: 10px !important;
 
-            @media(min-width: 1850px) {
+            @media(min-width: 2300px) {
                 padding-top: 11px !important;
             }
         }
@@ -192,6 +194,11 @@ body.frontend.template-product_view {
 
         #viewlet-below-content {
             nav.pagination {
+
+                @media(min-width: 1200px) {
+                    margin-top: 130px;
+                }
+
                 margin-bottom: 0px;
 
                 li {
@@ -220,7 +227,10 @@ body.frontend.template-product_view {
      }
 
 
-     #main-container #parent-fieldname-text:after {
+     #main-container .content-wrapper:after {
+        position: absolute;
+        bottom: 0px;
+        left: 15px;
         content: "";
         display: block;
         width: 40px;
@@ -230,12 +240,61 @@ body.frontend.template-product_view {
         background-repeat: no-repeat;
         margin-left: -9px;
 
-        @media(min-width: 992px) {
-            margin-top: 130px;    
+        @media(max-width: 1199px) {
+            display: none;
         }
 
         @media(max-width: 991px) {
             display: none;
+        }
+
+        @media(min-width: 2300px) {
+            width: 70px;
+            height: 49px;
+        }
+     }
+
+     #main-container .content-wrapper,
+     #main-container .product-details {
+        @media(min-width: 1200px) {
+            
+            &.specs {
+                #product-specs {
+                    padding-bottom: 130px;
+                }
+            }
+
+            #parent-fieldname-text {
+                padding-bottom: 130px;
+            }
+        }
+
+        @media(min-width: 2300px) {
+            &.specs {
+                #product-specs {
+                    padding-bottom: 150px;
+                }
+            }
+
+            #parent-fieldname-text {
+                padding-bottom: 150px;
+            }
+        }
+     }
+
+     #main-container .product-details.share:after {
+        content: "";
+        display: block;
+        width: 40px;
+        height: 37px;
+        background-image: url("/nl/intk/komma_logo-pos.svg");
+        background-size: contain;
+        background-repeat: no-repeat;
+        margin-left: -9px;
+        margin-top: 50px;
+
+        @media(min-width: 1200px) {
+            display: none !important;
         }
      }
 
@@ -295,7 +354,7 @@ body.frontend.template-product_view {
             background-position: center center;
             background-size: 75px 75px;
 
-            @media(min-width: 1850px) {
+            @media(min-width: 2300px) {
                 background-size: 120px 120px;
             }
         }

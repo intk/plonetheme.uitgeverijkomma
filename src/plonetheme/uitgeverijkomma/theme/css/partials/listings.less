@@ -9,11 +9,12 @@
 	background-position: 50%;
 	background-size: cover;
 	background-repeat: no-repeat;
+	background-color: #0a0a0a;
 }
 
 .contentImage() {
 	background-size: cover;
-	background-position: center bottom;
+	background-position: center center;
 	background-repeat: no-repeat;
 
 	overflow: hidden;
@@ -36,7 +37,7 @@
 
 		-o-object-fit: cover;
 		object-fit: cover;
-		object-position: center bottom;
+		object-position: center center;
 	}
 }
 
@@ -70,10 +71,14 @@
 	-webkit-transition: opacity .3s ease-out;
 	-o-transition: opacity .3s ease-out;
 
-	
+	@media(min-width: 2300px) {
+		padding-top: 60px;
+		padding-bottom: 80px;
+		padding-left: 65px;
+		padding-right: 65px;
+	}
 
 	h2 {
-		cursor: pointer;
 		color: #ffffff;
 		margin-bottom: 8px;
 		.HelveticaRoman();
@@ -85,22 +90,29 @@
 		}
 
 		@media(min-width: 992px) and (max-width: 1350px) {
-			font-size: 1.4vw;
+			font-size: 1.6vw;
 			line-height: 1.2;
 		}
 
-		@media(min-width: 1850px) {
-			font-size: 24px;
+		@media(min-width: 2300px) {
+			font-size: 40px;
 			line-height: 1.2;
 		}
 	}
 
-	p {
+	p, span.frontpage-item-authors, span.description, span.product-item-authors  {
+
+		transition: display .3s ease-out;
+		-moz-transition: display .3s ease-out;
+		-webkit-transition: display .3s ease-out;
+		-o-transition: display .3s ease-out;
+		
 		color: #ffffff;
 		.HelveticaRoman();
-		font-size: 1.4vw;
+		font-size: 23px;
 		line-height: 1.2;
 		margin-bottom: 1vw;
+		display: block;
 
 		&.frontpage-item-authors,
 		&.product-item-authors {
@@ -111,26 +123,45 @@
 		&.product-item-price {
 			padding-top: 10px;
 			border-top: 1px solid rgba(166,166,155, 0.3);
-			margin-bottom: 50px;
+			margin-bottom: 1.2vw;
 
 			@media(min-width: 992px) and (max-width: 1350px) {
-				margin-bottom: 2.5vw;
+				margin-bottom: 1.2vw;
 			}
 
-			@media(min-width: 1850px) {
-				font-size: 24px;
+			@media(min-width: 2300px) {
+				font-size: 40px;
 				line-height: 1.2;
 			}
 		}
 
 		@media(min-width: 992px) and (max-width: 1350px) {
-			font-size: 1.4vw;
+			font-size: 1.6vw;
 			line-height: 1.2;
 		}
 
-		@media(min-width: 1850px) {
-			font-size: 24px;
+		@media(min-width: 992px) and (max-width: 1100px) {
+			font-size: 1.45vw;
 			line-height: 1.2;
+		}
+
+		@media(min-width: 2300px) {
+			font-size: 40px;
+			line-height: 1.2;
+		}
+	}
+
+	&.logged_in {
+		p, span.frontpage-item-authors, span.description, span.product-item-authors {
+			@media(min-width: 992px) and (max-width: 1350px) {
+				font-size: 1.2vw;
+				line-height: 1.2;
+			}
+	
+			@media(min-width: 992px) and (max-width: 1100px) {
+				font-size: 1.1vw;
+				line-height: 1.2;
+			}
 		}
 	}
 
@@ -140,7 +171,7 @@
 			line-height: 1.2;
 		}	
 
-		p {
+		p, span.frontpage-item-authors, span.description, span.product-item-authors {
 			font-size: 16px;
 			line-height: 1.2;
 
@@ -185,7 +216,6 @@
 
 	abbr[title] {
 		border-bottom: 0px !important;
-		cursor: pointer;
 		text-decoration: none !important;
 	}
 
@@ -195,7 +225,7 @@
 		background-position: center center;
 		background-size: 75px 75px;
 
-		@media(min-width: 1850px) {
+		@media(min-width: 2300px) {
 			background-size: 120px 120px;
 		}
 	}
@@ -206,7 +236,7 @@
 		background-position: center center;
 		background-size: 75px 75px;
 
-		@media(min-width: 1850px) {
+		@media(min-width: 2300px) {
 			background-size: 120px 120px;
 		}
 	}
@@ -215,8 +245,8 @@
 		.productBtn();
 		position: relative;
 		padding-right: 50px;
-		border-top: 1px solid rgba(166,166,155, 0.3);
-		border-bottom: 1px solid rgba(166,166,155, 0.3);
+		border-top: 1px solid rgba(166,166,155, 0.2);
+		border-bottom: 1px solid rgba(166,166,155, 0.2);
 		
 		span {
 			font-size: 16px;
@@ -229,15 +259,15 @@
 				font-size: 1.4vw;
 			}
 
-			@media(min-width: 1850px) {
-				font-size: 24px;
+			@media(min-width: 2300px) {
+				font-size: 28px;
 				line-height: 45px;
 			}
 		}
 
 		
 
-		@media(min-width: 1850px) {
+		@media(min-width: 2300px) {
 			padding-right: 100px;
 		}
 
@@ -246,9 +276,9 @@
 			right: 0;
 			top: 0;
 			width: 50px;
-			border-left: 1px solid rgba(166,166,155, 0.3);
+			border-left: 1px solid rgba(166,166,155, 0.2);
 
-			@media(min-width: 1850px) {
+			@media(min-width: 2300px) {
 				width: 100px;
 				
 			}
@@ -273,7 +303,7 @@
 
 .listingItemWrapper() {
 	width: 100%;
-	padding-top: 62.6%;
+	padding-top: 56.25%;
 
 	position: relative;
 	overflow: hidden;
@@ -637,9 +667,9 @@
 			height: 100%;
 
 			iframe {
-				width: 120% !important;
-				max-width: 120% !important;
-				height: 105% !important;
+				width: 100% !important;
+				max-width: 100% !important;
+				height: 100% !important;
 			}
 		}
 

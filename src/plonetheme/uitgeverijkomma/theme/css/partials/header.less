@@ -8,7 +8,7 @@
 
     #portal-logo {
         img {
-            width: 70px;
+            width: 40px;
             height: auto;
             
         }
@@ -59,7 +59,7 @@
     #main-container .content-wrapper {
         margin-top: 45px;
 
-        @media(min-width: 1850px) {
+        @media(min-width: 2300px) {
             margin-top: 73px;
             padding-right: 30px;
         }
@@ -86,7 +86,7 @@
 
         }
 
-        @media (min-width: 1850px) {
+        @media (min-width: 2300px) {
             font-size: 40px;
             margin-bottom: 95px;
         }
@@ -129,7 +129,7 @@
             
         }
 
-        @media(min-width: 1850px) {
+        @media(min-width: 2300px) {
             font-size: 40px;
         }
     }
@@ -479,6 +479,19 @@ body.frontend div.outer-wrapper {
 	.header();
 }
 
+body.template-checkout div.outer-wrapper {
+    .header();
+
+    #main-container .content-wrapper {
+        margin-top: 120px;
+
+        @media(min-width: 2300px) {
+            margin-top: 73px;
+            padding-right: 30px;
+        }
+    }
+}
+
 body.frontend div.website-wrapper.no-image div.outer-wrapper {
     #top-header-wrapper {
         h1.documentFirstHeading {
@@ -529,11 +542,6 @@ div.website-wrapper.no-image {
 
 body.section-shop.portaltype-folder:not(.template-cart):not(.template-checkout),
 body.section-shop.portaltype-collection:not(.template-cart):not(.template-checkout) {
-    div.website-wrapper.no-image {
-        #portal-logo img {
-            content: none !important;
-        }
-    }
 
     #mainnavigation-wrapper .plone-nav li a {
         text-shadow: none;

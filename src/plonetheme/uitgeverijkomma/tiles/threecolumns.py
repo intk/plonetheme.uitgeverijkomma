@@ -89,6 +89,12 @@ class IThreecolumnsTile(IExistingContentTile):
         required=True
     )
 
+    use_only_two = schema.Bool(
+        title=_(u"Use only the last two columns"),
+        default=False,
+        required=False,
+    )
+
     form.omitted('show_text')
     form.omitted('show_comments')
     form.omitted('tile_class')

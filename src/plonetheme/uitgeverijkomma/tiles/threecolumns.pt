@@ -17,7 +17,11 @@
                       contact python: data.get('contact', False);
                       linkedin python: data.get('linkedin', False);
                       picture_credits python: data.get('picture_credits', False);
+                      use_only_two python: data.get('use_only_two', False);
                       description_alternative python: data.get('description_alternative', False);
+                      name_wrapper_class python: 'name-wrapper' if not use_only_two else 'image-wrapper';
+                      text_wrapper_class python: 'text-wrapper' if not use_only_two else 'name-wrapper';
+                      image_wrapper_class python: 'image-wrapper' if not use_only_two else 'text-wrapper';
                       portal_type context/portal_type|nothing;">
 
       <section class="${view/tile_class} threecolumns-item">
@@ -25,37 +29,43 @@
 
           <div class="row">
 
-            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 name-wrapper">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 ${name_wrapper_class}">
               <div class="inner-wrapper">
-                <p tal:define="title context/Title|nothing" tal:condition="show_title">
+                <p tal:define="title context/Title|nothing" tal:condition="show_title" tal:condition="not:use_only_two">
                   <span tal:content="title">Title or id</span>
                 </p>
               </div>
             </div>
 
-            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 text-wrapper">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 ${text_wrapper_class}">
               <div class="inner-wrapper">
-                <div tal:content="structure python:context.text.output_relative_to(view.context)" tal:on-error="nothing"></div>
+                <div tal:content="structure python:context.text.output_relative_to(view.context)" tal:on-error="nothing" tal:condition="not:use_only_two"></div>
 
-                <div class="contact-linkedin">
+                <div class="contact-linkedin" tal:condition="not:use_only_two">
                   <p tal:condition="python: contact and linkedin"><a href="" tal:attributes="href contact">Contact</a> / <a href="" tal:attributes="href linkedin">LinkedIn</a></p>
                   <p tal:condition="python: contact and not linkedin"><a href="" tal:attributes="href contact">Contact</a></p>
                   <p tal:condition="python: linkedin and not contact"><a href="" tal:attributes="href linkedin">LinkedIn</a></p>
                 </div>
+
+                <p tal:define="title context/Title|nothing" tal:condition="show_title" tal:condition="use_only_two">
+                  <span tal:content="title">Title or id</span>
+                </p>
               </div>
             </div>
 
-            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 image-wrapper">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 ${image_wrapper_class}">
               <div class="inner-wrapper">
                 <tal:image condition="show_image">
                   <div class="content-image"
-                      tal:define="image_tag view/image_tag">
+                      tal:define="image_tag view/image_tag" tal:condition="not:use_only_two">
                     <figure><img tal:replace="structure image_tag" /></figure>
                   </div>
                 </tal:image>
-                <div class="bottom-text">
+                <div class="bottom-text" tal:condition="not:use_only_two">
                   <p tal:condition="picture_credits" tal:content="picture_credits"><p>
                 </div>
+
+                <div tal:content="structure python:context.text.output_relative_to(view.context)" tal:on-error="nothing" tal:condition="use_only_two"></div>
               </div>
             </div>
 

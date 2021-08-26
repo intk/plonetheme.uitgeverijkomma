@@ -31,8 +31,8 @@ from plone.app.standardtiles.contentlisting import IContentListingTileLayer
 from plone.app.standardtiles.contentlisting import ContentListingTile
 
 
-class MultipleitemsTile(ContentListingTile):
-    template = ViewPageTemplateFile("multipleitems.pt")
+class IndexTile(ContentListingTile):
+    template = ViewPageTemplateFile("index.pt")
 
     def contents(self):
         """Search results"""
@@ -53,13 +53,7 @@ class MultipleitemsTile(ContentListingTile):
         alsoProvides(self.request, IContentListingTileLayer)
         return getMultiAdapter((accessor, self.request), name=view)(**options)
 
-class IMultipleitemsTile(IContentListingTile):
-    show_url = schema.TextLine(
-        title=_(u"show_url", default=u"Show more url"),
-        description=_(u"If an url is added the 'Show more' button will be shown"),
-        required=False,
-    )
-
+class IIndexTile(IContentListingTile):
     image_format = schema.Choice(
         title=_(u"Choose image format"),
         description=_(u"Square is used by default"),
@@ -68,46 +62,31 @@ class IMultipleitemsTile(IContentListingTile):
         required=False
     )
 
-    background_color = schema.Choice(
-        title=_(u"Choose background color"),
-        description=_(u"White by default"),
-        values=[_(u'White'), _(u'Purple'), _(u'Red')],
-        default=_(u'White'),
-        required=False
-    )
-
-    show_description = schema.Bool(
-        title=_(u"Show description for each item in the listing."),
-        description=_(u"Does not show description by default - according to the design"),
-        default=False,
-        required=False,
-    )
-
-    use_awards_view = schema.Bool(
-        title=_(u"Use awards view (show description on top of image)"),
-        default=False,
-        required=False,
+    show_authors = schema.Bool(
+        title=_(u"Show authors"),
+        description=_(u"Show authors by default - according to the design"),
+        default=True,
+        required=True,
     )
 
     view_template = schema.Choice(
-        title=_(u"Display mode"), source=_(u"Available Multiple items Views"), required=True
+        title=_(u"Display mode"), source=_(u"Available Index Views"), required=True
     )
 
 
-
-class IMultipleitemsTileLayer(IContentListingTileLayer):
+class IIndexTileLayer(IContentListingTileLayer):
     pass
 
 
 @provider(IVocabularyFactory)
-def availableListingViewsVocabulary(context):
+def availableIndexViewsVocabulary(context):
     """Get available views for listing content as vocabulary"""
 
     registry = getUtility(IRegistry)
     listing_views = registry.get("plonetheme.uitgeverijkomma.tiles.listing_views", {})
     if len(listing_views) == 0:
         listing_views = {
-            "multipleitems_view": u"Multiple items view"
+            "index_view": u"Index view"
         }
     voc = []
     for key, label in sorted(listing_views.items(), key=itemgetter(1)):

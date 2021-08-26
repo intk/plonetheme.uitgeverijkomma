@@ -89,6 +89,15 @@ class IFrontpageTile(IExistingContentTile):
         required=False
     )
 
+    video_thumb_url = schema.TextLine(
+        title=_(u"Video first frame URL"),
+        description=_(
+            u"The first frame will be shown before the video loads"
+        ),
+        default=u"",
+        required=False
+    )
+
     view_template = schema.Choice(
         title=_(u'Display mode'),
         source=_(u'Available Frontpage Views'),

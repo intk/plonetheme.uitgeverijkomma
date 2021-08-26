@@ -27,7 +27,9 @@
        tal:attributes="href python: 'http://www.twitter.com/intent/tweet?url=%s&text=%s' %(context.absolute_url(), context.Title())">Twitter</a>
     <a target="_blank" class="share-popup"
        tal:attributes="href python: 'https://www.facebook.com/sharer/sharer.php?u=%s&t=%s' %(context.absolute_url(), context.Title())">Facebook</a>
+    <!--<a target="_blank" class="share-popup" tal:attributes="href python: 'http://pinterest.com/pin/create/link/?url=%s' %(context.absolute_url())">Pinterest</a>-->
   </div>
+  
 
   <div id="product-price"
     tal:define="soldout python: getattr(context, 'soldout', False);">

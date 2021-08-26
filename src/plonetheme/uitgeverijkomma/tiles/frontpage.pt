@@ -8,6 +8,7 @@
   
   <tal:block condition="nocall:view/item_macros">
     <body tal:define="context nocall:view/content_context;
+                      isanon context/@@plone_portal_state/anonymous;
                       portal context/@@plone_portal_state/portal;
                       image_scale portal/@@image_scale;
                       context_tools python: context.restrictedTraverse('@@context_tools');
@@ -20,6 +21,7 @@
                       header_class python: 'header-item' if show_as_header else '';
                       show_image python: data.get('show_image', False);
                       video_id python: data.get('video_id', False);
+                      video_thumb_url python: data.get('video_thumb_url', False);
                       show_comments python: data.get('show_comments', False);
                       show_author python: data.get('show_author', False);
                       show_price python: data.get('show_price', False);
@@ -28,15 +30,23 @@
                       portal_type context/portal_type|nothing;
                       item_is_event python:portal_type in ['Event'];
                       item_lead_image python: context_tools.get_lead_image(context);
+                      is_logged_in python: 'logged_in' if not isanon else '';
                       item_is_product python:portal_type in ['product', 'Product'];">
 
       <section class="${view/tile_class} landscape-item ${header_class}">
         
         <a href="" class="landscape-item-link" tal:attributes="href context/absolute_url|nothing">
-          <tal:image condition="show_image">
+          
+          <tal:image condition="python: show_image and not video_thumb_url">
             <div class="content-image"
                  tal:condition="item_lead_image">
               <figure><img tal:replace="structure python:image_scale.tag(item_lead_image, 'image', scale='large')" /></figure>
+            </div>
+          </tal:image>
+
+          <tal:image condition="python: show_image and video_thumb_url">
+            <div class="content-image">
+              <figure><img tal:attributes="src video_thumb_url"/></figure>
             </div>
           </tal:image>
 
@@ -46,7 +56,7 @@
             </div>
           </tal:video>
 
-          <div class="frontpage-tile-content">
+          <div class="frontpage-tile-content ${is_logged_in}">
             
             <div class="fontpage-tile-content-wrapper-header">
               <div class="col-xs-12">
@@ -54,25 +64,25 @@
                     tal:condition="show_title"
                     ><span tal:content="title">Title or id</span></h2>
 
-                <p class="frontpage-item-authors" tal:content="python: getattr(context, 'author', '')" tal:condition="python: item_is_product and show_author"></p>
+                <span class="frontpage-item-authors" tal:content="python: getattr(context, 'author', '')" tal:condition="python: item_is_product and show_author"></span>
 
                 <tal:notevent tal:condition="python: not item_is_event">
-                  <p class="description"
+                  <span class="description"
                       tal:define="context_description context/Description|nothing;
-                                  description python: description_alternative if description_alternative else context_description"
+                                  description python: description_alternative if description_alternative else context_tools.trimText(context_description, 160)"
                       tal:content="description"
                       tal:condition="show_description">
                       Description
-                  </p>
+                  </span>
                 </tal:notevent>
 
                 <tal:event tal:condition="python:item_is_event">
-                  <p class="description"
+                  <span class="description"
                       tal:define="context_description context/Description|nothing;
-                                  description python: description_alternative if description_alternative else context_description"
+                                  description python: description_alternative if description_alternative else context_tools.trimText(context_description, 160)"
                       tal:condition="show_description">
                       <tal:date tal:replace="structure python:view.formatted_date(context)"/>
-                  </p>
+                  </span>
                 </tal:event>
               </div>
 

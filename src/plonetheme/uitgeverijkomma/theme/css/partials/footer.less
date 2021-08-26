@@ -14,6 +14,22 @@
     }
 }
 
+body.green #portal-footer-wrapper { 
+	background-color: rgb(90, 98, 69) !important;
+}
+
+body.blue #portal-footer-wrapper { 
+	background-color: rgb(0, 124, 144) !important;
+}
+
+body.pink #portal-footer-wrapper { 
+	background-color: rgb(237, 182, 179) !important;
+}
+
+body.orange #portal-footer-wrapper { 
+	background-color: rgb(212, 98, 40) !important;
+}
+
 #portal-footer-wrapper {
 	.layout();
 
@@ -23,7 +39,7 @@
 	color: @theme-footer-text-color;
 	clear: both;
 
-	@media(min-width: 1850px) {
+	@media(min-width: 2300px) {
 		padding: 65px 0 20px 0;
 	}
 
@@ -52,6 +68,10 @@
 	#portal-footer {
 		width: 100%;
 		max-width: 100%;
+
+		@media(min-width: 992px) and (max-width: 1199px) {
+			padding-left: 35px;
+		}
 	}
 
 	.portlet-static-footer {
@@ -64,7 +84,7 @@
 		}
 
 		.left-part {
-			@media(min-width: 1850px) {
+			@media(min-width: 2300px) {
 				padding-left: 20px;
 				padding-right: 20px;
 			}
@@ -81,7 +101,7 @@
 				}
 			}
 
-			@media(min-width: 1850px) {
+			@media(min-width: 2300px) {
 				padding-left: 20px;
 				padding-right: 20px;
 			}
@@ -107,7 +127,7 @@
 			margin-left: -8px;
 			margin-bottom: -40px;
 
-			@media(min-width: 1850px) {
+			@media(min-width: 2300px) {
 				width: 200px;
 				margin-left: -21px;
 				margin-top: 0px;
@@ -127,7 +147,7 @@
     		border-bottom: 1px solid #0a0a0a !important;
     		font-size: 15px;
 
-			@media(min-width: 1850px) {
+			@media(min-width: 2300px) {
 				font-size: 24px;
 			}
 
@@ -141,7 +161,7 @@
             border-bottom: 1px solid #0a0a0a;
 
 
-			@media(min-width: 1850px) {
+			@media(min-width: 2300px) {
 				font-size: 40px;
     			padding-bottom: 60px;
 				margin-bottom: 20px;
@@ -153,7 +173,7 @@
             line-height: 1.2;
             margin-bottom: 20px;
 
-			@media(min-width: 1850px) {
+			@media(min-width: 2300px) {
 				font-size: 24px;
     			margin-bottom: 30px;
 			}
@@ -164,7 +184,7 @@
             text-decoration: none;
             display: block;
 
-			@media(min-width: 1850px) {
+			@media(min-width: 2300px) {
 				font-size: 24px;
 			}
 
@@ -289,7 +309,7 @@
 		padding-right: @theme-footer-margin-right-lg;
 	}
 
-	@media(min-width: 1850px) {
+	@media(min-width: 2300px) {
 		padding-left: 35px;
 		padding-right: 35px;
 	}
