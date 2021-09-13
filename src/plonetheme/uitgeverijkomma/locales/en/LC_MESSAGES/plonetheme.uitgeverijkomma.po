@@ -284,3 +284,10 @@ msgstr "Collection in this exhibition"
 msgid "privacy_statement"
 msgstr "Privacy statement"
 
+#: ../object.py
+msgid "product"
+msgstr "Books"
+
+#: ../object.py
+msgid "Document"
+msgstr "Other pages"

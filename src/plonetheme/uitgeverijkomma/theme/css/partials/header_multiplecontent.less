@@ -1,7 +1,7 @@
 
-body.frontend.portaltype-folder:not(.template-index-html),
-body.frontend.portaltype-collection:not(.template-index-html),
-body.frontend.template-listing_view:not(.template-index-html) {
+body.frontend.portaltype-folder:not(.template-index-html):not(.template-cart),
+body.frontend.portaltype-collection:not(.template-index-html):not(.template-cart),
+body.frontend.template-listing_view:not(.template-index-html):not(.template-cart) {
 	background-color: @theme-color-dark-green;
 
 	&.plone-toolbar-left-expanded {
@@ -72,7 +72,7 @@ body.frontend.template-listing_view:not(.template-index-html) {
 				top: 0;
 				left: 0;
 				height: auto;
-				z-index: 1;
+				z-index: 0;
 				-webkit-transform: translateZ(0);
 				transform: translateZ(0);
 			}
@@ -84,15 +84,25 @@ body.frontend.template-listing_view:not(.template-index-html) {
 	}
 
 	div.outer-wrapper {
+		#top-header-title-wrapper {
+			&:hover {
+				cursor: url("/nl/intk/images/down_arrow.png") 11 45, pointer;
+			}
+		}
 
 		#top-header-wrapper {
 			background: @theme-text-color;
 
 			.newsImageContainer {
 				min-height: 400px;
-    			max-height: 95vh;
+    			max-height: 100vh;
+
+				&:hover {
+					cursor: url("/nl/intk/images/down_arrow.png") 11 45, pointer;
+				}
 			}
 
+		
 			.logo-separator {
 				display: none;
 			}

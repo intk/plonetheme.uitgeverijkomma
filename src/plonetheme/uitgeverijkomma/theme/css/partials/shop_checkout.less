@@ -1,4 +1,38 @@
+.termsAndConditions() {
+    .mosaic-grid-row {
+        .mosaic-width-quarter {
+            width: 100% !important;
+        }
 
+        h4 {
+            font-size: 30px !important;
+            padding-top: 25px !important;
+        }
+
+        h3 {
+            margin-top: 0px !important;
+            padding-bottom: 15px !important;
+            font-size: 30px !important;
+        }
+
+        p {
+            font-size: 16px !important;
+            margin-bottom: 15px !important;
+        }
+
+        ul li {
+            font-size: 16px !important;
+            color: #0a0a0a !important;
+        }
+
+        .mosaic-position-quarter {
+            h4 {
+                padding-top: 0px !important;
+                font-size: 25px !important;
+            }
+        }
+    }
+}
 
 body.template-checkout {
     background-color: #ffffff;
@@ -15,6 +49,10 @@ body.template-checkout {
 
     .layout();
     .buttons();
+
+    .plone-modal-wrapper {
+        .termsAndConditions();
+    }
 
     .content-wrapper > .documentFirstHeading  {
         display: none;
@@ -70,6 +108,14 @@ body.template-checkout {
             
             @media(max-width: 991px) {
                 font-size: 16px !important;
+            }
+
+            
+        }
+
+        .btn {
+            @media(min-width: 2300px) {
+                font-size: 23px !important;
             }
         }
 
@@ -240,6 +286,10 @@ body.template-checkout {
         #field-checkout-delivery_address-company,
         #field-checkout-delivery_address-vat_number {
             float: none;
+        }
+
+        #tag-checkout-delivery_address-heading.hidden {
+            display: none;
         }
 
         #field-checkout-delivery_address-alternative_delivery label {

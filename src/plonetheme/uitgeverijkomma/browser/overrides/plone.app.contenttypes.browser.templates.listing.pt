@@ -143,22 +143,22 @@
                                     <input style="display:none" class="cart_item_count" type="number" value="1"></input>
                                   </div>
 
-                                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 price-col">
                                     <p class="product-item-price" tal:condition="python: getattr(obj, 'soldout', False) == False">
-                                      <span tal:replace="python: context_tools.get_item_price(item)"></span>
+                                      <span tal:replace="python: context_tools.get_item_price(obj)"></span>
                                     </p>
                                   </div>
                                   
                                   <div class="clearfix"></div>
                                   
-                                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 view-btn-col">
                                     <div class="view-btn">
                                       <span tal:content="python: 'Bekijk' if getattr(context, 'language', 'nl') == 'nl' else 'View'">Bekijk</span>
                                       <span class="btn-label-view"></span>
                                     </div>
                                   </div>
                                   
-                                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 buy-btn-col">
                                     <div class="product-buy-btn" tal:condition="python: getattr(obj, 'soldout', False) == False">
                                       <span tal:content="python: 'In winkelmand' if getattr(context, 'language', 'nl') == 'nl' else 'Add to cart'">In winkelmand</span>
                                       <span class="btn-label-cart"></span>
@@ -178,6 +178,8 @@
               </metal:block>
             </tal:block>
           </tal:repeat>
+
+          
         </div>
 
         <div metal:use-macro="context/batch_macros/macros/navigation" />

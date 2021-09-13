@@ -14,6 +14,12 @@
                      previous view/previous"
          tal:condition="python:previous is not None or next is not None">
 
+      <p>
+        <a href="" i18n:domain="plonetheme.uitgeverijkomma" 
+        i18n:translate="back_to_shop" 
+        tal:attributes="href python: '/%s/shop/all' %(getattr(context, 'language', 'nl'))">Back to shop</a>
+      </p>
+
       <ul>
 
         <li class="previous" tal:condition="previous">

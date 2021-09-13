@@ -14,6 +14,13 @@ body:not(.is-mobile).disable-hover {
         display: table !important;
     }
 
+    .entries .entry-item .product-content span.description,
+    section.landscape-item .frontpage-tile-content span.description {
+        @media(max-width: 991px) {
+            display: none !important;
+        }
+    }
+
     .entries .entry-item .product-content div.product-buy-btn,
     .entries .entry-item .product-content div.view-btn,
     section.landscape-item .frontpage-tile-content div.product-buy-btn, 
@@ -81,8 +88,13 @@ body:not(.is-mobile).disable-hover {
         color: @theme-description-color;
         margin: 0 0 @theme-text-margin;
 
+        @media(max-width: 991px) {
+            font-size: 16px;
+            line-height: 1.35;
+        }
+
         @media(min-width: 2300px) {
-            font-size: 40px;
+            font-size: 34px;
             margin-bottom: 50px;
         }
     }
@@ -217,7 +229,7 @@ body:not(.is-mobile).disable-hover {
         padding: 0px;
         font-family: inherit;
         font-size: inherit;
-        line-height: 34px;
+        line-height: 28px;
         border-top: 0px;
         border-left: 0px;
         border-right: 0px;

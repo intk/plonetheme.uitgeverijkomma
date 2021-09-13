@@ -1,13 +1,13 @@
 
 
 body.site-en {
-	.search-bar-wrapper form.nl {
+	.search-bar-wrapper a.nl {
 		display: none !important;
 	}
 }
 
 body.site-nl {
-	.search-bar-wrapper form.en {
+	.search-bar-wrapper a.en {
 		display: none !important;
 	}
 }
@@ -28,7 +28,53 @@ body.template-search {
 	}
 
 	#searchResultsSort, dl.actionMenu {
-		display: none;
+		/*display: none;*/
+	}
+
+	.actionMenu {
+		float: none;
+		margin-top: 20px;
+
+		dt {
+			position: initial;
+
+		}
+
+		#search-filter-toggle {
+			display: none;
+		}
+
+		dd {
+			position: initial;
+			display: block;
+			padding: 0px;
+			border: 0px;
+			background: none;
+			top: 0px;
+			width: 100%;
+		}
+
+		.search-date-options > div, .search-type-options > div {
+			display: block;
+		}
+
+		.search-type-options {
+			display: flex;
+			flex-flow: column;
+
+			&> div:nth-child(1) {
+				order: 2;
+			}
+
+			&> div:nth-child(2) {
+				order: 1;
+			}
+		}
+		
+		label {
+			font-weight: 400;
+			padding-top: 2px;
+		}
 	}
 
 	#search-results-bar #results-count {

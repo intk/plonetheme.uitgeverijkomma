@@ -26,6 +26,7 @@
       <figcaption tal:condition="context/image_caption|nothing"
               tal:content="context/image_caption">
       </figcaption>
+
     </div>
   </tal:noslideshow>
 
@@ -69,6 +70,8 @@
           </div>
         </div>
       </tal:repeat>
+
+      
     </div>
 
   </tal:withslideshow>

@@ -35,7 +35,8 @@
                       first_call not:request/advanced_search|nothing;
                       st python:request.get('SearchableText', '');
                       DateTime python:modules['DateTime'].DateTime;
-                      navigation_root_url view/navroot_url;">
+                      navigation_root_url view/navroot_url;
+                      context_tools python: context.restrictedTraverse('@@context_tools');">
 
         <input type="hidden" name="sort_on" value="" />
         <input type="hidden" name="sort_order" value="" />
@@ -73,33 +74,33 @@
           <dd class="actionMenuContent">
             <div id="search-filter" i18n:domain="plone">
               <fieldset class="noborder">
-                <legend i18n:translate="label_item_type">Item type</legend>
+                
                   <div class="field"
                        tal:define="portal_types portal/portal_types;
-                                   types_list view/types_list;
-                                   all_checked python:(len(types_list) == len(request.get('portal_type', []))) or first_call;
-                                   toggle_select_state python:all_checked and 'true' or 'false';">
-                    <div class="optionsToggle">
-                      <input type="checkbox" onchange="" name="pt_toggle" value="#" id="pt_toggle" class="noborder" checked="checked"
-                             tal:attributes="checked python:all_checked and 'checked' or '';" />
+                                   types_list view/types_list;">
 
-                      <label for="pt_toggle"
-                             i18n:translate="label_toggle">Select All/None</label>
-                    </div>
+
                     <div class="search-type-options">
                       <div tal:repeat="type types_list">
-                        <input type="checkbox" name="portal_type:list" value="#" class="noborder" checked="checked"
-                               tal:attributes="value type;
-                                               id string:portal_type_${repeat/type/number};
-                                               checked python:((type in request.get('portal_type', [])) or first_call) and 'checked' or ''"/>
-                          <label for="" i18n:translate=""
-                                 tal:attributes="for string:portal_type_${repeat/type/number}"
-                                 tal:content="python: portal_types.getTypeInfo(type).Title()" />
+
+                          <input type="checkbox" name="portal_type:list" value="#" class="noborder" checked="checked"
+                                 tal:attributes="value type;
+                                                 id string:portal_type_${type};
+                                                 checked python:((type in request.get('portal_type', [])) or first_call and type in ['product']) and 'checked' or '';
+                                                 type python: 'checkbox' if type in ['product', 'Document'] else 'hidden'"/>
+
+                            <label for="" i18n:domain="plonetheme.uitgeverijkomma" i18n:translate=""
+                                   tal:attributes="for string:portal_type_${type}"
+                                   tal:condition="python: type in ['Document', 'product']"
+                                   tal:content="python: portal_types.getTypeInfo(type).Title() if type not in ['product', 'Document'] else type" />
+
+
                       </div>
                     </div>
+
                   </div>
                 </fieldset>
-                <fieldset class="noborder">
+                <fieldset class="noborder" style="display:none;">
                   <legend i18n:translate="label_new_items_since">New items since</legend>
                   <div class="field">
                     <div class="search-date-options">
@@ -189,7 +190,7 @@
               </div>
               <metal:searchresults define-macro="search_results">
                 <div class="autotabs">
-                  <nav class="autotoc-nav" id="searchResultsSort">
+                  <nav class="autotoc-nav" id="searchResultsSort" style="display:none;">
                     <span i18n:translate="sort_by" class="autotab-heading">Sort by</span>
                       <span id="sorting-options">
                         <metal:sorting define-macro="sorting">
@@ -221,7 +222,7 @@
                         <div class="searchResults row">
                           <tal:results repeat="item batch">
                             <div tal:define="hasIcon item/getIcon" class="search-result">
-                              <div class="image-wrapper col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                              <div class="image-wrapper col-lg-4 col-md-4 col-sm-12 col-xs-12">
                                 
                                 <a href="#"
                                    tal:define="item_url item/getURL;
@@ -233,13 +234,13 @@
                                    
                                    <img class="thumb-preview"
                                      tal:condition="hasIcon"
-                                     tal:replace="structure python: image_scale.tag(item, 'image', scale='preview', css_class='thumb-preview', direction='down')">
+                                     tal:replace="structure python: image_scale.tag(item, 'image', scale='preview', css_class='thumb-preview')">
 
                                 </a>
 
                               </div>
 
-                              <div class="search-result-wrapper col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                              <div class="search-result-wrapper col-lg-8 col-md-8 col-sm-12 col-xs-12">
                                 <a href="#"
                                    tal:define="item_url item/getURL;
                                                item_type item/PortalType;
@@ -256,7 +257,7 @@
                                   Cropped description
                                 </p>
 
-                                <p class="search-result-price" tal:content="python: '€ %s' %(getattr(item.getObject(), 'price', ''))" tal:condition="python: item.PortalType() in ['product', 'Product']"></p>
+                                <p class="search-result-price" tal:content="python: context_tools.get_item_price(item.getObject())" tal:condition="python: item.PortalType() in ['product', 'Product']"></p>
 
                                 <cite class="documentLocation link-location"
                                       tal:define="breadcrumbs python: view.breadcrumbs(item);

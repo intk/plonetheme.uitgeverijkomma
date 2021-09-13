@@ -9,6 +9,32 @@
 	
 }
 
+.topHeaderTitle() {
+	height: 100px;
+	margin-top: -105px;
+	position: relative;
+	
+	h1 {
+		position: absolute;
+		bottom: 30px;
+		left: 45px;
+		margin-top: 0px;
+		margin-bottom: 0px;
+
+		color: #ffffff;
+
+		font-size: 45px;
+    	line-height: 1.115;
+
+		@media(max-width: 991px) {
+			left: 20px;
+			bottom: 20px;
+			font-size: 25px;
+		}
+	}
+
+}
+
 .headerText() {
 	div.header-text-wrapper {
 		position: absolute;
@@ -45,10 +71,16 @@
 		}
 
 		p {
-			line-height: 1.1;
+			line-height: 1.128;
 			margin-bottom: 0px;
 			padding-bottom: 0px;
-			font-size: 25px;
+			font-size: 32px;
+			letter-spacing: 0.01em;
+
+			@media(max-width: 991px) {
+				font-size: 20px;
+				font-weight: 900;
+			}
 
 			@media(min-width: 2300px) {
 				font-size: 50px;
@@ -59,7 +91,7 @@
 			p {
 				padding-bottom: 0px;
 			}
-			bottom: 10px;
+			bottom: 0px;
 		}
 
 		@media(min-width: 992px) {
@@ -67,8 +99,8 @@
 		}
 
 		@media(min-width: 2300px) {
-			left: 75px;
-			bottom: 10px;
+			left: 79px;
+			bottom: 14px;
 		}
 	}
 }
@@ -120,7 +152,7 @@
 	}
 
 	100% {
-		width: 70px;
+		width: 67px;
 		height: auto;
 	}
 }
@@ -131,7 +163,7 @@
 	}
 
 	100% {
-		width: 70px;
+		width: 67px;
 		height: auto;
 	}
 }
@@ -185,6 +217,11 @@ body.frontend.section-frontpage div.outer-wrapper {
 	#top-header-wrapper #content-header {
 		transform: none;
 	}
+
+	.landscape-item.header-item a.landscape-item-link:hover {
+		cursor: url("/nl/intk/images/down_arrow.png") 11 45, pointer;
+	}
+
 	@media (max-width: 991px) {
         #portal-logo {
         	width: 95%;
@@ -209,8 +246,8 @@ body.frontend.section-frontpage div.outer-wrapper {
 
         .mosaic-ILeadImageBehavior-image-tile,
 		.landscape-item.header-item {
-        	height: 95vh;
-        	max-height: 90vh;
+        	height: 100vh;
+        	max-height: 100vh;
 			min-height: 500px;
         }
     }
@@ -218,7 +255,8 @@ body.frontend.section-frontpage div.outer-wrapper {
 	@media(min-width: 992px) {
 		.mosaic-ILeadImageBehavior-image-tile,
 		.landscape-item.header-item {
-    		max-height: 90vh;
+    		max-height: 100vh;
+			height: 100vh;
 			min-height: 500px;
 		}
 	}
@@ -226,30 +264,30 @@ body.frontend.section-frontpage div.outer-wrapper {
 	@media(min-width: 992px) and (min-height: 700px) {
 		.mosaic-ILeadImageBehavior-image-tile,
 		.landscape-item.header-item {
-			height: 95vh;
+			height: 100vh;
 		}
 	}
 
 	@media(min-width: 992px) and (min-height: 900px) {
 		.mosaic-ILeadImageBehavior-image-tile,
 		.landscape-item.header-item {
-			height: 95vh;
+			height: 100vh;
 		}
 	}
 
 	@media screen and (max-width: 768px) {
 		.mosaic-ILeadImageBehavior-image-tile,
 		.landscape-item.header-item  {
-		  height: 70vh;
+		  height: 50vh;
 		  max-height: 500px;
-		  min-height: 500px;
+		  min-height: 350px;
 		}
 	  }
 
 	@media(min-width: 2300px) and (max-height: 1255px) {
 		.mosaic-ILeadImageBehavior-image-tile,
 		.landscape-item.header-item  {
-			height: 95vh;
+			height: 100vh;
 		}
 	}
 
@@ -303,29 +341,38 @@ body.frontend.section-frontpage div.outer-wrapper {
 		}
 
 		#portal-logo {
-			width: 300px;
-			max-width: 300px;
+			width: 200px;
+			max-width: 200px;
 
 			@media(min-width: 992px) {
-				max-width: 506px;
-				width: 506px;
+				max-width: 574px;
+				width: 574px;
 			}
 
 			@media(min-width: 2300px) {
-				max-width: 800px;
+				max-width: 910px;
+				width: 910px;
 			}
+
+			@media(min-width: 992px) and (max-height: 780px) {
+				width: 300px;
+				max-width: 300px;
+			}
+
+			-webkit-transition: margin 0.2s ease-in-out;
+			-moz-transition: margin 0.2s ease-in-out;
+			-o-transition: margin 0.2s ease-in-out;
+			transition: margin 0.2s ease-in-out;
 
 			img {
 				width: 100%;
 
-				@media(min-width: 992px) and (max-height: 900px) {
-					max-height: 60vh;
-					width: 506px;
+				@media(min-width: 992px) and (max-height: 780px) {
+					max-height: 300px;
 				}
 
 				@media(min-width: 2300px) and (max-height: 1255px) {
-					max-width: 506px;
-					width: 506px;
+					max-width: 574px;
 				}
 				
 			}
@@ -338,27 +385,23 @@ body.frontend.section-frontpage div.outer-wrapper {
 		}
 
 		@media(min-width: 2300px) {
-			left: 75px;
-			top: 75px;
+			left: 79px;
+			top: 78px;
 		}
 	}
 }
 
 
-body.frontend.section-frontpage div.outer-wrapper {
-	.header-text-wrapper {
-		display: none;
-	}
-
-	#top-header-wrapper #content-header #portal-logo img {
-		display: none;
+body.frontend.section-shop.template-listing_view div.outer-wrapper {
+	#top-header-title-wrapper {
+		.topHeaderTitle();
 	}
 }
 
 html.frontpage-animation body.frontend.section-frontpage div.outer-wrapper {
 	.header-text-wrapper {
 		display: block;
-		animation: fadeOut .4s ease-in-out;
+		/*animation: fadeOut .4s ease-in-out;
 		animation-timing-function:linear;
 		animation-delay:2s;
 		animation-fill-mode:forwards;
@@ -367,25 +410,25 @@ html.frontpage-animation body.frontend.section-frontpage div.outer-wrapper {
 		-webkit-animation:fadeOut .4s ease-in-out;
 		-webkit-animation-timing-function:linear;
 		-webkit-animation-delay:2s;
-		-webkit-animation-fill-mode: forwards;
+		-webkit-animation-fill-mode: forwards;*/
 	}
 
 	#top-header-wrapper #content-header #portal-logo img {
 		display: block;
-		animation: shrink .5 ease-in;
+		/*animation: shrink .5 ease-in;
 		animation-fill-mode: forwards;
 		animation-delay: 1.5s;
 		-webkit-animation: shrink .5s ease-in;
   		-webkit-animation-fill-mode: forwards;
-		-webkit-animation-delay:1.5s;
+		-webkit-animation-delay:1.5s;*/
 
 		@media(min-width: 2300px) {
-			animation: shrinkXL .5 ease-in;
+			/*animation: shrinkXL .5 ease-in;
 			animation-fill-mode: forwards;
 			animation-delay: 1.5s;
 			-webkit-animation: shrinkXL .5s ease-in;
 			-webkit-animation-fill-mode: forwards;
-			-webkit-animation-delay:1.5s;
+			-webkit-animation-delay:1.5s;*/
 		}
 	}
 }
@@ -396,8 +439,9 @@ html.no-frontpage-animation body.frontend.section-frontpage div.outer-wrapper {
 	}
 
 	#top-header-wrapper #content-header #portal-logo img {
-		width: 70px;
+		width: 67px;
 		display: block;
+		margin-top: 8px;
 
 		@media(min-width: 2300px) {
 			width: 120px;

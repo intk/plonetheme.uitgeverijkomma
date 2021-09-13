@@ -398,3 +398,12 @@ msgstr "Volgende"
 #: ../object.py
 msgid "label_prev_book"
 msgstr "Vorige"
+
+
+#: ../object.py
+msgid "product"
+msgstr "Boeken"
+
+#: ../object.py
+msgid "back_to_shop"
+msgstr "Terug naar shop"

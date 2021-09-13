@@ -54,17 +54,17 @@
 
 	color: #fff;
 
-	padding-left: ~"calc(3.5vw / 2)";
-	padding-right: ~"calc(3.5vw / 2)";
+	padding-left: ~"calc(3.7vw / 2)";
+	padding-right: ~"calc(3.7vw / 2)";
 
 	z-index: 99;
 
 	opacity: 0;
 
-	padding-bottom: ~"calc(6.5vw / 2)";
-	padding-top: ~"calc(3.5vw / 2)";
+	padding-bottom: ~"calc(5.7vw / 2)";
+	padding-top: ~"calc(3.3vw / 2)";
 
-	background-color: #0a0a0a;
+	background-color: #19191A;
 
 	transition: opacity .3s ease-out;
 	-moz-transition: opacity .3s ease-out;
@@ -73,14 +73,14 @@
 
 	@media(min-width: 2300px) {
 		padding-top: 60px;
-		padding-bottom: 80px;
-		padding-left: 65px;
-		padding-right: 65px;
+		padding-bottom: 70px;
+		padding-left: 60px;
+		padding-right: 60px;
 	}
 
 	h2 {
 		color: #ffffff;
-		margin-bottom: 8px;
+		margin-bottom: 0px;
 		.HelveticaRoman();
 		font-size: 23px;
 		line-height: 27px;
@@ -95,7 +95,7 @@
 		}
 
 		@media(min-width: 2300px) {
-			font-size: 40px;
+			font-size: 34px;
 			line-height: 1.2;
 		}
 	}
@@ -111,27 +111,34 @@
 		.HelveticaRoman();
 		font-size: 23px;
 		line-height: 1.2;
-		margin-bottom: 1vw;
+		margin-bottom: 2.1vw;
 		display: block;
+		letter-spacing: 0.015em;
 
 		&.frontpage-item-authors,
 		&.product-item-authors {
-			color: rgb(166,166,155);
+			letter-spacing: 0.01em;
+			color:#828486;
 		}
 
 		&.frontpage-item-price,
 		&.product-item-price {
+
+			font-size: 15px;
+
 			padding-top: 10px;
-			border-top: 1px solid rgba(166,166,155, 0.3);
-			margin-bottom: 1.2vw;
+			border-top: 2px solid #42403F;
+			margin-bottom: 0.3vw;
 
 			@media(min-width: 992px) and (max-width: 1350px) {
-				margin-bottom: 1.2vw;
+				margin-bottom: 0.3vw;
 			}
 
 			@media(min-width: 2300px) {
-				font-size: 40px;
+				font-size: 25px;
 				line-height: 1.2;
+				padding-top: 15px;
+				margin-bottom: 0.5vw;
 			}
 		}
 
@@ -146,8 +153,9 @@
 		}
 
 		@media(min-width: 2300px) {
-			font-size: 40px;
-			line-height: 1.2;
+			font-size: 34px;
+			line-height: 1.23;
+			margin-bottom: 1.78vw;
 		}
 	}
 
@@ -165,6 +173,39 @@
 		}
 	}
 
+	.frontpage-item-details > div,
+	.product-item-details > div {
+		&.price-col {
+			@media(min-width: 992px) {
+				padding-left: 25px;
+			}
+
+			@media(min-width: 2300px) {
+				padding-left: 40px;
+			}
+		}
+
+		&.view-btn-col {
+			@media(min-width: 992px) {
+				padding-right: 25px;
+			}
+
+			@media(min-width: 2300px) {
+				padding-right: 40px;
+			}
+		}
+
+		&.buy-btn-col {
+			@media(min-width: 992px) {
+				padding-left: 25px;
+			}
+
+			@media(min-width: 2300px) {
+				padding-left: 40px;
+			}
+		}
+	}
+
 	@media(max-width: 991px) {
 		h2 {
 			font-size: 16px;
@@ -176,7 +217,7 @@
 			line-height: 1.2;
 
 			&.description {
-				display: none;
+				display: none !important;
 			}
 
 		}
@@ -204,13 +245,18 @@
 			}
 
 			&:nth-child(5) {
-				display: none;
+
+				div:not(.product-buy-btn-soldout) {
+					display: none;
+				}
 			}
 
 			.frontpage-item-price,
 			.product-item-price {
 				margin-bottom: 0px;
 			}
+
+			
 		}
 	}
 
@@ -223,7 +269,7 @@
 		background-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDI0LjAuMywgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiIFsKCTwhRU5USVRZIG5zX2V4dGVuZCAiaHR0cDovL25zLmFkb2JlLmNvbS9FeHRlbnNpYmlsaXR5LzEuMC8iPgoJPCFFTlRJVFkgbnNfYWkgImh0dHA6Ly9ucy5hZG9iZS5jb20vQWRvYmVJbGx1c3RyYXRvci8xMC4wLyI+Cgk8IUVOVElUWSBuc19ncmFwaHMgImh0dHA6Ly9ucy5hZG9iZS5jb20vR3JhcGhzLzEuMC8iPgoJPCFFTlRJVFkgbnNfdmFycyAiaHR0cDovL25zLmFkb2JlLmNvbS9WYXJpYWJsZXMvMS4wLyI+Cgk8IUVOVElUWSBuc19pbXJlcCAiaHR0cDovL25zLmFkb2JlLmNvbS9JbWFnZVJlcGxhY2VtZW50LzEuMC8iPgoJPCFFTlRJVFkgbnNfc2Z3ICJodHRwOi8vbnMuYWRvYmUuY29tL1NhdmVGb3JXZWIvMS4wLyI+Cgk8IUVOVElUWSBuc19jdXN0b20gImh0dHA6Ly9ucy5hZG9iZS5jb20vR2VuZXJpY0N1c3RvbU5hbWVzcGFjZS8xLjAvIj4KCTwhRU5USVRZIG5zX2Fkb2JlX3hwYXRoICJodHRwOi8vbnMuYWRvYmUuY29tL1hQYXRoLzEuMC8iPgpdPgo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zOng9IiZuc19leHRlbmQ7IiB4bWxuczppPSImbnNfYWk7IiB4bWxuczpncmFwaD0iJm5zX2dyYXBoczsiCgkgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiIHZpZXdCb3g9IjAgMCAxMTkwLjU1IDg0MS44OSIKCSBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCAxMTkwLjU1IDg0MS44OTsiIHhtbDpzcGFjZT0icHJlc2VydmUiPgo8c3R5bGUgdHlwZT0idGV4dC9jc3MiPgoJLnN0MHtmaWxsOiNmZmZmZmY7fQo8L3N0eWxlPgo8c3dpdGNoPgoJPGZvcmVpZ25PYmplY3QgcmVxdWlyZWRFeHRlbnNpb25zPSImbnNfYWk7IiB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIj4KCQk8aTphaXBnZlJlZiAgeGxpbms6aHJlZj0iI2Fkb2JlX2lsbHVzdHJhdG9yX3BnZiI+CgkJPC9pOmFpcGdmUmVmPgoJPC9mb3JlaWduT2JqZWN0PgoJPGcgaTpleHRyYW5lb3VzPSJzZWxmIj4KCQk8Zz4KCQkJPHBhdGggY2xhc3M9InN0MCIgZD0iTTY4OC44MywzNzUuOTVWMzY3YzAtNDkuNy0zOS42OS05MC45NC04OS4zOC05MS40MWMtNTAuMTgtMC40OC05MS4xNSw0MC4xOS05MS4xNSw5MC4yN3YxMC4wOQoJCQkJYzAsMS41NywxLjI3LDIuODMsMi44MywyLjgzaDQwLjE0YzEuNTcsMCwyLjgzLTEuMjcsMi44My0yLjgzdi05LjMxYzAtMjQuODgsMjAuMzYtNDUuNjcsNDUuMjMtNDUuMjQKCQkJCWMyNC4xNiwwLjQyLDQzLjY4LDIwLjIsNDMuNjgsNDQuNDZ2MTAuMDljMCwxLjU3LDEuMjcsMi44MywyLjgzLDIuODNINjg2QzY4Ny41NiwzNzguNzgsNjg4LjgzLDM3Ny41MSw2ODguODMsMzc1Ljk1eiIvPgoJCQk8cGF0aCBjbGFzcz0ic3QwIiBkPSJNNDEzLjIyLDM5OS42NWMtMi4wNywwLTMuNDQsMi4xNS0yLjU3LDQuMDNsNzUuMzEsMTYxLjhsMCwwdjBoMjI1LjIydjBsNzUuMy0xNjEuOAoJCQkJYzAuODctMS44OC0wLjUtNC4wMy0yLjU3LTQuMDNINzI5LjZjLTEuMSwwLTIuMSwwLjY0LTIuNTcsMS42NGwtNTIuNjQsMTE0LjUzSDUxOS42N2wtNDkuNTktMTE0LjQ3Yy0wLjQ1LTEuMDMtMS40Ny0xLjctMi42LTEuNwoJCQkJSDQxMy4yMnoiLz4KCQk8L2c+Cgk8L2c+Cjwvc3dpdGNoPgo8L3N2Zz4K");
 		background-repeat: no-repeat;
 		background-position: center center;
-		background-size: 75px 75px;
+		background-size: 70px 70px;
 
 		@media(min-width: 2300px) {
 			background-size: 120px 120px;
@@ -234,7 +280,7 @@
 		background-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDI0LjAuMywgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiIFsKCTwhRU5USVRZIG5zX2V4dGVuZCAiaHR0cDovL25zLmFkb2JlLmNvbS9FeHRlbnNpYmlsaXR5LzEuMC8iPgoJPCFFTlRJVFkgbnNfYWkgImh0dHA6Ly9ucy5hZG9iZS5jb20vQWRvYmVJbGx1c3RyYXRvci8xMC4wLyI+Cgk8IUVOVElUWSBuc19ncmFwaHMgImh0dHA6Ly9ucy5hZG9iZS5jb20vR3JhcGhzLzEuMC8iPgoJPCFFTlRJVFkgbnNfdmFycyAiaHR0cDovL25zLmFkb2JlLmNvbS9WYXJpYWJsZXMvMS4wLyI+Cgk8IUVOVElUWSBuc19pbXJlcCAiaHR0cDovL25zLmFkb2JlLmNvbS9JbWFnZVJlcGxhY2VtZW50LzEuMC8iPgoJPCFFTlRJVFkgbnNfc2Z3ICJodHRwOi8vbnMuYWRvYmUuY29tL1NhdmVGb3JXZWIvMS4wLyI+Cgk8IUVOVElUWSBuc19jdXN0b20gImh0dHA6Ly9ucy5hZG9iZS5jb20vR2VuZXJpY0N1c3RvbU5hbWVzcGFjZS8xLjAvIj4KCTwhRU5USVRZIG5zX2Fkb2JlX3hwYXRoICJodHRwOi8vbnMuYWRvYmUuY29tL1hQYXRoLzEuMC8iPgpdPgo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zOng9IiZuc19leHRlbmQ7IiB4bWxuczppPSImbnNfYWk7IiB4bWxuczpncmFwaD0iJm5zX2dyYXBoczsiCgkgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiIHZpZXdCb3g9IjAgMCAxMTkwLjU1IDg0MS44OSIKCSBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCAxMTkwLjU1IDg0MS44OTsiIHhtbDpzcGFjZT0icHJlc2VydmUiPgo8c3R5bGUgdHlwZT0idGV4dC9jc3MiPgoJLnN0MHtmaWxsOiNmZmZmZmY7fQo8L3N0eWxlPgo8c3dpdGNoPgoJPGZvcmVpZ25PYmplY3QgcmVxdWlyZWRFeHRlbnNpb25zPSImbnNfYWk7IiB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIj4KCQk8aTphaXBnZlJlZiAgeGxpbms6aHJlZj0iI2Fkb2JlX2lsbHVzdHJhdG9yX3BnZiI+CgkJPC9pOmFpcGdmUmVmPgoJPC9mb3JlaWduT2JqZWN0PgoJPGcgaTpleHRyYW5lb3VzPSJzZWxmIj4KCQk8cGF0aCBjbGFzcz0ic3QwIiBkPSJNNzQxLjQ2LDI4Ni4wN0w0NTEuMDMsNDEwLjkzdjQ0LjYybDI5MC40MiwxMjYuMDl2LTU1Ljc4YzAtMS4xNy0wLjcyLTIuMjItMS44LTIuNjRsLTY4LjE1LTI2LjU3CgkJCWM1LjE4LTE5LjY4LDcuOS00MC4xNSw3LjktNjEuMDRjMC0yMS41OC0yLjg3LTQyLjcxLTguMzktNjIuOTlsNjguNjUtMjYuODljMS4wOS0wLjQzLDEuOC0xLjQ3LDEuOC0yLjY0VjI4Ni4wN3ogTTYyOC4yNiw0MzUuNgoJCQljMCwxNC40Mi0xLjYyLDI4LjYtNC43OCw0Mi4zMmwtMTEwLjkyLTQzLjI1bDExMC40NS00My4yNkM2MjYuNDYsNDA1LjcyLDYyOC4yNiw0MjAuNTIsNjI4LjI2LDQzNS42eiIvPgoJPC9nPgo8L3N3aXRjaD4KPC9zdmc+Cg==");
 		background-repeat: no-repeat;
 		background-position: center center;
-		background-size: 75px 75px;
+		background-size: 70px 70px;
 
 		@media(min-width: 2300px) {
 			background-size: 120px 120px;
@@ -244,9 +290,9 @@
 	.product-buy-btn, .view-btn {
 		.productBtn();
 		position: relative;
-		padding-right: 50px;
-		border-top: 1px solid rgba(166,166,155, 0.2);
-		border-bottom: 1px solid rgba(166,166,155, 0.2);
+		padding-right: 55px;
+		border-top: 1px solid #575556;
+		border-bottom: 1px solid #575556;
 		
 		span {
 			font-size: 16px;
@@ -260,7 +306,7 @@
 			}
 
 			@media(min-width: 2300px) {
-				font-size: 28px;
+				font-size: 24px;
 				line-height: 45px;
 			}
 		}
@@ -275,7 +321,7 @@
 			position: absolute;
 			right: 0;
 			top: 0;
-			width: 50px;
+			width: 55px;
 			border-left: 1px solid rgba(166,166,155, 0.2);
 
 			@media(min-width: 2300px) {
@@ -333,8 +379,12 @@
 		display: none !important;
 	}
 
-	margin-top: -2px;
-	margin-bottom: -2px;
+	@media(min-width: 992px) {
+		margin-right: -1px !important;
+	}
+
+	margin-top: 0px;
+	margin-bottom: 0px;
 	background-color: #0a0a0a;
 	display: flex;
     flex-wrap: wrap;
@@ -368,14 +418,14 @@
 			&:nth-last-child(1) {
 				@media(min-width: 992px) {
 					padding-bottom: 0px;
-					padding-right: 2px;
+					padding-right: 1px;
 				}
 			}
 		}
 
 		&:nth-of-type(even) {
 			@media(min-width: 992px) {
-				padding-left: 1px;
+				padding-right: 1px;
 			}
 
 			&:nth-last-child(1) {
@@ -391,7 +441,7 @@
 			}
 		}
 
-		padding-bottom: 2px;
+		padding-bottom: 1px;
 		
 		@media(min-width: 768px) {
 			width: 50%;
@@ -665,6 +715,8 @@
 			.videoContainer();
 			width: 100%;
 			height: 100%;
+			margin-top: -1px;
+			margin-bottom: -1px;
 
 			iframe {
 				width: 100% !important;
@@ -808,8 +860,8 @@ body:not(.frontend) #portal-footer-wrapper .portletCollection {
 
 
 body.frontend {
-	&.portaltype-folder:not(.template-index-html),
-	&.portaltype-collection:not(.template-index-html) {
+	&.portaltype-folder:not(.template-index-html):not(.template-cart),
+	&.portaltype-collection:not(.template-index-html):not(.template-cart) {
 
 		.listing_structure();
 

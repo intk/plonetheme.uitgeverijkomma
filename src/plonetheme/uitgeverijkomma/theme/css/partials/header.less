@@ -8,9 +8,16 @@
 
     #portal-logo {
         img {
-            width: 40px;
+            width: 67px;
             height: auto;
-            
+
+            @media(max-width: 991px) {
+                width: 40px;
+            }
+
+            @media(min-width: 2300px) {
+                width: 120px;
+            }
         }
     }
 
@@ -40,6 +47,11 @@
             left: 5px;
         }
 
+        @media(min-width: 2300px) {
+            top: 80px;
+            left: 65px;
+        }
+
         &> .container {
             width: auto;
         }
@@ -57,10 +69,10 @@
     }
 
     #main-container .content-wrapper {
-        margin-top: 45px;
+        margin-top: 36px;
 
         @media(min-width: 2300px) {
-            margin-top: 73px;
+            margin-top: 64px;
             padding-right: 30px;
         }
     }
@@ -70,7 +82,7 @@
         .Montserrat();
         font-size: 23px;
         font-weight: 400;
-        line-height: 1.2;
+        line-height: 1.21;
 
         max-width: 100%;
         margin: 0;
@@ -87,8 +99,8 @@
         }
 
         @media (min-width: 2300px) {
-            font-size: 40px;
-            margin-bottom: 95px;
+            font-size: 34px;
+            margin-bottom: 90px;
         }
     }
 
@@ -350,7 +362,11 @@
 
         h1.documentFirstHeading {
             text-align: left;
+            font-size: 21px;
+            margin-bottom: 20px;
+            line-height: 1.35;
         }
+
 
         .documentDescription {
             text-align: left;
@@ -417,66 +433,72 @@
     }
 
     .newsImageContainer, .mosaic-ILeadImageBehavior-image-tile, #header-carousel {
-        max-height: 90vh;
+        max-height: 100vh;
     }    
 
     @media (min-width: 1640px) {
       .newsImageContainer, .mosaic-ILeadImageBehavior-image-tile, #header-carousel {
-        max-height: 95vh;
+        max-height: 100vh;
       }
     }
 
     @media screen and (min-height: 320px) {
       .newsImageContainer, .mosaic-ILeadImageBehavior-image-tile, #header-carousel {
-        height: 90vh;
+        height: 100vh;
       }
     }
 
     @media screen and (min-height: 600px) and (min-width: 768px) {
       .newsImageContainer, .mosaic-ILeadImageBehavior-image-tile, #header-carousel {
-        height: 90vh;
+        height: 100vh;
       }
     }
 
     @media screen and (min-height: 700px) {
       .newsImageContainer, .mosaic-ILeadImageBehavior-image-tile, #header-carousel {
-        height: 95vh;
+        height: 100vh;
       }
     }
 
     @media screen and (min-height: 700px) and (max-width: 767px) {
       .newsImageContainer, .mosaic-ILeadImageBehavior-image-tile, #header-carousel {
-        height: 90vh;
+        height: 100vh;
       }
     }
 
     @media screen and (min-height: 900px) {
       .newsImageContainer, .mosaic-ILeadImageBehavior-image-tile, #header-carousel {
-        height: 95vh;
+        height: 100vh;
       }
     }
 
     @media screen and (max-width: 1024px) and (min-height: 900px) {
       .newsImageContainer, .mosaic-ILeadImageBehavior-image-tile, #header-carousel {
-        height: 95vh;
+        height: 100vh;
       }
     }
 
     @media screen and (max-width: 768px) {
       .newsImageContainer, .mosaic-ILeadImageBehavior-image-tile, #header-carousel {
-        height: 70vh;
+        height: 30vh;
         max-height: 500px !important;
       }
     }
 
     /* Media queries for header image */
     .newsImageContainer, .mosaic-ILeadImageBehavior-image-tile, #header-carousel {
-      min-height: 500px;
+      min-height: 260px;
     }
+}
+
+.information-wrapper {
+    display: none;
 }
 
 body.frontend div.outer-wrapper {
 	.header();
+
+    
 }
 
 body.template-checkout div.outer-wrapper {
@@ -511,7 +533,7 @@ body.frontend.section-frontpage {
 }
 
 
-div.website-wrapper.no-image {
+body:not(.template-search):not(.template-index-html) div.website-wrapper.no-image {
     #mainnavigation-wrapper .plone-nav li a {
         text-shadow: none;
         color: #000000;

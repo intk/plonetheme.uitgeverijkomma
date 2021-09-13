@@ -31,17 +31,12 @@
                         You can use the links below to help you find what you are looking for.
                      </p>
 
-                    <p i18n:translate="description_site_error_mail_site_admin" class="discreet">
-                        If you are certain you have the correct web address but are encountering an error, please
-                        contact the <span i18n:name="site_admin">
-                        <a href="#"
-                           i18n:translate="label_site_admin"
-                           tal:attributes="href string:${context/portal_url}/contact-info">site administration</a></span>.
-                    </p>
+                    
 
                     <p i18n:translate="description_site_error_thank_you">
                     Thank you.
                     </p>
+                    <p><br></p>
 
                     <!-- Offer search results for suggestions -->
                     <tal:suggestions define="first_parent redirection_view/find_first_parent;
@@ -52,7 +47,8 @@
                                              registry context/portal_registry;
                                              use_view_action python:registry['plone.types_use_view_action_in_listings'];
                                              desc_length python:registry['plone.search_results_description_length'];
-                                             normalizeString nocall:plone_view/normalizeString;"
+                                             normalizeString nocall:plone_view/normalizeString;
+                                             context_tools python: context.restrictedTraverse('@@context_tools');"
                                      condition="python:first_parent is not None or similar_items">
 
                         <h2 i18n:translate="heading_not_found_suggestions">You might have been looking for&hellip;</h2>
@@ -67,19 +63,19 @@
                                                 result_type similar/portal_type;
                                                 hasIcon similar/getIcon;
                                                 url python:result_url + '/view' if result_type in use_view_action else result_url;">
-
-                                    <div class="image-wrapper col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                                    
+                                    <div class="image-wrapper col-lg-4 col-md-4 col-sm-12 col-xs-12">
 
                                         <a href="${url}"
                                             tal:define="item_wf_state_class string: state-${similar/review_state};"
                                             tal:attributes="class python:'contenttype-' + normalizeString(result_type) + item_wf_state_class">
                                                 <img class="thumb-preview"
                                                         tal:condition="hasIcon"
-                                                        tal:replace="structure python: image_scale.tag(similar, 'image', scale='preview', css_class='thumb-preview', direction='down')"/>
+                                                        tal:replace="structure python: image_scale.tag(similar, 'image', scale='preview', css_class='thumb-preview')"/>
                                         </a>
                                      </div>
 
-                                     <div class="search-result-wrapper col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                     <div class="search-result-wrapper col-lg-8 col-md-8 col-sm-12 col-xs-12">
                                             <a href="${url}"
                                                tal:define="item_wf_state_class string: state-${similar/review_state};"
                                                tal:attributes="class python:'search-result-title contenttype-' + normalizeString(result_type) + item_wf_state_class">
@@ -88,6 +84,8 @@
                                             <p class="discreet croppedDescription search-result-description" tal:content="python:plone_view.cropText(similar.Description or '', desc_length)">
                                                
                                             </p>
+                                            <p class="search-result-price" tal:content="python: context_tools.get_item_price(similar.getObject())" tal:condition="python: result_type in ['product', 'Product']"></p>
+
                                       </div>
                                 </div>
                             </tal:similar>

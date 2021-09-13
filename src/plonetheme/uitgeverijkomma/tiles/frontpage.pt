@@ -30,17 +30,22 @@
                       portal_type context/portal_type|nothing;
                       item_is_event python:portal_type in ['Event'];
                       item_lead_image python: context_tools.get_lead_image(context);
+                      item_lead_image_obj python: False if item_lead_image else view.image_tag;
                       is_logged_in python: 'logged_in' if not isanon else '';
                       item_is_product python:portal_type in ['product', 'Product'];">
 
       <section class="${view/tile_class} landscape-item ${header_class}">
         
         <a href="" class="landscape-item-link" tal:attributes="href context/absolute_url|nothing">
-          
+
           <tal:image condition="python: show_image and not video_thumb_url">
             <div class="content-image"
-                 tal:condition="item_lead_image">
+                 tal:condition="python: item_lead_image">
               <figure><img tal:replace="structure python:image_scale.tag(item_lead_image, 'image', scale='large')" /></figure>
+            </div>
+            <div class="content-image"
+                 tal:condition="python: item_lead_image_obj">
+              <figure><img tal:replace="structure item_lead_image_obj" /></figure>
             </div>
           </tal:image>
 
@@ -97,19 +102,19 @@
                     <span style="display:none" class="cart_item_uid" tal:content="context/UID"></span>
                     <input style="display:none" class="cart_item_count" type="number" value="1"></input>
                   </div>
-                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 price-col">
                     <p class="frontpage-item-price" tal:condition="python: show_price and getattr(context, 'soldout', False) == False">
                       <span tal:replace="python: context_tools.get_item_price(context)"></span>
                     </p>
                   </div>
                   <div class="clearfix"></div>
-                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 view-btn-col">
                     <div class="view-btn" tal:condition="show_buttons">
-                      <span>Bekijk</span>
+                      <span tal:content="python: 'Bekijk' if getattr(context, 'language', 'nl') == 'nl' else 'View'">Bekijk</span>
                       <span class="btn-label-view"></span>
                     </div>
                   </div>
-                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 buy-btn-col">
                     <div class="product-buy-btn" tal:condition="python: getattr(context, 'soldout', False) == False">
                       <span tal:content="python: 'In winkelmand' if getattr(context, 'language', 'nl') == 'nl' else 'Add to cart'">In winkelmand</span>
                       <span class="btn-label-cart"></span>

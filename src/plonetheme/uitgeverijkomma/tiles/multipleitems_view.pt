@@ -54,13 +54,11 @@
                     <p tal:content="item_description"></p>
                   </div>
 
-                  <div class="title-wrapper" tal:condition="python: not item_is_video and use_awards_view">
-                    <p><span tal:replace="item_title"></span></p>
-                  </div>
-
-                  <div class="image-wrapper" tal:condition="python: not item_is_video and use_awards_view and item_has_image">
-                      <figure><img tal:replace="structure python:image_scale.tag(item, 'image', scale='large')" /></figure>
-                  </div>
+                  <a href="#" tal:define="awards_link python:context_tools.get_awards_link(obj)" tal:attributes="href awards_link" tal:omit-tag="python: not use_awards_view or use_awards_view and not awards_link">
+                    <div class="image-wrapper" tal:condition="python: not item_is_video and item_has_image">
+                        <figure><img tal:replace="structure python:image_scale.tag(item, 'image', scale='large')" /></figure>
+                    </div>
+                  </a>
 
                   <div class="video-wrapper" tal:condition="item_is_video">
                     <div class="video-container"
@@ -71,12 +69,15 @@
                     </div>
                   </div>
 
-                  <div class="title-wrapper" tal:condition="item_is_video">
-                    <p><span tal:replace="item_title"></span></p>
-                  </div>
+                  <div class="extra-lg-wrapper">
 
-                  <div class="text-wrapper">
-                    <div tal:content="structure python:obj.text.output_relative_to(view.context)" tal:on-error="nothing"></div>
+                    <div class="title-wrapper">
+                      <p><span tal:replace="item_title"></span></p>
+                    </div>
+
+                    <div class="text-wrapper">
+                      <div tal:content="structure python:obj.text.output_relative_to(view.context)" tal:on-error="nothing"></div>
+                    </div>
                   </div>
 
                 </div>

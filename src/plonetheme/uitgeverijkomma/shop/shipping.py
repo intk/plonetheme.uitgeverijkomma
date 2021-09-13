@@ -91,7 +91,10 @@ def get_continent(country_code):
     if country_code == "ZA":
         return "South Africa"
 
-    return convert_country_alpha2_to_continent(country_code)
+    try:
+        return convert_country_alpha2_to_continent(country_code)
+    except:
+        return ""
 
 def convert_country_to_alpha2(country_code):
     country = pycountry.countries.get(numeric=country_code)

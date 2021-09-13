@@ -7,6 +7,7 @@
 
   <theme href="index_frontpage.html" css:if-content="body.section-frontpage"/>
   <theme href="index_no_image.html" css:if-not-content="div.contains-image"/>
+  <theme href="index_shop.html" css:if-content="body.template-listing_view.section-shop"/>
   <theme href="index.html" />
 
   <notheme css:if-not-content="#visual-portal-wrapper" />
@@ -55,8 +56,11 @@
 
   <!-- header wrapper for search -->
   <replace css:theme-children="#header-wrapper .container" css:content="h1.documentFirstHeading" method="raw" css:if-content="body.template-search"/>
-  <replace css:theme-children="#header-wrapper .container.main #title-above-header" css:content="h1.documentFirstHeading" method="raw" css:if-content="body.template-listing_view"/>
   
+  <replace css:theme-children="#header-wrapper .container.main #title-above-header" css:content="h1.documentFirstHeading" method="raw" css:if-content="body.template-listing_view"/>
+  <replace css:theme-children="#top-header-title-wrapper h1" css:content-children="h1.documentFirstHeading" method="raw" css:if-content="body.template-listing_view"/>
+  
+  <drop css:theme="#header-wrapper .container.main #title-above-header" css:if-content="body.template-listing_view.section-shop"/>
   <drop css:content="h1.documentFirstHeading" css:if-not-content="body.template-search"/>
   <drop css:content="h1.documentFirstHeading" css:if-content="body.template-listing_view"/>
   

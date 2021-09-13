@@ -13,6 +13,8 @@ from zope import schema
 from collective import dexteritytextindexer
 from urllib.parse import urlparse
 import urllib.request, json 
+from bda.plone.cart.cartitem import get_item_data_provider
+from decimal import Decimal
 
 import plone.api
 from plone.app.contenttypes.behaviors.leadimage import ILeadImageBehavior
@@ -47,7 +49,6 @@ def fix_all_videos():
         transaction.get().commit()
 
     return True
-    
 
 class ContextToolsView(BrowserView):
 
@@ -69,9 +70,29 @@ class ContextToolsView(BrowserView):
         else:
             return None
 
+    def format_number_localized(self, value, quantizer=None):
+        formatter = self.request.locale.numbers.getFormatter('decimal')
+        formatter.type = Decimal
+        if quantizer is not None:
+            value = value.quantize(Decimal(quantizer))
+        return formatter.format(value)
+
+    def get_awards_link(self, item):
+
+        related_items = getattr(item, 'relatedItems', None)
+
+        if related_items:
+            related_item = related_items[0]
+            obj = related_item.to_object
+            return obj.absolute_url()
+        else:
+            return False
+
+
     def get_item_price(self, item):
 
         soldout = getattr(item, 'soldout', False)
+        
 
         if soldout:
             if getattr(self.context, 'language', "") == "nl":
@@ -79,11 +100,22 @@ class ContextToolsView(BrowserView):
             else:
                 return "Sold out"
 
-        price = getattr(item, 'price', '99,-')
+        _item_data = get_item_data_provider(item)
+        item_vat = Decimal(_item_data.vat)
+        net = Decimal(_item_data.net)
+
+        price = net + net / Decimal(100) * item_vat
+
+        decimal_separator = ','
+        if getattr(self.context, 'language', "") != "nl":
+            decimal_separator = '.'
+
+        price = "%s%s-" %(self.format_number_localized(price, "1"), decimal_separator) if round(price, 2) % 1 == 0 else self.format_number_localized(price, "1.00")
+
         if price:
             return "€ %s" %(price)
         else:
-            return "€ 99,-"
+            return getattr(item, 'price', '')
 
     def get_listing_item_video_id(self, item):
  
@@ -178,7 +210,6 @@ class IBook(model.Schema):
     )
     form.widget('specs', RichTextFieldWidget)
     dexteritytextindexer.searchable('notes')
-
 
     author = schema.TextLine(
         title=_(u"Author"),
