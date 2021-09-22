@@ -261,6 +261,13 @@ body.frontend.section-frontpage div.outer-wrapper {
 		}
 	}
 
+	@media screen and (min-height: 600px) and (min-width: 992px) {
+		.mosaic-ILeadImageBehavior-image-tile,
+		.landscape-item.header-item {
+			height: 95vh;
+		}
+	}
+
 	@media(min-width: 992px) and (min-height: 700px) {
 		.mosaic-ILeadImageBehavior-image-tile,
 		.landscape-item.header-item {
@@ -309,6 +316,8 @@ body.frontend.section-frontpage div.outer-wrapper {
 
 	div.main-container-wrapper {
 		z-index: 100;
+		-webkit-transform: translateZ(0);
+		transform: translateZ(0);
 	}
 
 	#top-header-wrapper {

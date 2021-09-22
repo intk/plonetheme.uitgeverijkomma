@@ -85,6 +85,9 @@
   <replace css:theme="#header-wrapper .header-text" css:content=".header-text-wrapper" method="raw" css:if-content="body.frontend.section-frontpage" />
   <drop css:content=".header-text-wrapper" css:if-content="body.frontend.section-frontpage"/>
   
+  <replace css:theme-children=".bdajax-overlay-wrapper" css:content="#bdajax-overlays" method="raw" />
+  <drop css:content="#bdajax-overlays" css:if-content="body.frontend.section-shop"/>
+  
   <!-- Central column -->
   <replace css:theme="#content-container" method="raw">
 
