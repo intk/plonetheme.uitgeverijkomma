@@ -236,6 +236,10 @@ body.frontend.template-product_view {
                 padding-top: 11px !important;
             }
         }
+
+        .extra-info {
+            padding-top: 45px;
+        }
      }
 
      &.is-mobile {
@@ -249,6 +253,23 @@ body.frontend.template-product_view {
      #main-container .share {
         order: 4;
 
+        div.download-link {
+            padding-top: 20px;
+            
+            p {
+                margin-bottom: 0px !important;
+            }
+
+            a {
+                text-decoration: underline;
+
+                &:hover,
+                &:focus,
+                &:active:focus {
+                    text-decoration: none;
+                }
+            }
+        }
 
         #viewlet-below-content {
             nav.pagination {
@@ -460,6 +481,16 @@ body.frontend.template-product_view {
             @media(min-width: 992px) {
                 width: 65%;
                 border-right: 3px solid #ffffff;
+            }
+
+            &.clickable:hover,
+            &.clickable:focus,
+            &.clickable:active:focus {
+                background-color: #E5E7E9;
+
+                span {
+                    color: #19191A;
+                }
             }
         }
 

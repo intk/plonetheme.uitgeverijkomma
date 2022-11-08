@@ -113,7 +113,7 @@
                             
                           <tal:video condition="video_id">
                             <div class="video-container">
-                                <iframe tal:attributes="src python: 'https://player.vimeo.com/video/%s?dnt=1&loop=1&background=1' %(video_id)" frameborder="0" allow="autoplay; fullscreen;" allowfullscreen="" data-ready="true"></iframe>
+                                <iframe tal:attributes="src python: 'https://player.vimeo.com/video/%s?dnt=1&loop=1&background=1&autopause=1&muted=1&transparent=0' %(video_id)" frameborder="0" allow="autoplay; fullscreen;" allowfullscreen="" data-ready="true"></iframe>
                             </div>
                           </tal:video>
 

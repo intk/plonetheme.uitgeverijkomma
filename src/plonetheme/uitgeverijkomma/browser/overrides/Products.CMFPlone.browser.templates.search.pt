@@ -232,10 +232,12 @@
                                                    class string:state-${item/review_state}"
                                    tal:omit-tag="python:item_is_person and not show_about">
                                    
-                                   <img class="thumb-preview"
+                                   <!--<img class="thumb-preview"
                                      tal:condition="hasIcon"
                                      tal:replace="structure python: image_scale.tag(item, 'image', scale='preview', css_class='thumb-preview')">
+				   -->
 
+				   <img class="thumb-preview" tal:condition="hasIcon" tal:attributes="src python: '%s/@@images/image/preview' %(item_url)"/>
                                 </a>
 
                               </div>

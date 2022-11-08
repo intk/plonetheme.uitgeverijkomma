@@ -18,11 +18,13 @@
                       show_description python: data.get('show_description', True);
                       show_text python: data.get('show_text', True);
                       show_as_header python: data.get('show_as_header', False);
+                      show_large_tile python: data.get('show_large_tile', False);
                       header_class python: 'header-item' if show_as_header else '';
+                      large_item_class python: 'large-item' if show_large_tile else '';
                       show_image python: data.get('show_image', False);
                       video_id python: data.get('video_id', False);
-                      video_thumb_url python: data.get('video_thumb_url', False);
-                      show_comments python: data.get('show_comments', False);
+                      video_thumb_url python: view.get_video_url();
+		      show_comments python: data.get('show_comments', False);
                       show_author python: data.get('show_author', False);
                       show_price python: data.get('show_price', False);
                       show_buttons python: data.get('show_buttons', False);
@@ -34,7 +36,7 @@
                       is_logged_in python: 'logged_in' if not isanon else '';
                       item_is_product python:portal_type in ['product', 'Product'];">
 
-      <section class="${view/tile_class} landscape-item ${header_class}">
+      <section class="${view/tile_class} landscape-item ${header_class} ${large_item_class}">
         
         <a href="" class="landscape-item-link" tal:attributes="href context/absolute_url|nothing">
 
@@ -57,7 +59,7 @@
 
           <tal:video condition="video_id">
             <div class="video-container">
-                <iframe tal:attributes="src python: 'https://player.vimeo.com/video/%s?dnt=1&loop=1&background=1' %(video_id)" frameborder="0" allow="autoplay; fullscreen;" allowfullscreen="" data-ready="true"></iframe>
+                <iframe tal:attributes="src python: 'https://player.vimeo.com/video/%s?dnt=1&loop=1&background=1&autopause=1&muted=1' %(video_id)" frameborder="0" allow="autoplay; fullscreen;" allowfullscreen="" data-ready="true"></iframe>
             </div>
           </tal:video>
 
@@ -120,7 +122,7 @@
                       <span class="btn-label-cart"></span>
                     </div>
                     <div class="product-buy-btn-soldout view-btn" tal:condition="python: getattr(context, 'soldout', False) == True">
-                      <span tal:content="python: 'Uitverkocht' if getattr(context, 'language', 'nl') == 'nl' else 'Soldout'">In winkelmand</span>
+                      <span tal:content="python: 'Uitverkocht' if getattr(context, 'language', 'nl') == 'nl' else 'Sold out'">In winkelmand</span>
                     </div>
                   </div>
               </tal:product>

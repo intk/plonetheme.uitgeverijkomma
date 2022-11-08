@@ -56,7 +56,8 @@ body.section-frontpage {
 
 body {
 
-	.mosaic-width-half section.landscape-item a.landscape-item-link {
+	.mosaic-width-half section.landscape-item a.landscape-item-link,
+	section.landscape-item.large-item a.landscape-item-link {
 		&:hover,
 		&:focus,
 		&:active {
@@ -103,6 +104,10 @@ body {
 
 		.fontpage-tile-content-wrapper {
 			.tileContentWrapper();
+		}
+
+		&.large-item {
+			.tileLargeItem();
 		}
 	}
 

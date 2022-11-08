@@ -67,14 +67,19 @@ body.frontend.template-listing_view:not(.template-index-html):not(.template-cart
 		&:not(.no-image) {
 
 			#top-header-wrapper {
-				position: -webkit-sticky;
-				position: sticky;
+				/*position: -webkit-sticky;
+				position: sticky;*/
+				position: relative;
 				top: 0;
 				left: 0;
 				height: auto;
 				z-index: 0;
-				-webkit-transform: translateZ(0);
-				transform: translateZ(0);
+				/*-webkit-transform: translateZ(0);
+				transform: translateZ(0);*/
+				@media(min-width: 992px) {
+					position: -webkit-sticky;
+					position: sticky;
+				}
 			}
 
 			#main-container > div:first-child {

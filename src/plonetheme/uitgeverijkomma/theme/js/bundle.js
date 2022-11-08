@@ -514,6 +514,6 @@ jQuery(document).ready(function () {
 
 	/* Thumbnail links for mobile */
 	load_thumbnail_links();
-	
+
 });
 

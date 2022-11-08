@@ -42,8 +42,8 @@
                 <div tal:content="structure python:context.text.output_relative_to(view.context)" tal:on-error="nothing" tal:condition="not:use_only_two"></div>
 
                 <div class="contact-linkedin" tal:condition="not:use_only_two">
-                  <p tal:condition="python: contact and linkedin"><a href="" tal:attributes="href contact">Contact</a> / <a href="" tal:attributes="href linkedin">LinkedIn</a></p>
-                  <p tal:condition="python: contact and not linkedin"><a href="" tal:attributes="href contact">Contact</a></p>
+                  <p tal:condition="python: contact and linkedin"><a href="" tal:attributes="href python: 'mailto:%s' %(contact)">Contact</a> / <a href="" tal:attributes="href linkedin">LinkedIn</a></p>
+                  <p tal:condition="python: contact and not linkedin"><a href="" tal:attributes="href python: 'mailto:%s' %(contact)">Contact</a></p>
                   <p tal:condition="python: linkedin and not contact"><a href="" tal:attributes="href linkedin">LinkedIn</a></p>
                 </div>
 

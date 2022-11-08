@@ -200,7 +200,7 @@ class IBook(model.Schema):
     model.fieldset(
         'book',
         label=_(u'Book', default=u'Book'),
-        fields=['specs', 'author'],
+        fields=['specs', 'author', 'extra_info', 'download_link', 'download_text'],
     )
 
     specs = RichTextField(
@@ -209,7 +209,7 @@ class IBook(model.Schema):
         required=False,
     )
     form.widget('specs', RichTextFieldWidget)
-    dexteritytextindexer.searchable('notes')
+    dexteritytextindexer.searchable('specs')
 
     author = schema.TextLine(
         title=_(u"Author"),
@@ -219,6 +219,34 @@ class IBook(model.Schema):
         default=u"",
         required=False
     )
+
+    extra_info = RichTextField(
+        title=_(u'Extra info'),
+        description=u'Extra info that will be shown below the price',
+        required=False,
+    )
+    form.widget('extra_info', RichTextFieldWidget)
+    dexteritytextindexer.searchable('extra_info')
+
+
+    download_text = schema.TextLine(
+        title=_(u"Download file text"),
+        description=_(
+            u"Text that will appear on the link to the download file"
+        ),
+        default=u"",
+        required=False
+    )
+
+    download_link = schema.TextLine(
+        title=_(u"Download link"),
+        description=_(
+            u"Link to the download file (use the entire url)"
+        ),
+        default=u"",
+        required=False
+    )
+
 
     model.fieldset(
         'shop',
@@ -242,11 +270,12 @@ class IBook(model.Schema):
     )
 
 
-def get_vimeo_thumb(video_url="https://vimeo.com/578160762"):
+def get_vimeo_thumb(video_url="https://vimeo.com/578160762", vimeo_id=None):
 
     VIMEO_GET_JSON_URL = "https://vimeo.com/api/v2/video/%s.json"
 
-    vimeo_id = get_vimeo_id(video_url)
+    if not vimeo_id:
+        vimeo_id = get_vimeo_id(video_url)
 
     if vimeo_id:
         get_json_url = VIMEO_GET_JSON_URL % (vimeo_id)

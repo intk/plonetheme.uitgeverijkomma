@@ -34,7 +34,7 @@
   <div id="product-price"
     tal:define="soldout python: getattr(context, 'soldout', False);">
 
-    <h3 tal:content="python: 'Buy' if getattr(context, 'language', 'nl') == 'en' else 'Bestel'">Bestel</h3>
+    <h3 tal:content="python: 'Order' if getattr(context, 'language', 'nl') == 'en' else 'Bestel'">Bestel</h3>
 
     <div class="product-price" tal:on-error="nothing" tal:condition="not:soldout">
       <span>€ <span tal:replace="python: context.price"></span></span>
@@ -48,6 +48,14 @@
       <span>Uitverkocht</span>
     </div>
 
+    <div class="extra-info" tal:condition="context/extra_info|nothing" tal:on-error="nothing">
+      <div tal:replace="structure python:context.extra_info.output_relative_to(view.context)" tal:on-error="nothing"></div>
+    </div>
+
+    <div class="download-link" tal:condition="context/download_link|nothing" tal:on-error="nothing">
+      <p>Download</p>
+      <a href="" tal:attributes="href context/download_link" tal:content="context/download_text|nothing"></a>
+    </div>
   </div>
 </metal:content-core>
 </metal:content-core>

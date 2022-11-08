@@ -14,6 +14,9 @@ from zope.contentprovider.interfaces import IContentProvider
 from plone.app.standardtiles.existingcontent import IExistingContentTile
 from plone.app.standardtiles.existingcontent import ExistingContentTile
 
+from plone.tiles.interfaces import ITileDataManager
+from plonetheme.uitgeverijkomma.browser.views import get_vimeo_thumb
+
 class IFrontpageTile(IExistingContentTile):
 
     show_text = schema.Bool(title=_(u"Show content text"), default=False)
@@ -50,6 +53,12 @@ class IFrontpageTile(IExistingContentTile):
 
     show_as_header = schema.Bool(
         title=_(u"Show content has header"),
+        default=False,
+        required=False,
+    )
+
+    show_large_tile = schema.Bool(
+        title=_(u"Show as a large tile (needs to be placed on a single row)"),
         default=False,
         required=False,
     )
@@ -92,7 +101,7 @@ class IFrontpageTile(IExistingContentTile):
     video_thumb_url = schema.TextLine(
         title=_(u"Video first frame URL"),
         description=_(
-            u"The first frame will be shown before the video loads"
+            u"The first frame will be shown before the video loads (Automatic). To force a refresh: make the field empty and save changes."
         ),
         default=u"",
         required=False
@@ -109,6 +118,21 @@ class IFrontpageTile(IExistingContentTile):
     form.omitted('tile_class')
 
 class FrontpageTile(ExistingContentTile):
+    def get_video_url(self):
+        video_thumb_url = self.data.get('video_thumb_url')
+
+        if not video_thumb_url:
+            video_id = self.data.get('video_id')
+            if video_id:
+                video_thumb = get_vimeo_thumb(vimeo_id=video_id)
+                dataManager = ITileDataManager(self)
+                self.data['video_thumb_url'] = video_thumb
+                dataManager.set(self.data)
+                return video_thumb
+            else:
+                return None
+        else:
+            return video_thumb_url
 
     def get_item_price(self, item):
         price = getattr(item, 'price', '99,-')

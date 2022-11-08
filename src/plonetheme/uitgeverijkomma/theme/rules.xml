@@ -112,6 +112,7 @@
           <div id="product-price">
             <xsl:copy-of css:select="#product-price h3"/>
             <xsl:copy-of css:select=".buyable.viewlet"/>
+            <xsl:copy-of css:select="#product-price div.extra-info"/>
           </div>  
         </div>
         <div class="product-details specs col-xs-12 col-sm-12 col-md-12 col-lg-2">
@@ -119,6 +120,7 @@
         </div>
         <div class="product-details share col-xs-12 col-sm-12 col-md-12 col-lg-2">
           <xsl:copy-of css:select="#product-share"/>
+          <xsl:copy-of css:select="div.download-link"/>
           <xsl:copy-of css:select="#viewlet-below-content" />
         </div>
       </div>
